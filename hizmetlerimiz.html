@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ustalar.com | İşinizi Ustalara Bırakın</title>
+    <title>Ustalar.com | Tüm Hizmetlerimiz</title>
     <link rel="icon" type="image/png" href="assets/images/ustalar_vector.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.1.0/css/flag-icons.min.css">
-
+    
     <script>
         tailwind.config = {
             theme: {
@@ -30,18 +29,12 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Outfit', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        body { font-family: 'Outfit', sans-serif; }
+        html { scroll-behavior: smooth; }
 
         .hover-lift {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .hover-lift:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -53,32 +46,22 @@
             bottom: 2rem;
             right: 2rem;
             z-index: 100;
-            width: 80px;
+            width: 80px; 
             height: 80px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             animation: float-mascot 3s ease-in-out infinite;
             filter: drop-shadow(0 10px 15px rgba(249, 115, 22, 0.3));
         }
-
-        #ai-chat-fab:hover {
-            transform: scale(1.1) rotate(5deg);
-            filter: drop-shadow(0 15px 25px rgba(249, 115, 22, 0.5));
-            animation-play-state: paused;
+        #ai-chat-fab:hover { 
+            transform: scale(1.1) rotate(5deg); 
+            filter: drop-shadow(0 15px 25px rgba(249, 115, 22, 0.5)); 
+            animation-play-state: paused; 
         }
-
         @keyframes float-mascot {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         #ai-chat-window {
@@ -94,33 +77,23 @@
             backdrop-filter: blur(15px);
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 1.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
             overflow: hidden;
             transform-origin: bottom right;
             animation: slide-in-chat 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
         @keyframes slide-in-chat {
-            0% {
-                transform: scale(0.5) translateY(100px);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
+            0% { transform: scale(0.5) translateY(100px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
         }
-
         .chat-header {
             background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
             padding: 1.25rem;
             color: white;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-between; 
         }
-
         .chat-messages {
             flex: 1;
             padding: 1.25rem;
@@ -128,9 +101,8 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            background-color: #fafaf9;
+            background-color: #fafaf9; 
         }
-
         .msg-bubble {
             max-width: 85%;
             padding: 0.75rem 1rem;
@@ -138,16 +110,14 @@
             font-size: 0.95rem;
             line-height: 1.5;
         }
-
         .msg-ai {
             background: white;
             color: #1e293b;
             align-self: flex-start;
             border-bottom-left-radius: 0.25rem;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-
         .msg-user {
             background: #f97316;
             color: white;
@@ -155,7 +125,6 @@
             border-bottom-right-radius: 0.25rem;
             box-shadow: 0 2px 4px rgba(249, 115, 22, 0.2);
         }
-
         .chat-input-area {
             padding: 1rem;
             background: white;
@@ -163,7 +132,6 @@
             display: flex;
             gap: 0.5rem;
         }
-
         .chat-input-area input {
             flex: 1;
             background: #f1f5f9;
@@ -174,13 +142,12 @@
             font-size: 0.95rem;
             transition: all 0.2s;
         }
-
-        .chat-input-area input:focus {
+        .chat-input-area input:focus { 
             background: white;
-            border-color: #f97316;
+            border-color: #f97316; 
             box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
         }
-
+        
         .chat-notification {
             position: fixed;
             bottom: 120px;
@@ -199,12 +166,10 @@
             pointer-events: none;
             border: 1px solid #f1f5f9;
         }
-
         .chat-notification.show {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
-
         .chat-notification::after {
             content: '';
             position: absolute;
@@ -226,84 +191,64 @@
                 border-radius: 0;
                 z-index: 9999;
             }
-
             .chat-header {
                 border-radius: 0;
             }
         }
-
+        
         /* Gizli Google Translate */
-        #google_translate_element {
-            display: none !important;
-        }
-
-        .goog-te-banner-frame {
-            display: none !important;
-        }
-
-        body {
-            top: 0 !important;
-        }
+        #google_translate_element { display: none !important; }
+        .goog-te-banner-frame { display: none !important; }
+        body { top: 0 !important; }
     </style>
 </head>
-
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
 
     <!-- HEADER -->
-    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200 transition-all duration-300"
-        id="navbar">
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Logo -->
             <a href="index.html" class="flex items-center group">
-                <img src="assets/images/about_logos.png" alt="Ustalar Logo"
-                    class="h-12 w-auto object-contain group-hover:scale-105 transition-transform">
+                <img src="assets/images/about_logos.png" alt="Ustalar Logo" class="h-12 w-auto object-contain group-hover:scale-105 transition-transform">
             </a>
 
             <!-- Masaüstü Menü -->
             <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-slate-600 font-semibold relative">
                 <a href="index.html" class="hover:text-brand-orange transition-colors">Anasayfa</a>
                 <a href="hakkimizda.html" class="hover:text-brand-orange transition-colors">Hakkımızda</a>
-                <a href="hizmetlerimiz.html" class="hover:text-brand-orange transition-colors">Hizmetlerimiz</a>
+                <a href="hizmetlerimiz.html" class="text-brand-orange transition-colors">Hizmetlerimiz</a>
                 <a href="kentsel_donusum.html" class="hover:text-brand-orange transition-colors">Kentsel Dönüşüm</a>
                 <a href="ustalar_tv.html" class="hover:text-brand-orange transition-colors">Ustalar TV</a>
-
+                
                 <!-- AI Dropdown -->
                 <div class="relative group">
                     <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
                         AI <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <!-- Dropdown Content -->
-                    <div
-                        class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
-                        <a href="ustalar_of_ai.html"
-                            class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Ustalar
-                            OF AI</a>
-                        <a href="fabrica_ai.html"
-                            class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">FabricaAI</a>
+                    <div class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
+                        <a href="ustalar_of_ai.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Ustalar OF AI</a>
+                        <a href="fabrica_ai.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">FabricaAI</a>
                     </div>
                 </div>
             </nav>
 
             <!-- Sağ Butonlar -->
             <div class="hidden lg:flex items-center space-x-4">
-                <button onclick="toggleLang()"
-                    class="lang-toggle-btn flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
+                <button onclick="toggleLang()" class="lang-toggle-btn flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
                     <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
                 </button>
-                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home"
-                    class="text-brand-orange border-2 border-brand-orange hover:bg-brand-orange hover:text-white px-5 py-2 rounded-xl font-bold transition-all">
+                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home" class="text-brand-orange border-2 border-brand-orange hover:bg-brand-orange hover:text-white px-5 py-2 rounded-xl font-bold transition-all">
                     <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank"
-                    class="bg-brand-orange text-white px-5 py-2 rounded-xl font-bold hover:bg-brand-dark hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center">
+                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="bg-brand-orange text-white px-5 py-2 rounded-xl font-bold hover:bg-brand-dark hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center">
                     <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
                     İndir
                 </a>
             </div>
 
             <!-- Mobil Hamburger Buton -->
-            <button id="mobile-menu-btn"
-                class="lg:hidden text-slate-600 hover:text-brand-orange transition focus:outline-none">
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-600 hover:text-brand-orange transition focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
@@ -311,39 +256,25 @@
         <!-- Mobil Menü İçeriği -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
             <div class="px-6 py-6 flex flex-col space-y-4">
-                <a href="index.html"
-                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Anasayfa</a>
-                <a href="hakkimizda.html"
-                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hakkımızda</a>
-                <a href="hizmetlerimiz.html"
-                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hizmetlerimiz</a>
-                <a href="kentsel_donusum.html"
-                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Kentsel
-                    Dönüşüm</a>
-                <a href="ustalar_tv.html"
-                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Ustalar
-                    TV</a>
-
+                <a href="index.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Anasayfa</a>
+                <a href="hakkimizda.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hakkımızda</a>
+                <a href="hizmetlerimiz.html" class="text-brand-orange font-semibold text-lg transition mobile-link">Hizmetlerimiz</a>
+                <a href="kentsel_donusum.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Kentsel Dönüşüm</a>
+                <a href="ustalar_tv.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Ustalar TV</a>
+                
                 <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
                     <span class="text-slate-800 font-bold text-lg">AI</span>
-                    <a href="ustalar_of_ai.html"
-                        class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Ustalar
-                        OF AI</a>
-                    <a href="fabrica_ai.html"
-                        class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">-
-                        FabricaAI</a>
+                    <a href="ustalar_of_ai.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Ustalar OF AI</a>
+                    <a href="fabrica_ai.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- FabricaAI</a>
                 </div>
                 <hr class="border-slate-100">
-                <button onclick="toggleLang()"
-                    class="lang-toggle-btn w-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-5 py-3 rounded-xl transition-all font-bold">
+                <button onclick="toggleLang()" class="lang-toggle-btn w-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-5 py-3 rounded-xl transition-all font-bold">
                     <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
                 </button>
-                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home"
-                    class="text-center text-brand-orange border-2 border-brand-orange px-5 py-3 rounded-xl font-bold transition-all mobile-link">
+                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home" class="text-center text-brand-orange border-2 border-brand-orange px-5 py-3 rounded-xl font-bold transition-all mobile-link">
                     <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank"
-                    class="bg-brand-orange text-white px-5 py-3 rounded-xl font-bold text-center shadow-md mobile-link flex items-center justify-center">
+                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="bg-brand-orange text-white px-5 py-3 rounded-xl font-bold text-center shadow-md mobile-link flex items-center justify-center">
                     <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
                     İndir
                 </a>
@@ -351,64 +282,25 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HİZMETLERİMİZ HERO -->
     <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-b from-slate-50 to-white overflow-hidden relative">
-        <div
-            class="absolute top-20 right-0 w-[500px] h-[500px] bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob">
-        </div>
-        <div
-            class="absolute top-40 left-10 w-[400px] h-[400px] bg-slate-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000">
-        </div>
+        <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+        <div class="absolute top-40 left-10 w-[400px] h-[400px] bg-slate-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
 
         <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
-            <div
-                class="inline-flex items-center space-x-2 bg-white border border-slate-200 text-slate-600 px-4 py-1.5 rounded-full text-sm font-bold mb-8 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
-                <span>Türkiye'nin En Kapsamlı Kurumsal Ekosistemi</span>
-            </div>
-
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight text-slate-900 mb-6">
-                İşinizi <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-orange-400">Ustalara</span>
-                Bırakın...
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight text-slate-900 mb-6 uppercase">
+                Tüm <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-orange-400">Hizmetlerimiz</span>
             </h1>
-
-            <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-                Dijital çözümlerimiz ve yenilikçi projelerimizle sektöre değer katıyoruz.
+            <p class="text-lg md:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto font-medium">
+                Geleceğin yapı ekosistemini dijital çözümlerimiz, yapay zeka asistanlarımız ve profesyonel ağımızla birlikte inşa ediyoruz.
             </p>
-
-            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="https://wa.me/905324666068" target="_blank"
-                    class="w-full sm:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition shadow-lg flex items-center justify-center group">
-                    <i class="fab fa-whatsapp text-xl mr-2"></i>
-                    Bize Ulaşın
-                </a>
-            </div>
+            <div class="w-24 h-1.5 bg-brand-orange mx-auto rounded-full"></div>
         </div>
     </section>
 
-    <!-- REKLAM ALANI (720x90) -->
-    <section class="py-12 bg-white flex justify-center items-center px-4 relative z-20">
-        <div
-            class="w-full max-w-[720px] h-[90px] bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex flex-col items-center justify-center relative group hover:bg-slate-100 hover:border-brand-orange transition-all cursor-pointer overflow-hidden">
-            <div
-                class="absolute top-2 right-2 text-[10px] text-slate-400 font-bold uppercase bg-white px-2 py-1 rounded shadow-sm">
-                Reklam</div>
-            <span
-                class="text-slate-500 font-bold text-lg tracking-wide group-hover:text-brand-orange transition-colors">Bu
-                Alanı Size Ayırdık</span>
-        </div>
-    </section>
-
-    <!-- ANA HİZMETLER GRID (6 SÜTUN) -->
-    <section id="ekosistem" class="py-20 bg-white border-y border-slate-100">
+    <!-- ANA HİZMETLER GRID -->
+    <section class="py-20 bg-white border-y border-slate-100">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Hizmetlerimiz</h2>
-                <p class="text-slate-500 mt-3 text-lg">Geleceğin yapı ekosistemini birlikte inşa edelim!</p>
-                <div class="w-20 h-1 bg-brand-orange mx-auto mt-6 rounded-full"></div>
-            </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- YAPI MARKET -->
@@ -518,81 +410,57 @@
         </div>
     </section>
 
-    <!-- ALT HİZMETLER (Ve Daha Bir Çok Şey!) -->
-    <section id="daha-fazla" class="py-16 bg-slate-100">
+    <!-- ALT HİZMETLER -->
+    <section class="py-16 bg-slate-100">
         <div class="container mx-auto px-6">
             <div class="text-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 uppercase tracking-wide">Ve Daha Bir
-                    Çok Şey!</h2>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2 uppercase tracking-wide">Ve Daha Bir Çok Şey!</h2>
                 <p class="text-slate-500 font-medium">İhtiyacınız olan her an yanınızdayız.</p>
             </div>
 
-            <!-- Yatay ikonlu grid listesi -->
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
                         <i class="fas fa-hard-hat text-xl"></i>
                     </div>
                     <span class="text-sm font-bold text-slate-800">Usta Ağı</span>
                 </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-calendar-check text-xl"></i>
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
+                        <i class="fas fa-tools text-xl"></i>
                     </div>
-                    <span class="text-sm font-bold text-slate-800">Proje Yönetimi</span>
+                    <span class="text-sm font-bold text-slate-800">Tamirat</span>
                 </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-shopping-basket text-xl"></i>
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
+                        <i class="fas fa-paint-roller text-xl"></i>
                     </div>
-                    <span class="text-sm font-bold text-slate-800">Satınalma<br>Çözümleri</span>
+                    <span class="text-sm font-bold text-slate-800">Boya & Badana</span>
                 </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
+                        <i class="fas fa-bolt text-xl"></i>
+                    </div>
+                    <span class="text-sm font-bold text-slate-800">Elektrik</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
+                        <i class="fas fa-faucet text-xl"></i>
+                    </div>
+                    <span class="text-sm font-bold text-slate-800">Tesisat</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
+                        <i class="fas fa-couch text-xl"></i>
+                    </div>
+                    <span class="text-sm font-bold text-slate-800">Dekorasyon</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
+                    <div class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
                         <i class="fas fa-truck text-xl"></i>
                     </div>
-                    <span class="text-sm font-bold text-slate-800">Lojistik Destek</span>
+                    <span class="text-sm font-bold text-slate-800">Nakliye</span>
                 </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-money-bill-wave text-xl"></i>
-                    </div>
-                    <span class="text-sm font-bold text-slate-800">Finansal<br>Çözümler</span>
-                </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-file-contract text-xl"></i>
-                    </div>
-                    <span class="text-sm font-bold text-slate-800">İhale & Teklif<br>Yönetimi</span>
-                </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-graduation-cap text-xl"></i>
-                    </div>
-                    <span class="text-sm font-bold text-slate-800">Eğitim &<br>Danışmanlık</span>
-                </div>
-
             </div>
         </div>
     </section>
@@ -606,45 +474,31 @@
                         <img src="assets/images/about_logos.png" alt="Logo" class="h-10 w-auto object-contain">
                     </div>
                     <p class="text-slate-500 leading-relaxed mb-6 max-w-sm">
-                        İnşaatın A'dan Z'ye tüm süreçlerinde, yapay zeka destekli çözümler ve kurumsal hizmetlerle
-                        yanınızdayız.
+                        İnşaatın A'dan Z'ye tüm süreçlerinde, yapay zeka destekli çözümler ve kurumsal hizmetlerle yanınızdayız.
                     </p>
                     <div class="text-slate-500 text-[15px] mb-6">
-                        <p class="mb-2"><i class="fas fa-map-marker-alt w-5 text-brand-orange"></i> Yakuplu Mahallesi
-                            İnönü Caddesi 124.Sk No:21/B Yakuplu / İstanbul</p>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt w-5 text-brand-orange"></i> Yakuplu Mahallesi İnönü Caddesi 124.Sk No:21/B Yakuplu / İstanbul</p>
                         <p><i class="fas fa-phone-alt w-5 text-brand-orange"></i> Telefon: +90 532 466 60 68</p>
                     </div>
                     <div class="flex space-x-4 mb-6">
-                        <a href="https://facebook.com/ustalarcom"
-                            class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com/ustalarcom"
-                            class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
-                                class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com/@sektorturk"
-                            class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
-                                class="fab fa-youtube"></i></a>
+                        <a href="https://facebook.com/ustalarcom" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/ustalarcom" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@sektorturk" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-youtube"></i></a>
                     </div>
                     <div>
-                        <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank"
-                            class="inline-flex items-center bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-slate-800 transition shadow-md">
-                            <img src="assets/images/google-play.png" alt="Google Play"
-                                class="h-5 w-auto object-contain mr-2">
+                        <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="inline-flex items-center bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-slate-800 transition shadow-md">
+                            <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
                             İndir
                         </a>
                     </div>
                 </div>
-
+                
                 <div>
                     <h4 class="text-slate-900 font-bold mb-6">Ekosistem</h4>
                     <ul class="space-y-3 text-slate-500">
-                        <li><a href="hizmetlerimiz.html" class="hover:text-brand-orange transition">Hizmetlerimiz</a>
-                        </li>
-                        <li><a href="kentsel_donusum.html" class="hover:text-brand-orange transition">Kentsel
-                                Dönüşüm</a></li>
+                        <li><a href="hizmetlerimiz.html" class="hover:text-brand-orange transition">Hizmetlerimiz</a></li><li><a href="kentsel_donusum.html" class="hover:text-brand-orange transition">Kentsel Dönüşüm</a></li>
                         <li><a href="ustalar_tv.html" class="hover:text-brand-orange transition">Ustalar TV</a></li>
-                        <li><a href="ustalar_of_ai.html" class="hover:text-brand-orange transition">Ustalar OF AI</a>
-                        </li>
+                        <li><a href="ustalar_of_ai.html" class="hover:text-brand-orange transition">Ustalar OF AI</a></li>
                         <li><a href="fabrica_ai.html" class="hover:text-brand-orange transition">Fabrica AI</a></li>
                     </ul>
                 </div>
@@ -659,12 +513,11 @@
                     </ul>
                 </div>
             </div>
-
+            
             <div class="pt-8 border-t border-slate-100 flex flex-col text-sm text-slate-500">
                 <p>&copy; 2026 Ustalar.com | Tüm Hakları Saklıdır.</p>
                 <div class="mt-2">
-                    <a href="admin/"
-                        class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
+                    <a href="admin/" class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
                         <i class="fas fa-lock mr-2 text-xs"></i> Yönetim Paneli
                     </a>
                 </div>
@@ -676,12 +529,10 @@
     <div id="ai-chat-notification" class="chat-notification">
         👋 Merhaba!
     </div>
-
+    
     <div id="ai-chat-fab">
-        <div
-            class="w-full h-full bg-white rounded-full shadow-lg flex items-center justify-center p-0.5 border-2 border-brand-orange overflow-hidden">
-            <img src="assets/images/ustalar_vector.png" alt="Ustalar AI"
-                class="w-full h-full object-contain transform scale-110">
+        <div class="w-full h-full bg-white rounded-full shadow-lg flex items-center justify-center p-0.5 border-2 border-brand-orange overflow-hidden">
+            <img src="assets/images/ustalar_vector.png" alt="Ustalar AI" class="w-full h-full object-contain transform scale-110">
         </div>
     </div>
 
@@ -696,40 +547,27 @@
                     <p class="text-[11px] opacity-90 font-medium">İşinizi Ustalara Bırakın</p>
                 </div>
             </div>
-            <button id="close-chat"
-                class="hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition">
+            <button id="close-chat" class="hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-
+        
         <div id="chat-messages" class="chat-messages">
             <div class="msg-bubble msg-ai">
-                Merhaba! Ben Ustalar.com'un yapay zeka asistanı **OF AI**. İnşaat süreçleri, kentsel dönüşüm veya ürün
-                tedariği konularında nasıl yardımcı olabilirim?
+                Merhaba! Ben Ustalar.com'un yapay zeka asistanı **OF AI**. İnşaat süreçleri, kentsel dönüşüm veya ürün tedariği konularında nasıl yardımcı olabilirim?
                 <div class="flex flex-wrap gap-2 mt-4">
-                    <button onclick="quickAction('Yapı Market')"
-                        class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Yapı
-                        Market</button>
-                    <button onclick="quickAction('Ustalar OF AI')"
-                        class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Ustalar
-                        OF AI</button>
-                    <button onclick="quickAction('Fabrica AI')"
-                        class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Fabrica
-                        AI</button>
-                    <button onclick="quickAction('Kentsel Dönüşüm')"
-                        class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Kentsel
-                        Dönüşüm</button>
-                    <button onclick="quickAction('Ustalar TV')"
-                        class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Ustalar
-                        TV</button>
+                    <button onclick="quickAction('Yapı Market')" class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Yapı Market</button>
+                    <button onclick="quickAction('Ustalar OF AI')" class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Ustalar OF AI</button>
+                    <button onclick="quickAction('Fabrica AI')" class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Fabrica AI</button>
+                    <button onclick="quickAction('Kentsel Dönüşüm')" class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Kentsel Dönüşüm</button>
+                    <button onclick="quickAction('Ustalar TV')" class="text-[11px] font-medium bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full hover:border-brand-orange hover:text-brand-orange transition shadow-sm">Ustalar TV</button>
                 </div>
             </div>
         </div>
 
         <div class="chat-input-area">
             <input type="text" id="chat-input" placeholder="Bana bir şey sorun...">
-            <button id="send-msg"
-                class="bg-brand-orange text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-brand-dark hover:scale-105 transition shadow-md">
+            <button id="send-msg" class="bg-brand-orange text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-brand-dark hover:scale-105 transition shadow-md">
                 <i class="fas fa-paper-plane"></i>
             </button>
         </div>
@@ -772,19 +610,19 @@
         let audioCtx;
 
         const initAudio = () => {
-            if (!audioCtx) audioCtx = new AudioContext();
+            if(!audioCtx) audioCtx = new AudioContext();
         }
 
         const playSound = (type) => {
             if (!audioCtx) return;
             if (audioCtx.state === 'suspended') audioCtx.resume();
-
+            
             const osc = audioCtx.createOscillator();
             const gainNode = audioCtx.createGain();
-
+            
             osc.connect(gainNode);
             gainNode.connect(audioCtx.destination);
-
+            
             if (type === 'send') {
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(600, audioCtx.currentTime);
@@ -845,7 +683,7 @@
 
             addMessage(text, 'user');
             INPUT.value = '';
-
+            
             const loadingDiv = document.createElement('div');
             loadingDiv.className = 'msg-bubble msg-ai italic text-slate-400';
             loadingDiv.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Düşünüyor...';
@@ -854,7 +692,7 @@
 
             setTimeout(() => {
                 loadingDiv.remove();
-
+                
                 let aiResponse = "";
                 const lowerText = text.toLowerCase();
 
@@ -875,9 +713,9 @@
                 } else {
                     aiResponse = "Anladım. İhtiyacınıza yönelik daha detaylı bilgi veya doğrudan işlem yapmak için lütfen mobil uygulamamızı kullanın veya ilgili menülerden projelere göz atın.";
                 }
-
+                
                 addMessage(aiResponse, 'ai');
-            }, 1200);
+            }, 1200); 
         };
 
         SEND_BTN.onclick = sendMessage;
@@ -889,8 +727,8 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'tr',
-                includedLanguages: 'en,tr',
+                pageLanguage: 'tr', 
+                includedLanguages: 'en,tr', 
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 autoDisplay: false
             }, 'google_translate_element');
@@ -905,28 +743,29 @@
             }
 
             isEnglish = !isEnglish;
-
+            
             if (isEnglish) {
                 selectEl.value = 'en';
             } else {
                 // TR'ye dönmek için ilk seçeneği (Orijinal Dil) seçiyoruz
-                selectEl.selectedIndex = 0;
+                selectEl.selectedIndex = 0; 
             }
-
+            
             selectEl.dispatchEvent(new Event('change'));
 
             // Butonlardaki metni ve SVG bayrağı güncelle
             const btns = document.querySelectorAll('.lang-toggle-btn');
             btns.forEach(btn => {
-                btn.innerHTML = isEnglish
-                    ? '<span class="fi fi-tr mr-2 rounded-sm text-lg"></span> TR'
+                btn.innerHTML = isEnglish 
+                    ? '<span class="fi fi-tr mr-2 rounded-sm text-lg"></span> TR' 
                     : '<span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN';
             });
         }
     </script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-
 </html>
+
+
+
