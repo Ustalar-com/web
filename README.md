@@ -1,4 +1,4 @@
-# Ustalar.com | Kurumsal Teknoloji ve Hizmet Ekosistemi
+# Ustalar.com | İşinizi Ustalara Bırakın
 
 ![Ustalar.com Logo](assets/images/about_logos.png)
 
