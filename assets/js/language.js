@@ -11,7 +11,20 @@ window.googleTranslateElementInit = function() {
 };
 
 (function() {
-    // Div'i oluştur ama display:none yerine fiziksel olarak var ama görünmez yap
+    // Google Banner'ını ve üst boşluğu gizlemek için CSS ekle
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        .goog-te-balloon-frame { display: none !important; }
+        #goog-gt-tt { display: none !important; visibility: hidden !important; }
+        .goog-tooltip { display: none !important; }
+        .goog-tooltip:hover { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+    `;
+    document.head.appendChild(style);
+
+    // Gerekli Div'i oluştur ama fiziksel olarak var ama görünmez yap
     if (!document.getElementById('google_translate_element')) {
         const translateDiv = document.createElement('div');
         translateDiv.id = 'google_translate_element';
