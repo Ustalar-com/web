@@ -215,11 +215,22 @@
             <!-- Masaüstü Menü -->
             <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-slate-600 font-semibold relative">
                 <a href="index.html" class="hover:text-brand-orange transition-colors">Anasayfa</a>
-                <a href="hakkimizda.html" class="hover:text-brand-orange transition-colors">Hakkımızda</a>
+
+                <!-- Kurumsal Dropdown -->
+                <div class="relative group">
+                    <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
+                        Kurumsal <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <!-- Dropdown Content -->
+                    <div class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
+                        <a href="hakkimizda.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Hakkımızda</a>
+                        <a href="iletisim.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">İletişim</a>
+                    </div>
+                </div>
+
                 <a href="hizmetlerimiz.html" class="hover:text-brand-orange transition-colors">Hizmetlerimiz</a>
                 <a href="kentsel_donusum.html" class="hover:text-brand-orange transition-colors">Kentsel Dönüşüm</a>
                 <a href="ustalar_tv.html" class="hover:text-brand-orange transition-colors">Ustalar TV</a>
-                <a href="iletisim.html" class="text-brand-orange transition-colors">İletişim</a>
                 
                 <!-- AI Dropdown -->
                 <div class="relative group">
@@ -258,11 +269,16 @@
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
             <div class="px-6 py-6 flex flex-col space-y-4">
                 <a href="index.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Anasayfa</a>
-                <a href="hakkimizda.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hakkımızda</a>
+
+                <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
+                    <span class="text-slate-800 font-bold text-lg">Kurumsal</span>
+                    <a href="hakkimizda.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Hakkımızda</a>
+                    <a href="iletisim.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- İletişim</a>
+                </div>
+
                 <a href="hizmetlerimiz.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hizmetlerimiz</a>
                 <a href="kentsel_donusum.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Kentsel Dönüşüm</a>
                 <a href="ustalar_tv.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Ustalar TV</a>
-                <a href="iletisim.html" class="text-brand-orange font-semibold text-lg transition mobile-link">İletişim</a>
                 
                 <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
                     <span class="text-slate-800 font-bold text-lg">AI</span>
