@@ -66,7 +66,10 @@
                     <i class="fas fa-certificate w-6"></i> Brand Yönetimi
                 </div>
                 <div onclick="switchView('izleyap')" id="nav-izleyap" class="nav-link flex items-center p-3 rounded-xl font-semibold">
-                    <i class="fas fa-play-circle w-6"></i> Ustalar TV
+                    <i class="fas fa-play-circle w-6"></i> İzle-Yap
+                </div>
+                <div onclick="switchView('notifications')" id="nav-notifications" class="nav-link flex items-center p-3 rounded-xl font-semibold">
+                    <i class="fas fa-paper-plane w-6"></i> Bildirim Gönder
                 </div>
                 <div onclick="logout()" class="nav-link flex items-center p-3 rounded-xl font-semibold mt-10 text-red-400 hover:text-red-300">
                     <i class="fas fa-sign-out-alt w-6"></i> Çıkış Yap
@@ -89,12 +92,12 @@
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Sayfa Seçin</label>
                             <select id="ad-page-selector" onchange="loadCurrentBanner()" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="webview">Ana Sayfa (Sadece Alt)</option>
+                                <option value="webview">Ana Sayfa (Web)</option>
                                 <option value="services">Hizmetlerimiz</option>
                                 <option value="catalog">E-Katalog</option>
-                                <option value="news">Yapı Haber</option>
+                                <option value="news">Haberler</option>
                                 <option value="brand">Brand Sayfası</option>
-                                <option value="izleyap">Ustalar TV (Sadece Alt)</option>
+                                <option value="izleyap">İzle-Yap</option>
                                 <option value="ai">AI Araçları</option>
                             </select>
                         </div>
@@ -124,7 +127,7 @@
                             <div class="space-y-6">
                                 <div>
                                     <label class="block text-sm font-semibold text-slate-600 mb-2">Banner Başlığı / Metni</label>
-                                    <input type="text" id="ad-title" placeholder="Örn: Buraya Reklam Verebilirsiniz" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                                    <input type="text" id="ad-title" placeholder="Buraya metin girin" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold text-slate-600 mb-2">Yönlendirme Linki</label>
@@ -138,7 +141,6 @@
                                         </div>
                                         <div class="flex-1">
                                             <input type="file" id="ad-file" accept="image/*" class="text-xs text-slate-500 file:bg-slate-800 file:text-white file:px-4 file:py-2 file:rounded-lg cursor-pointer">
-                                            <p class="text-[10px] text-slate-400 mt-2">Görsel seçtiğinizde eskisiyle değiştirilir.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +193,51 @@
             <div id="view-brand" class="view-content hidden">
                 <div class="mb-8">
                     <h2 class="text-3xl font-bold text-slate-800">Brand Yönetimi</h2>
-                    <p class="text-slate-500">Brand sayfasındaki hizmetleri yönetin.</p>
+                    <p class="text-slate-500">Brand sayfasındaki başlık görseli ve hizmetleri yönetin.</p>
+                </div>
+
+                <div class="grid grid-cols-1 gap-8 mb-10">
+                    <!-- BRAND SLIDER MANAGEMENT -->
+                    <div class="glass-card p-6 md:p-8">
+                        <h3 class="text-lg font-bold mb-6 flex items-center text-slate-700 uppercase tracking-wider text-sm">
+                            <span class="w-2 h-6 bg-purple-500 rounded-full mr-3"></span> Brand Sayfası Slider (Max 3 Resim)
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Slot 1 -->
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <label class="block text-xs font-bold text-slate-500 mb-2 uppercase">1. Görsel (1200x500)</label>
+                                <div id="brand-preview-0" class="w-full h-32 bg-white rounded-lg mb-3 border-2 border-dashed border-slate-200 overflow-hidden flex items-center justify-center">
+                                    <span class="text-[10px] text-slate-400">Yüklenmedi</span>
+                                </div>
+                                <input type="text" id="brand-link-0" placeholder="Link (opsiyonel)" class="w-full text-[10px] px-2 py-1.5 rounded border border-slate-200 mb-2 outline-none focus:ring-1 focus:ring-purple-500">
+                                <input type="file" id="brand-file-0" accept="image/*" class="text-[10px] w-full file:bg-slate-800 file:text-white file:rounded file:border-0 p-1">
+                            </div>
+                            <!-- Slot 2 -->
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <label class="block text-xs font-bold text-slate-500 mb-2 uppercase">2. Görsel (1200x500)</label>
+                                <div id="brand-preview-1" class="w-full h-32 bg-white rounded-lg mb-3 border-2 border-dashed border-slate-200 overflow-hidden flex items-center justify-center">
+                                    <span class="text-[10px] text-slate-400">Yüklenmedi</span>
+                                </div>
+                                <input type="text" id="brand-link-1" placeholder="Link (opsiyonel)" class="w-full text-[10px] px-2 py-1.5 rounded border border-slate-200 mb-2 outline-none focus:ring-1 focus:ring-purple-500">
+                                <input type="file" id="brand-file-1" accept="image/*" class="text-[10px] w-full file:bg-slate-800 file:text-white file:rounded file:border-0 p-1">
+                            </div>
+                            <!-- Slot 3 -->
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <label class="block text-xs font-bold text-slate-500 mb-2 uppercase">3. Görsel (1200x500)</label>
+                                <div id="brand-preview-2" class="w-full h-32 bg-white rounded-lg mb-3 border-2 border-dashed border-slate-200 overflow-hidden flex items-center justify-center">
+                                    <span class="text-[10px] text-slate-400">Yüklenmedi</span>
+                                </div>
+                                <input type="text" id="brand-link-2" placeholder="Link (opsiyonel)" class="w-full text-[10px] px-2 py-1.5 rounded border border-slate-200 mb-2 outline-none focus:ring-1 focus:ring-purple-500">
+                                <input type="file" id="brand-file-2" accept="image/*" class="text-[10px] w-full file:bg-slate-800 file:text-white file:rounded file:border-0 p-1">
+                            </div>
+                        </div>
+                        <div class="mt-8 flex items-center justify-between border-t pt-6">
+                            <p class="text-xs text-slate-400 italic">Değiştirmek istediğiniz slotlara yeni dosya seçip kaydetmeniz yeterlidir.</p>
+                            <button onclick="saveBrandSlider()" id="brand-save-btn" class="bg-purple-600 text-white font-bold py-3 px-10 rounded-xl shadow-lg hover:bg-purple-700 transition flex items-center">
+                                <i class="fas fa-save mr-2"></i> Slider'ı Güncelle
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -228,7 +274,7 @@
             <div id="view-izleyap" class="view-content hidden">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                     <div>
-                        <h2 class="text-3xl font-bold text-slate-800">Ustalar TV Yönetimi</h2>
+                        <h2 class="text-3xl font-bold text-slate-800">İzle-Yap Yönetimi</h2>
                         <p class="text-slate-500">Uygulama içindeki eğitim videolarını ve içerikleri yönetin.</p>
                     </div>
                     <button onclick="openVideoModal()" class="btn-orange text-white font-bold px-6 py-3 rounded-xl shadow-lg flex items-center">
@@ -256,7 +302,99 @@
                 </div>
             </div>
 
+            <!-- NOTIFICATIONS VIEW -->
+            <div id="view-notifications" class="view-content hidden">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold text-slate-800">Bildirim Yönetimi</h2>
+                    <p class="text-slate-500">Uygulamayı yükleyen tüm kullanıcılara anlık bildirim gönderin.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- SEND NOTIFICATION FORM -->
+                    <div class="lg:col-span-1">
+                        <div class="glass-card p-6 md:p-8">
+                            <h3 class="text-xl font-bold text-slate-800 mb-6">Yeni Bildirim Gönder</h3>
+                            <div class="space-y-5">
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Bildirim Başlığı</label>
+                                    <input type="text" id="notif-title" placeholder="Örn: Yeni Fırsat Kapınızda!" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-2">Bildirim Mesajı</label>
+                                    <textarea id="notif-body" rows="4" placeholder="Kullanıcılara iletilecek mesaj içeriği..." class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                                </div>
+                                <div class="pt-4">
+                                    <button id="send-notif-btn" onclick="sendNotification()" class="w-full btn-orange text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition flex items-center justify-center space-x-2">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>Bildirimi Şimdi Gönder</span>
+                                    </button>
+                                    <p id="notif-status" class="text-xs font-bold text-center mt-4 hidden"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RECENT NOTIFICATIONS LIST -->
+                    <div class="lg:col-span-2">
+                        <div class="glass-card overflow-hidden">
+                            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                                <h3 class="font-bold text-slate-800">Son Gönderilen Bildirimler</h3>
+                                <button onclick="loadNotifications()" class="text-slate-500 hover:text-orange-600 transition"><i class="fas fa-sync-alt"></i></button>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left">
+                                    <thead class="bg-slate-50 border-b border-slate-200">
+                                        <tr>
+                                            <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Tarih</th>
+                                            <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Başlık / Mesaj</th>
+                                            <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">İşlem</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="notifications-list">
+                                        <!-- JS will populate -->
+                                        <tr><td colspan="3" class="p-10 text-center text-slate-400 italic">Bildirimler yükleniyor...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </main>
+    </div>
+
+    <!-- MODAL FOR ADDING SERVICE -->
+    <div id="service-modal" class="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="modal-title" class="text-2xl font-bold text-slate-800">Hizmet Ekle / Düzenle</h3>
+                <button onclick="closeServiceModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="space-y-5">
+                <input type="hidden" id="srv-target-collection" value="services">
+                <input type="hidden" id="srv-id">
+                <input type="hidden" id="srv-old-image">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Hizmet Adı</label>
+                    <input type="text" id="srv-name" placeholder="Örn: Tadilat" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Form veya Yönlendirme Linki</label>
+                    <input type="text" id="srv-url" placeholder="https://forms.gle/..." class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Hizmet Logosu</label>
+                    <input type="file" id="srv-file" accept="image/*" class="w-full text-sm text-slate-500 file:bg-slate-100 file:px-4 file:py-2 file:rounded-lg file:border-0 cursor-pointer">
+                </div>
+                <div class="pt-4 flex space-x-3">
+                    <button onclick="closeServiceModal()" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl">İptal</button>
+                    <button id="srv-save-btn" onclick="saveService()" class="flex-[2] btn-orange text-white font-bold py-3 rounded-xl flex items-center justify-center">
+                        <span id="srv-btn-text">Kaydet ve Ekle</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- MODAL FOR ADDING VIDEO -->
@@ -270,7 +408,7 @@
                 <input type="hidden" id="vid-id">
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Video Başlığı</label>
-                    <input type="text" id="vid-title" placeholder="Örn: Ekonominin Sesi: Zafer Özcivan" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                    <input type="text" id="vid-title" placeholder="Örn: Eğitim Videosu" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2">YouTube Linki</label>
@@ -293,7 +431,6 @@
         import { getFirestore, doc, getDoc, updateDoc, setDoc, collection, addDoc, getDocs, deleteDoc, query, orderBy, writeBatch } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
-        // CONFIG (Sizin Verileriniz)
         const firebaseConfig = {
             apiKey: "AIzaSyBAmoQg6AaXFqbLO7dQajuYXtZ-1NnXQmo",
             authDomain: "ustalar-com.firebaseapp.com",
@@ -308,26 +445,44 @@
         const db = getFirestore(app);
         const storage = getStorage(app);
 
-        // GLOBALS
         let servicesData = [];
         let brandServicesData = [];
         let videosData = [];
+        let currentSliderItems = [
+            { imageUrl: "", linkUrl: "" },
+            { imageUrl: "", linkUrl: "" },
+            { imageUrl: "", linkUrl: "" }
+        ];
 
-        // UI HELPERS
         window.switchView = (view) => {
             document.querySelectorAll('.view-content').forEach(v => v.classList.add('hidden'));
             document.getElementById(`view-${view}`).classList.remove('hidden');
             document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
             document.getElementById(`nav-${view}`).classList.add('active');
             if(view === 'services') loadServices();
-            if(view === 'izleyap') loadVideos();
             if(view === 'brand') {
+                loadBrandSlider();
                 loadBrandServices();
             }
+            if(view === 'izleyap') loadVideos();
+            if(view === 'notifications') loadNotifications();
         };
 
         window.logout = () => signOut(auth);
-        
+
+        window.openServiceModal = (type) => {
+            document.getElementById('srv-id').value = "";
+            document.getElementById('srv-old-image').value = "";
+            document.getElementById('srv-name').value = "";
+            document.getElementById('srv-url').value = "";
+            document.getElementById('srv-file').value = "";
+            document.getElementById('modal-title').textContent = "Yeni Hizmet Ekle";
+            document.getElementById('srv-btn-text').textContent = "Kaydet ve Ekle";
+            document.getElementById('srv-target-collection').value = type;
+            document.getElementById('service-modal').classList.remove('hidden');
+        };
+        window.closeServiceModal = () => document.getElementById('service-modal').classList.add('hidden');
+
         window.openVideoModal = () => {
             document.getElementById('vid-id').value = "";
             document.getElementById('vid-title').value = "";
@@ -338,7 +493,6 @@
         };
         window.closeVideoModal = () => document.getElementById('video-modal').classList.add('hidden');
 
-        // AUTH
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 document.getElementById('login-screen').classList.add('hidden');
@@ -355,13 +509,7 @@
             let emailValue = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             if (emailValue.toLowerCase() === 'admin') emailValue = 'admin@ustalar.com';
-            try {
-                await signInWithEmailAndPassword(auth, emailValue, password);
-            } catch (err) {
-                const ep = document.getElementById('login-error');
-                ep.textContent = "Hata! Şifrenizi veya bağlantınızı kontrol edin.";
-                ep.classList.remove('hidden');
-            }
+            try { await signInWithEmailAndPassword(auth, emailValue, password); } catch (err) { alert("Giriş Hatası!"); }
         };
 
         const sanitizeUrl = (url) => {
@@ -374,22 +522,12 @@
             return trimmed;
         };
 
-        // ADS MANAGEMENT
+        // ADS
         window.loadCurrentBanner = async () => {
             const page = document.getElementById('ad-page-selector').value;
             const pos = document.getElementById('ad-pos-selector').value;
             const docId = `${page}_${pos}`;
-            
-            // UI Update
-            const pageName = document.querySelector(`#ad-page-selector option[value="${page}"]`).textContent;
-            const posName = document.querySelector(`#ad-pos-selector option[value="${pos}"]`).textContent;
-            document.getElementById('current-banner-name').textContent = `${pageName} - ${posName}`;
-            
-            // Reset UI
-            document.getElementById('ad-preview').innerHTML = '<span class="text-[10px] text-slate-400">Yükleniyor...</span>';
-            document.getElementById('ad-file').value = "";
-            document.getElementById('save-status').classList.add('hidden');
-
+            document.getElementById('ad-preview').innerHTML = '<span class="text-[10px]">Yükleniyor...</span>';
             try {
                 const dSnap = await getDoc(doc(db, "banners", docId));
                 if (dSnap.exists()) {
@@ -397,342 +535,215 @@
                     document.getElementById('ad-isActive').checked = d.isActive || false;
                     document.getElementById('ad-title').value = d.title || "";
                     document.getElementById('ad-linkUrl').value = d.linkUrl || "";
-                    if (d.imageUrl) {
-                        document.getElementById('ad-preview').innerHTML = `<img src="${d.imageUrl}" class="w-full h-full object-cover">`;
-                    } else {
-                        document.getElementById('ad-preview').innerHTML = '<span class="text-[10px] text-slate-400">Görsel Yok</span>';
-                    }
+                    if (d.imageUrl) document.getElementById('ad-preview').innerHTML = `<img src="${d.imageUrl}" class="w-full h-full object-cover">`;
                 } else {
                     document.getElementById('ad-isActive').checked = false;
                     document.getElementById('ad-title').value = "";
                     document.getElementById('ad-linkUrl').value = "";
-                    document.getElementById('ad-preview').innerHTML = '<span class="text-[10px] text-slate-400">Kayıt Yok</span>';
+                    document.getElementById('ad-preview').innerHTML = '<span>Yok</span>';
                 }
-            } catch(e) {
-                console.error(e);
-            }
+            } catch(e) {}
         };
 
         window.saveCurrentBanner = async () => {
             const page = document.getElementById('ad-page-selector').value;
             const pos = document.getElementById('ad-pos-selector').value;
             const docId = `${page}_${pos}`;
-            
-            const isActive = document.getElementById('ad-isActive').checked;
-            const title = document.getElementById('ad-title').value;
-            const linkUrl = sanitizeUrl(document.getElementById('ad-linkUrl').value);
-            const file = document.getElementById('ad-file').files[0];
-            const statusText = document.getElementById('save-status');
-
-            statusText.textContent = "Kaydediliyor...";
-            statusText.className = "text-xs font-bold text-center mt-4 text-orange-500 block";
-            statusText.classList.remove('hidden');
-
+            const status = document.getElementById('save-status');
+            status.textContent = "Kaydediliyor...";
+            status.classList.remove('hidden');
             try {
-                let updateData = { isActive, title, linkUrl };
+                let data = { isActive: document.getElementById('ad-isActive').checked, title: document.getElementById('ad-title').value, linkUrl: sanitizeUrl(document.getElementById('ad-linkUrl').value) };
+                const file = document.getElementById('ad-file').files[0];
                 if (file) {
                     const sRef = ref(storage, `banners/${docId}_${Date.now()}.jpg`);
                     await uploadBytes(sRef, file);
-                    updateData.imageUrl = await getDownloadURL(sRef);
+                    data.imageUrl = await getDownloadURL(sRef);
                 }
-                
-                await setDoc(doc(db, "banners", docId), updateData, { merge: true });
-                statusText.textContent = "✓ Başarıyla Kaydedildi!";
-                statusText.className = "text-xs font-bold text-center mt-4 text-green-600 block";
-                setTimeout(() => loadCurrentBanner(), 1000);
-            } catch(e) { 
-                console.error(e);
-                statusText.textContent = "Hata oluştu!";
-                statusText.className = "text-xs font-bold text-center mt-4 text-red-500 block";
-            }
+                await setDoc(doc(db, "banners", docId), data, { merge: true });
+                status.textContent = "✓ Başarıyla Kaydedildi!";
+                setTimeout(() => { status.classList.add('hidden'); loadCurrentBanner(); }, 1500);
+            } catch(e) { status.textContent = "Hata!"; }
         };
 
-        async function loadAdSettings() {
-            // İlk açılışta varsayılanı yükle
-            loadCurrentBanner();
+        async function loadAdSettings() { loadCurrentBanner(); }
+
+        // BRAND SLIDER
+        async function loadBrandSlider() {
+            try {
+                const dSnap = await getDoc(doc(db, "settings", "brandBanner"));
+                if (dSnap.exists()) {
+                    const data = dSnap.data();
+                    currentSliderItems = data.sliderItems || [];
+                    for(let i=0; i<3; i++) {
+                        const item = currentSliderItems[i] || { imageUrl: "", linkUrl: "" };
+                        const preview = document.getElementById(`brand-preview-${i}`);
+                        const linkInput = document.getElementById(`brand-link-${i}`);
+                        if(item.imageUrl) preview.innerHTML = `<img src="${item.imageUrl}" class="w-full h-full object-cover">`;
+                        linkInput.value = item.linkUrl || "";
+                    }
+                }
+            } catch(e) {}
         }
 
+        window.saveBrandSlider = async () => {
+            const btn = document.getElementById('brand-save-btn');
+            btn.disabled = true;
+            btn.innerHTML = 'Bekleyin...';
+            try {
+                const newItems = [...currentSliderItems];
+                for(let i=0; i<3; i++) {
+                    const file = document.getElementById(`brand-file-${i}`).files[0];
+                    const linkUrl = sanitizeUrl(document.getElementById(`brand-link-${i}`).value);
+                    if (!newItems[i]) newItems[i] = { imageUrl: "", linkUrl: "" };
+                    newItems[i].linkUrl = linkUrl;
+                    if (file) {
+                        const sRef = ref(storage, `brand_slider/image_${i}_${Date.now()}.jpg`);
+                        await uploadBytes(sRef, file);
+                        newItems[i].imageUrl = await getDownloadURL(sRef);
+                    }
+                }
+                await setDoc(doc(db, "settings", "brandBanner"), { sliderItems: newItems }, { merge: true });
+                currentSliderItems = newItems;
+                alert("Güncellendi!");
+            } catch(e) { alert("Hata!"); }
+            finally { btn.disabled = false; btn.innerHTML = 'Slider\'ı Güncelle'; }
+        };
 
-
-        // SERVICES MANAGEMENT
+        // SERVICES
         async function loadServices() {
             const tbody = document.getElementById('services-list');
-            try {
-                const q = query(collection(db, "services"), orderBy("orderIndex"));
-                const querySnapshot = await getDocs(q);
-                servicesData = [];
-                tbody.innerHTML = "";
-                
-                querySnapshot.forEach((doc) => {
-                    servicesData.push({ id: doc.id, ...doc.data() });
-                });
-
-                if (servicesData.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="4" class="p-10 text-center text-slate-400 italic">Henüz hiç hizmet eklenmemiş.</td></tr>';
-                    return;
-                }
-
-                renderList(servicesData, tbody, "services");
-            } catch(e) { console.error(e); }
+            const q = query(collection(db, "services"), orderBy("orderIndex"));
+            const qs = await getDocs(q);
+            servicesData = [];
+            tbody.innerHTML = "";
+            qs.forEach(doc => servicesData.push({ id: doc.id, ...doc.data() }));
+            renderList(servicesData, tbody, "services");
         }
 
         async function loadBrandServices() {
             const tbody = document.getElementById('brand-services-list');
-            try {
-                const q = query(collection(db, "brand_services"), orderBy("orderIndex"));
-                const querySnapshot = await getDocs(q);
-                brandServicesData = [];
-                tbody.innerHTML = "";
-                
-                querySnapshot.forEach((doc) => {
-                    brandServicesData.push({ id: doc.id, ...doc.data() });
-                });
-
-                if (brandServicesData.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="4" class="p-10 text-center text-slate-400 italic">Henüz hiç brand hizmeti eklenmemiş.</td></tr>';
-                    return;
-                }
-
-                renderList(brandServicesData, tbody, "brand_services");
-            } catch(e) { console.error(e); }
+            const q = query(collection(db, "brand_services"), orderBy("orderIndex"));
+            const qs = await getDocs(q);
+            brandServicesData = [];
+            tbody.innerHTML = "";
+            qs.forEach(doc => brandServicesData.push({ id: doc.id, ...doc.data() }));
+            renderList(brandServicesData, tbody, "brand_services");
         }
 
-        function renderList(data, tbody, collectionName) {
+        function renderList(data, tbody, coll) {
             tbody.innerHTML = "";
             data.forEach((srv, index) => {
                 const tr = document.createElement('tr');
-                tr.className = "border-b border-slate-100 hover:bg-slate-50 transition";
                 tr.innerHTML = `
-                    <td class="px-6 py-4 font-bold text-slate-400">${index + 1}</td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center">
-                            <img src="${srv.imageUrl}" class="h-10 w-10 rounded-lg mr-3 object-cover shadow-sm bg-white p-1" onerror="this.src='https://via.placeholder.com/40'">
-                            <span class="font-bold text-slate-700">${srv.name}</span>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 text-xs font-mono text-slate-500 truncate max-w-[200px]">${srv.redirectUrl}</td>
-                    <td class="px-6 py-4">
-                        <div class="flex items-center justify-center space-x-2">
-                            <button onclick="editService('${srv.id}', '${collectionName}')" class="p-2 hover:bg-purple-50 rounded text-purple-600 transition" title="Düzenle"><i class="fas fa-edit"></i></button>
-                            <div class="w-2"></div>
-                            <button onclick="moveService(${index}, 'up', '${collectionName}')" class="p-2 hover:bg-slate-100 rounded text-slate-500 transition"><i class="fas fa-chevron-up"></i></button>
-                            <button onclick="moveService(${index}, 'down', '${collectionName}')" class="p-2 hover:bg-slate-100 rounded text-slate-500 transition"><i class="fas fa-chevron-down"></i></button>
-                            <div class="w-2"></div>
-                            <button onclick="deleteService('${srv.id}', '${collectionName}')" class="p-2 hover:bg-red-50 rounded text-red-500 transition"><i class="fas fa-trash"></i></button>
-                        </div>
+                    <td class="px-6 py-4">${index + 1}</td>
+                    <td class="px-6 py-4 flex items-center"><img src="${srv.imageUrl}" class="h-8 w-8 mr-2 object-cover rounded">${srv.name}</td>
+                    <td class="px-6 py-4 text-xs">${srv.redirectUrl}</td>
+                    <td class="px-6 py-4 text-center">
+                        <button onclick="editService('${srv.id}', '${coll}')"><i class="fas fa-edit"></i></button>
+                        <button onclick="moveService(${index}, 'up', '${coll}')"><i class="fas fa-chevron-up"></i></button>
+                        <button onclick="moveService(${index}, 'down', '${coll}')"><i class="fas fa-chevron-down"></i></button>
+                        <button onclick="deleteService('${srv.id}', '${coll}')" class="text-red-500"><i class="fas fa-trash"></i></button>
                     </td>
                 `;
                 tbody.appendChild(tr);
             });
         }
 
-        window.editService = (id, collectionName) => {
-            const data = collectionName === 'services' ? servicesData : brandServicesData;
-            const item = data.find(s => s.id === id);
-            if (!item) return;
-
+        window.editService = (id, coll) => {
+            const item = (coll === 'services' ? servicesData : brandServicesData).find(s => s.id === id);
             document.getElementById('srv-id').value = item.id;
             document.getElementById('srv-old-image').value = item.imageUrl;
             document.getElementById('srv-name').value = item.name;
             document.getElementById('srv-url').value = item.redirectUrl;
-            document.getElementById('srv-file').value = ""; // Dosya seçimi sıfırlanır
-            document.getElementById('modal-title').textContent = "Hizmet Düzenle";
-            document.getElementById('srv-btn-text').textContent = "Güncelle";
-            document.getElementById('srv-target-collection').value = collectionName;
+            document.getElementById('modal-title').textContent = "Düzenle";
+            document.getElementById('srv-target-collection').value = coll;
             document.getElementById('service-modal').classList.remove('hidden');
         };
 
         window.saveService = async () => {
-            const collectionName = document.getElementById('srv-target-collection').value;
-            const srvId = document.getElementById('srv-id').value;
-            const oldImage = document.getElementById('srv-old-image').value;
+            const coll = document.getElementById('srv-target-collection').value;
+            const id = document.getElementById('srv-id').value;
             const name = document.getElementById('srv-name').value;
-            const redirectUrl = sanitizeUrl(document.getElementById('srv-url').value);
+            const url = sanitizeUrl(document.getElementById('srv-url').value);
             const file = document.getElementById('srv-file').files[0];
-            const btn = document.getElementById('srv-save-btn');
-            
-            if(!name || !redirectUrl) { alert("Lütfen isim ve link alanlarını doldurun!"); return; }
-            if(!srvId && !file) { alert("Yeni kayıt için lütfen bir görsel seçin!"); return; }
-
-            btn.disabled = true;
-            document.getElementById('srv-btn-text').textContent = "Bekleyin...";
-
-            try {
-                let imageUrl = oldImage;
-                if (file) {
-                    const sRef = ref(storage, `${collectionName}/${Date.now()}_${file.name}`);
-                    await uploadBytes(sRef, file);
-                    imageUrl = await getDownloadURL(sRef);
-                }
-                
-                if (srvId) {
-                    // GÜNCELLEME
-                    await updateDoc(doc(db, collectionName, srvId), {
-                        name,
-                        redirectUrl,
-                        imageUrl
-                    });
-                } else {
-                    // YENİ KAYIT
-                    const currentDataLength = collectionName === 'services' ? servicesData.length : brandServicesData.length;
-                    await addDoc(collection(db, collectionName), {
-                        name,
-                        redirectUrl,
-                        imageUrl,
-                        orderIndex: currentDataLength,
-                        createdAt: Date.now()
-                    });
-                }
-
-                closeServiceModal();
-                if (collectionName === 'services') loadServices();
-                else loadBrandServices();
-            } catch(e) { 
-                console.error(e);
-                alert("İşlem sırasında bir hata oluştu!"); 
-            } finally {
-                btn.disabled = false;
-                document.getElementById('srv-btn-text').textContent = srvId ? "Güncelle" : "Kaydet ve Ekle";
+            let imageUrl = document.getElementById('srv-old-image').value;
+            if (file) {
+                const sRef = ref(storage, `${coll}/${Date.now()}_${file.name}`);
+                await uploadBytes(sRef, file);
+                imageUrl = await getDownloadURL(sRef);
             }
+            if (id) await updateDoc(doc(db, coll, id), { name, redirectUrl: url, imageUrl });
+            else await addDoc(collection(db, coll), { name, redirectUrl: url, imageUrl, orderIndex: (coll==='services'?servicesData:brandServicesData).length });
+            closeServiceModal();
+            coll === 'services' ? loadServices() : loadBrandServices();
         };
 
-        window.deleteService = async (id, collectionName) => {
-            if(!confirm("Bu öğeyi silmek istediğinize emin misiniz?")) return;
-            try {
-                await deleteDoc(doc(db, collectionName, id));
-                if (collectionName === 'services') loadServices();
-                else loadBrandServices();
-            } catch(e) {}
+        window.deleteService = async (id, coll) => {
+            if (confirm("Silinsin mi?")) { await deleteDoc(doc(db, coll, id)); coll === 'services' ? loadServices() : loadBrandServices(); }
         };
 
-        window.moveService = async (index, direction, collectionName) => {
-            const data = collectionName === 'services' ? servicesData : brandServicesData;
-            if (direction === 'up' && index === 0) return;
-            if (direction === 'down' && index === data.length - 1) return;
-
-            const targetIndex = direction === 'up' ? index - 1 : index + 1;
-            const currentItem = data[index];
-            const targetItem = data[targetIndex];
-
+        window.moveService = async (idx, dir, coll) => {
+            const data = coll === 'services' ? servicesData : brandServicesData;
+            if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === data.length - 1)) return;
+            const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
             const batch = writeBatch(db);
-            batch.update(doc(db, collectionName, currentItem.id), { orderIndex: targetIndex });
-            batch.update(doc(db, collectionName, targetItem.id), { orderIndex: index });
-
-            try {
-                await batch.commit();
-                if (collectionName === 'services') loadServices();
-                else loadBrandServices();
-            } catch(e) { alert("Sıralama güncellenemedi!"); }
+            batch.update(doc(db, coll, data[idx].id), { orderIndex: targetIdx });
+            batch.update(doc(db, coll, data[targetIdx].id), { orderIndex: idx });
+            await batch.commit();
+            coll === 'services' ? loadServices() : loadBrandServices();
         };
 
-        // IZLE-YAP (VIDEOS) MANAGEMENT
+        // VIDEOS
         async function loadVideos() {
             const tbody = document.getElementById('izleyap-list');
-            try {
-                const q = query(collection(db, "watch_and_do"), orderBy("orderIndex"));
-                const querySnapshot = await getDocs(q);
-                videosData = [];
-                tbody.innerHTML = "";
-                
-                querySnapshot.forEach((doc) => {
-                    videosData.push({ id: doc.id, ...doc.data() });
-                });
-
-                if (videosData.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="4" class="p-10 text-center text-slate-400 italic">Henüz hiç video eklenmemiş.</td></tr>';
-                    return;
-                }
-
-                videosData.forEach((vid, index) => {
-                    const tr = document.createElement('tr');
-                    tr.className = "border-b border-slate-100 hover:bg-slate-50 transition";
-                    tr.innerHTML = `
-                        <td class="px-6 py-4 font-bold text-slate-400">${index + 1}</td>
-                        <td class="px-6 py-4 font-bold text-slate-700">${vid.title}</td>
-                        <td class="px-6 py-4 text-xs font-mono text-slate-500">${vid.videoUrl}</td>
-                        <td class="px-6 py-4">
-                            <div class="flex items-center justify-center space-x-2">
-                                <button onclick="editVideo('${vid.id}')" class="p-2 hover:bg-blue-50 rounded text-blue-600 transition" title="Düzenle"><i class="fas fa-edit"></i></button>
-                                <div class="w-1"></div>
-                                <button onclick="moveVideo(${index}, 'up')" class="p-2 hover:bg-slate-100 rounded text-slate-500 transition"><i class="fas fa-chevron-up"></i></button>
-                                <button onclick="moveVideo(${index}, 'down')" class="p-2 hover:bg-slate-100 rounded text-slate-500 transition"><i class="fas fa-chevron-down"></i></button>
-                                <div class="w-1"></div>
-                                <button onclick="deleteVideo('${vid.id}')" class="p-2 hover:bg-red-50 rounded text-red-500 transition" title="Sil"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            } catch(e) { console.error(e); }
+            const qs = await getDocs(query(collection(db, "watch_and_do"), orderBy("orderIndex")));
+            videosData = []; tbody.innerHTML = "";
+            qs.forEach(doc => videosData.push({ id: doc.id, ...doc.data() }));
+            videosData.forEach((vid, i) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td class="px-6 py-4">${i+1}</td><td class="px-6 py-4">${vid.title}</td><td class="px-6 py-4 text-xs">${vid.videoUrl}</td><td class="px-6 py-4"><button onclick="editVideo('${vid.id}')">Edit</button> <button onclick="deleteVideo('${vid.id}')">Delete</button></td>`;
+                tbody.appendChild(tr);
+            });
         }
-
         window.editVideo = (id) => {
-            const vid = videosData.find(v => v.id === id);
-            if (!vid) return;
-            document.getElementById('vid-id').value = vid.id;
-            document.getElementById('vid-title').value = vid.title;
-            document.getElementById('vid-url').value = vid.videoUrl;
-            document.getElementById('vmodal-title').textContent = "Videoyu Düzenle";
-            document.getElementById('vid-btn-text').textContent = "Güncelle";
+            const v = videosData.find(x => x.id === id);
+            document.getElementById('vid-id').value = v.id;
+            document.getElementById('vid-title').value = v.title;
+            document.getElementById('vid-url').value = v.videoUrl;
             document.getElementById('video-modal').classList.remove('hidden');
         };
-
         window.saveVideo = async () => {
-            const vidId = document.getElementById('vid-id').value;
+            const id = document.getElementById('vid-id').value;
             const title = document.getElementById('vid-title').value;
             const videoUrl = document.getElementById('vid-url').value;
-            const btn = document.getElementById('vid-save-btn');
-
-            if(!title || !videoUrl) { alert("Lütfen tüm alanları doldurun!"); return; }
-
-            btn.disabled = true;
-            document.getElementById('vid-btn-text').textContent = "Kaydediliyor...";
-
-            try {
-                if (vidId) {
-                    await updateDoc(doc(db, "watch_and_do", vidId), { title, videoUrl });
-                } else {
-                    await addDoc(collection(db, "watch_and_do"), {
-                        title,
-                        videoUrl,
-                        orderIndex: videosData.length,
-                        createdAt: Date.now()
-                    });
-                }
-                closeVideoModal();
-                loadVideos();
-            } catch(e) { alert("Hata oluştu!"); }
-            finally {
-                btn.disabled = false;
-                document.getElementById('vid-btn-text').textContent = "Videoyu Kaydet";
-            }
+            if (id) await updateDoc(doc(db, "watch_and_do", id), { title, videoUrl });
+            else await addDoc(collection(db, "watch_and_do"), { title, videoUrl, orderIndex: videosData.length });
+            closeVideoModal(); loadVideos();
         };
+        window.deleteVideo = async (id) => { if(confirm("Sil?")) { await deleteDoc(doc(db, "watch_and_do", id)); loadVideos(); } };
 
-        window.deleteVideo = async (id) => {
-            if(!confirm("Bu videoyu silmek istediğinize emin misiniz?")) return;
-            try {
-                await deleteDoc(doc(db, "watch_and_do", id));
-                loadVideos();
-            } catch(e) {}
+        // NOTIFICATIONS
+        async function loadNotifications() {
+            const tbody = document.getElementById('notifications-list');
+            const qs = await getDocs(query(collection(db, "notifications"), orderBy("sentAt", "desc")));
+            tbody.innerHTML = "";
+            qs.forEach(docSnap => {
+                const n = docSnap.data();
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td class="px-6 py-4 text-xs">${new Date(n.sentAt).toLocaleString()}</td><td class="px-6 py-4"><b>${n.title}</b><br>${n.body}</td><td class="px-6 py-4"><button onclick="deleteNotification('${docSnap.id}')">Sil</button></td>`;
+                tbody.appendChild(tr);
+            });
+        }
+        window.sendNotification = async () => {
+            const title = document.getElementById('notif-title').value;
+            const body = document.getElementById('notif-body').value;
+            if(!title || !body) return;
+            await addDoc(collection(db, "notifications"), { title, body, sentAt: Date.now(), status: 'pending' });
+            document.getElementById('notif-title').value = ""; document.getElementById('notif-body').value = "";
+            loadNotifications();
         };
-
-        window.moveVideo = async (index, direction) => {
-            if (direction === 'up' && index === 0) return;
-            if (direction === 'down' && index === videosData.length - 1) return;
-
-            const targetIndex = direction === 'up' ? index - 1 : index + 1;
-            const currentItem = videosData[index];
-            const targetItem = videosData[targetIndex];
-
-            const batch = writeBatch(db);
-            batch.update(doc(db, "watch_and_do", currentItem.id), { orderIndex: targetIndex });
-            batch.update(doc(db, "watch_and_do", targetItem.id), { orderIndex: index });
-
-            try {
-                await batch.commit();
-                loadVideos();
-            } catch(e) {}
-        };
+        window.deleteNotification = async (id) => { if(confirm("Sil?")) { await deleteDoc(doc(db, "notifications", id)); loadNotifications(); } };
     </script>
 </body>
 </html>
