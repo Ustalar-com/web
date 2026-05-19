@@ -50,104 +50,20 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
 
-    <!-- HEADER -->
-    <header class="fixed w-full z-50 bg-white border-b border-slate-200 transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center group">
-                <img src="assets/images/about_logos.png" alt="Ustalar Logo" class="h-12 w-auto object-contain group-hover:scale-105 transition-transform">
-            </a>
-
-            <!-- Masaüstü Menü -->
-            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-slate-600 font-semibold relative">
-                <a href="index.html" class="hover:text-brand-orange transition-colors">Anasayfa</a>
-
-                <!-- Kurumsal Dropdown -->
-                <div class="relative group">
-                    <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
-                        Kurumsal <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                    </button>
-                    <!-- Dropdown Content -->
-                    <div class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
-                        <a href="hakkimizda.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Hakkımızda</a>
-                        <a href="iletisim.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">İletişim</a>
-                    </div>
-                </div>
-
-                <a href="hizmetlerimiz.html" class="hover:text-brand-orange transition-colors">Hizmetlerimiz</a>
-                <a href="kentsel_donusum.html" class="hover:text-brand-orange transition-colors">Kentsel Dönüşüm</a>
-                <a href="ustalar_tv.html" class="hover:text-brand-orange transition-colors">Ustalar TV</a>
-                
-                <!-- AI Dropdown -->
-                <div class="relative group">
-                    <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
-                        AI <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                    </button>
-                    <!-- Dropdown Content -->
-                    <div class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
-                        <a href="ustalar_of_ai.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Ustalar OF AI</a>
-                        <a href="fabrica_ai.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">FabricaAI</a>
-                    </div>
-                </div>
-            </nav>
-
-            <!-- Sağ Butonlar -->
-            <div class="hidden lg:flex items-center space-x-4">
-                <button onclick="toggleLang()" class="lang-toggle-btn flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
-                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
-                </button>
-                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home" class="text-brand-orange border-2 border-brand-orange hover:bg-brand-orange hover:text-white px-5 py-2 rounded-xl font-bold transition-all">
-                    <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="bg-brand-orange text-white px-5 py-2 rounded-xl font-bold hover:bg-brand-dark hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center">
-                    <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
-                    İndir
-                </a>
-            </div>
-
-            <!-- Mobil Hamburger Buton -->
-            <button id="mobile-menu-btn" class="lg:hidden text-slate-600 hover:text-brand-orange transition focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
-
-        <!-- Mobil Menü İçeriği -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
-            <div class="px-6 py-6 flex flex-col space-y-4">
-                <a href="index.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Anasayfa</a>
-
-                <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
-                    <span class="text-slate-800 font-bold text-lg">Kurumsal</span>
-                    <a href="hakkimizda.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Hakkımızda</a>
-                    <a href="iletisim.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- İletişim</a>
-                </div>
-
-                <a href="hizmetlerimiz.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hizmetlerimiz</a>
-                <a href="kentsel_donusum.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Kentsel Dönüşüm</a>
-                <a href="ustalar_tv.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Ustalar TV</a>
-                
-                <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
-                    <span class="text-slate-800 font-bold text-lg">AI</span>
-                    <a href="ustalar_of_ai.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Ustalar OF AI</a>
-                    <a href="fabrica_ai.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- FabricaAI</a>
-                </div>
-                <hr class="border-slate-100">
-                <button onclick="toggleLang()" class="lang-toggle-btn w-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-5 py-3 rounded-xl transition-all font-bold">
-                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
-                </button>
-                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home" class="text-center text-brand-orange border-2 border-brand-orange px-5 py-3 rounded-xl font-bold transition-all mobile-link">
-                    <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="bg-brand-orange text-white px-5 py-3 rounded-xl font-bold text-center shadow-md mobile-link flex items-center justify-center">
-                    <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
-                    İndir
-                </a>
-            </div>
-        </div>
-    </header>
+    <!-- MINIMALIST TOP NAV BAR -->
+    <div class="absolute top-0 left-0 w-full z-50 bg-transparent py-6 px-6 md:px-12 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center">
+            <img src="assets/images/about_logos.png" alt="Ustalar Logo" class="h-10 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity">
+        </a>
+        <!-- Back Button -->
+        <a href="index.html" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 flex items-center gap-2 shadow-lg shadow-slate-900/10">
+            <i class="fas fa-arrow-left text-[10px]"></i> Ustalar.com'a Git
+        </a>
+    </div>
 
     <!-- FABRICA AI HERO & MAIN -->
-    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-slate-100 to-white relative overflow-hidden font-sans">
+    <section class="pt-28 pb-20 lg:pt-36 lg:pb-28 bg-gradient-to-br from-slate-100 to-white relative overflow-hidden font-sans">
         
         <div class="container mx-auto px-6 relative z-10">
             <!-- 1. Hero Alanı -->
@@ -480,96 +396,8 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-white py-16 border-t border-slate-200">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center mb-6">
-                        <img src="assets/images/about_logos.png" alt="Logo" class="h-10 w-auto object-contain">
-                    </div>
-                    <p class="text-slate-500 leading-relaxed mb-6 max-w-sm">
-                        İnşaatın A'dan Z'ye tüm süreçlerinde, yapay zeka destekli çözümler ve kurumsal hizmetlerle yanınızdayız.
-                    </p>
-                    <div class="text-slate-500 text-[15px] mb-6">
-                        <p class="mb-2"><i class="fas fa-map-marker-alt w-5 text-brand-orange"></i> Yakuplu Mahallesi İnönü Caddesi 124.Sk No:21/B Yakuplu / İstanbul</p>
-                        <p><i class="fas fa-phone-alt w-5 text-brand-orange"></i> Telefon: +90 532 466 60 68</p>
-                    </div>
-                    <div class="flex space-x-4 mb-6">
-                        <a href="https://facebook.com/ustalarcom" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com/ustalarcom" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com/@sektorturk" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-youtube"></i></a>
-                    </div>
-                    <div>
-                        <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="inline-flex items-center bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-slate-800 transition shadow-md">
-                            <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
-                            İndir
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-slate-900 font-bold mb-6">Ekosistem</h4>
-                    <ul class="space-y-3 text-slate-500">
-                        <li><a href="hizmetlerimiz.html" class="hover:text-brand-orange transition">Hizmetlerimiz</a></li><li><a href="kentsel_donusum.html" class="hover:text-brand-orange transition">Kentsel Dönüşüm</a></li>
-                        <li><a href="ustalar_tv.html" class="hover:text-brand-orange transition">Ustalar TV</a></li>
-                        <li><a href="ustalar_of_ai.html" class="hover:text-brand-orange transition">Ustalar OF AI</a></li>
-                        <li><a href="fabrica_ai.html" class="hover:text-brand-orange transition">Fabrica AI</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-slate-900 font-bold mb-6">Kurumsal</h4>
-                    <ul class="space-y-3 text-slate-500">
-                        <li><a href="hakkimizda.html" class="hover:text-brand-orange transition">Hakkımızda</a></li>
-                        <li><a href="iletisim.html" class="hover:text-brand-orange transition">İletişim</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Kullanım Koşulları</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Gizlilik Politikası</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">KVKK Metni</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="pt-8 border-t border-slate-100 flex flex-col text-sm text-slate-500">
-                <p>&copy; 2026 Ustalar.com | Tüm Hakları Saklıdır.</p>
-                <div class="mt-2">
-                    <a href="admin/" class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
-                        <i class="fas fa-lock mr-2 text-xs"></i> Yönetim Paneli
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <!-- ASİSTAN -->
     <script src="assets/js/asistan.js"></script>
-
-
-    <!-- SCRIPTS -->
-    <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-md');
-            } else {
-                navbar.classList.remove('shadow-md');
-            }
-        });
-
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.onclick = () => mobileMenu.classList.toggle('hidden');
-            mobileLinks.forEach(link => {
-                link.onclick = () => mobileMenu.classList.add('hidden');
-            });
-        }
-    </script>
-
-
-
 
     <!-- DİL YÖNETİMİ -->
     <script src="assets/js/language.js"></script>

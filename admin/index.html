@@ -68,8 +68,14 @@
                 <div onclick="switchView('izleyap')" id="nav-izleyap" class="nav-link flex items-center p-3 rounded-xl font-semibold">
                     <i class="fas fa-play-circle w-6"></i> Ustalar TV
                 </div>
+                <div onclick="switchView('catalog')" id="nav-catalog" class="nav-link flex items-center p-3 rounded-xl font-semibold">
+                    <i class="fas fa-book-open w-6"></i> Yapı Katalog
+                </div>
                 <div onclick="switchView('news')" id="nav-news" class="nav-link flex items-center p-3 rounded-xl font-semibold">
                     <i class="fas fa-newspaper w-6"></i> Yapı Haberler
+                </div>
+                <div onclick="switchView('webslider')" id="nav-webslider" class="nav-link flex items-center p-3 rounded-xl font-semibold">
+                    <i class="fas fa-images w-6"></i> Web Slider
                 </div>
                 <div onclick="switchView('notifications')" id="nav-notifications" class="nav-link flex items-center p-3 rounded-xl font-semibold">
                     <i class="fas fa-paper-plane w-6"></i> Bildirim Gönder
@@ -234,6 +240,67 @@
                 </div>
             </div>
 
+            <!-- CATALOG VIEW -->
+            <div id="view-catalog" class="view-content hidden">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">Yapı Katalog Yönetimi</h2>
+                        <p class="text-slate-500">Yapı Katalog sayfasındaki ürün kartlarını yönetin.</p>
+                    </div>
+                    <button onclick="openServiceModal('catalog_products')" class="btn-orange text-white font-bold px-6 py-3 rounded-xl shadow-lg flex items-center">
+                        <i class="fas fa-plus mr-2"></i> Yeni Katalog Ekle
+                    </button>
+                </div>
+
+                <div class="glass-card overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 border-b border-slate-200">
+                                <tr>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Sıra</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Katalog Adı</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Link / Form</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="catalog-list">
+                                <!-- JS will populate -->
+                                <tr><td colspan="4" class="p-10 text-center text-slate-400 italic">Yükleniyor...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Firmalar Yönetimi (Katalog Sayfası) -->
+                <div class="glass-card overflow-hidden mt-12">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center p-6 border-b border-slate-200">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800">Firmalar Yönetimi</h3>
+                            <p class="text-slate-500 text-sm">Katalog sayfasında kayan logoları yönetin.</p>
+                        </div>
+                        <button onclick="openServiceModal('catalog_companies')" class="btn-orange text-white font-bold px-4 py-2 rounded-lg flex items-center mt-4 md:mt-0">
+                            <i class="fas fa-plus mr-2"></i> Yeni Firma Ekle
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 border-b border-slate-200">
+                                <tr>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Sıra</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Firma Adı & Logo</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Link</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="catalog-companies-list">
+                                <!-- JS will populate -->
+                                <tr><td colspan="4" class="p-10 text-center text-slate-400 italic">Yükleniyor...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <!-- IZLE-YAP VIEW -->
             <div id="view-izleyap" class="view-content hidden">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -253,6 +320,7 @@
                                 <tr>
                                     <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Sıra</th>
                                     <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Video Başlığı</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Kategori</th>
                                     <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">YouTube Linki</th>
                                     <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">İşlemler</th>
                                 </tr>
@@ -364,6 +432,38 @@
                 </div>
             </div>
 
+            <!-- WEBSLIDER VIEW -->
+            <div id="view-webslider" class="view-content hidden">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">Web Slider Yönetimi</h2>
+                        <p class="text-slate-500">Ana sayfadaki slider görsellerini ve bağlantılarını yönetin. <span class="text-orange-500 font-semibold">(Önerilen görsel boyutu: 1680x720 px veya 21:9 oranında)</span></p>
+                    </div>
+                    <button onclick="openWebSliderModal()" class="btn-orange text-white font-bold px-6 py-3 rounded-xl shadow-lg flex items-center">
+                        <i class="fas fa-plus mr-2"></i> Yeni Slider Ekle
+                    </button>
+                </div>
+
+                <div class="glass-card overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 border-b border-slate-200">
+                                <tr>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Sıra</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Görsel</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Yönlendirme Linki</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="webslider-list">
+                                <!-- JS will populate -->
+                                <tr><td colspan="4" class="p-10 text-center text-slate-400 italic">Yükleniyor...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 
@@ -417,6 +517,17 @@
                     <label class="block text-sm font-semibold text-slate-700 mb-2">YouTube Linki</label>
                     <input type="text" id="vid-url" placeholder="https://www.youtube.com/watch?v=..." class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Video Kategorisi</label>
+                    <select id="vid-category" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                        <option value="">Kategori Seçin (İsteğe Bağlı)</option>
+                        <option value="inşaat">İnşaat</option>
+                        <option value="su">Su Tesisat</option>
+                        <option value="elektrik">Elektrik</option>
+                        <option value="alçı">Alçı & Sıva</option>
+                        <option value="silikon">Silikon</option>
+                    </select>
+                </div>
                 <div class="pt-4 flex space-x-3">
                     <button onclick="closeVideoModal()" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl">İptal</button>
                     <button id="vid-save-btn" onclick="saveVideo()" class="flex-[2] btn-orange text-white font-bold py-3 rounded-xl flex items-center justify-center">
@@ -463,6 +574,34 @@
         </div>
     </div>
 
+    <!-- MODAL FOR ADDING WEBSLIDER -->
+    <div id="webslider-modal" class="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="wsmodal-title" class="text-2xl font-bold text-slate-800">Slider Ekle / Düzenle</h3>
+                <button onclick="closeWebSliderModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="space-y-5">
+                <input type="hidden" id="ws-id">
+                <input type="hidden" id="ws-old-image">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Yönlendirme Linki</label>
+                    <input type="text" id="ws-url" placeholder="https://..." class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Slider Görseli (Dikdörtgen Boyut)</label>
+                    <input type="file" id="ws-file" accept="image/*" class="w-full text-sm text-slate-500 file:bg-slate-100 file:px-4 file:py-2 file:rounded-lg file:border-0 cursor-pointer">
+                </div>
+                <div class="pt-4 flex space-x-3">
+                    <button onclick="closeWebSliderModal()" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl">İptal</button>
+                    <button id="ws-save-btn" onclick="saveWebSlider()" class="flex-[2] btn-orange text-white font-bold py-3 rounded-xl flex items-center justify-center">
+                        <span id="ws-btn-text">Kaydet ve Ekle</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FIREBASE AND JS LOGIC -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -486,8 +625,11 @@
 
         let servicesData = [];
         let brandServicesData = [];
+        let catalogData = [];
+        let catalogCompaniesData = [];
         let videosData = [];
         let newsData = [];
+        let webSlidersData = [];
 
         window.switchView = (view) => {
             document.querySelectorAll('.view-content').forEach(v => v.classList.add('hidden'));
@@ -496,8 +638,15 @@
             document.getElementById(`nav-${view}`).classList.add('active');
             if(view === 'services') loadServices();
             if(view === 'brand') loadBrandServices();
+            if(view === 'catalog') {
+                loadCatalog();
+                loadCatalogCompanies();
+            }
             if(view === 'news') {
                 loadNews();
+            }
+            if(view === 'webslider') {
+                loadWebSliders();
             }
             if(view === 'izleyap') loadVideos();
             if(view === 'notifications') loadNotifications();
@@ -522,6 +671,7 @@
             document.getElementById('vid-id').value = "";
             document.getElementById('vid-title').value = "";
             document.getElementById('vid-url').value = "";
+            document.getElementById('vid-category').value = "";
             document.getElementById('vmodal-title').textContent = "Yeni Video Ekle";
             document.getElementById('vid-btn-text').textContent = "Videoyu Kaydet";
             document.getElementById('video-modal').classList.remove('hidden');
@@ -540,6 +690,17 @@
             document.getElementById('news-modal').classList.remove('hidden');
         };
         window.closeNewsModal = () => document.getElementById('news-modal').classList.add('hidden');
+
+        window.openWebSliderModal = () => {
+            document.getElementById('ws-id').value = "";
+            document.getElementById('ws-old-image').value = "";
+            document.getElementById('ws-url').value = "";
+            document.getElementById('ws-file').value = "";
+            document.getElementById('wsmodal-title').textContent = "Yeni Slider Ekle";
+            document.getElementById('ws-btn-text').textContent = "Kaydet ve Ekle";
+            document.getElementById('webslider-modal').classList.remove('hidden');
+        };
+        window.closeWebSliderModal = () => document.getElementById('webslider-modal').classList.add('hidden');
 
         // ACTIVITY TRACKING FOR 24H AUTO LOGOUT
         const checkActivityAndLogout = () => {
@@ -791,6 +952,26 @@
             renderList(brandServicesData, tbody, "brand_services");
         }
 
+        async function loadCatalog() {
+            const tbody = document.getElementById('catalog-list');
+            const q = query(collection(db, "catalog_products"), orderBy("orderIndex"));
+            const qs = await getDocs(q);
+            catalogData = [];
+            tbody.innerHTML = "";
+            qs.forEach(doc => catalogData.push({ id: doc.id, ...doc.data() }));
+            renderList(catalogData, tbody, "catalog_products");
+        }
+
+        async function loadCatalogCompanies() {
+            const tbody = document.getElementById('catalog-companies-list');
+            const q = query(collection(db, "catalog_companies"), orderBy("orderIndex"));
+            const qs = await getDocs(q);
+            catalogCompaniesData = [];
+            tbody.innerHTML = "";
+            qs.forEach(doc => catalogCompaniesData.push({ id: doc.id, ...doc.data() }));
+            renderList(catalogCompaniesData, tbody, "catalog_companies");
+        }
+
         function renderList(data, tbody, coll) {
             tbody.innerHTML = "";
             data.forEach((srv, index) => {
@@ -811,7 +992,8 @@
         }
 
         window.editService = (id, coll) => {
-            const item = (coll === 'services' ? servicesData : brandServicesData).find(s => s.id === id);
+            const dataArr = coll === 'services' ? servicesData : (coll === 'brand_services' ? brandServicesData : (coll === 'catalog_companies' ? catalogCompaniesData : catalogData));
+            const item = dataArr.find(s => s.id === id);
             document.getElementById('srv-id').value = item.id;
             document.getElementById('srv-old-image').value = item.imageUrl;
             document.getElementById('srv-name').value = item.name;
@@ -834,24 +1016,36 @@
                 imageUrl = await getDownloadURL(sRef);
             }
             if (id) await updateDoc(doc(db, coll, id), { name, redirectUrl: url, imageUrl });
-            else await addDoc(collection(db, coll), { name, redirectUrl: url, imageUrl, orderIndex: (coll==='services'?servicesData:brandServicesData).length });
+            else await addDoc(collection(db, coll), { name, redirectUrl: url, imageUrl, orderIndex: (coll === 'services' ? servicesData : (coll === 'brand_services' ? brandServicesData : (coll === 'catalog_companies' ? catalogCompaniesData : catalogData))).length });
             closeServiceModal();
-            coll === 'services' ? loadServices() : loadBrandServices();
+            if (coll === 'services') loadServices();
+            else if (coll === 'brand_services') loadBrandServices();
+            else if (coll === 'catalog_companies') loadCatalogCompanies();
+            else loadCatalog();
         };
 
         window.deleteService = async (id, coll) => {
-            if (confirm("Silinsin mi?")) { await deleteDoc(doc(db, coll, id)); coll === 'services' ? loadServices() : loadBrandServices(); }
+            if (confirm("Silinsin mi?")) {
+                await deleteDoc(doc(db, coll, id));
+                if (coll === 'services') loadServices();
+                else if (coll === 'brand_services') loadBrandServices();
+                else if (coll === 'catalog_companies') loadCatalogCompanies();
+                else loadCatalog();
+            }
         };
 
         window.moveService = async (idx, dir, coll) => {
-            const data = coll === 'services' ? servicesData : brandServicesData;
+            const data = coll === 'services' ? servicesData : (coll === 'brand_services' ? brandServicesData : (coll === 'catalog_companies' ? catalogCompaniesData : catalogData));
             if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === data.length - 1)) return;
             const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
             const batch = writeBatch(db);
             batch.update(doc(db, coll, data[idx].id), { orderIndex: targetIdx });
             batch.update(doc(db, coll, data[targetIdx].id), { orderIndex: idx });
             await batch.commit();
-            coll === 'services' ? loadServices() : loadBrandServices();
+            if (coll === 'services') loadServices();
+            else if (coll === 'brand_services') loadBrandServices();
+            else if (coll === 'catalog_companies') loadCatalogCompanies();
+            else loadCatalog();
         };
 
         // VIDEOS
@@ -862,7 +1056,17 @@
             qs.forEach(doc => videosData.push({ id: doc.id, ...doc.data() }));
             videosData.forEach((vid, i) => {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `<td class="px-6 py-4">${i+1}</td><td class="px-6 py-4">${vid.title}</td><td class="px-6 py-4 text-xs">${vid.videoUrl}</td><td class="px-6 py-4"><button onclick="editVideo('${vid.id}')">Edit</button> <button onclick="deleteVideo('${vid.id}')">Delete</button></td>`;
+                const catName = vid.category ? (vid.category.charAt(0).toUpperCase() + vid.category.slice(1)) : '-';
+                tr.innerHTML = `
+                    <td class="px-6 py-4">${i+1}</td>
+                    <td class="px-6 py-4 font-semibold">${vid.title}</td>
+                    <td class="px-6 py-4"><span class="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">${catName}</span></td>
+                    <td class="px-6 py-4 text-xs text-slate-500">${vid.videoUrl}</td>
+                    <td class="px-6 py-4 text-center">
+                        <button onclick="editVideo('${vid.id}')" class="mx-1 text-blue-600 hover:text-blue-800"><i class="fas fa-edit"></i></button>
+                        <button onclick="deleteVideo('${vid.id}')" class="mx-1 text-red-600 hover:text-red-800"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
                 tbody.appendChild(tr);
             });
         }
@@ -871,14 +1075,16 @@
             document.getElementById('vid-id').value = v.id;
             document.getElementById('vid-title').value = v.title;
             document.getElementById('vid-url').value = v.videoUrl;
+            document.getElementById('vid-category').value = v.category || "";
             document.getElementById('video-modal').classList.remove('hidden');
         };
         window.saveVideo = async () => {
             const id = document.getElementById('vid-id').value;
             const title = document.getElementById('vid-title').value;
             const videoUrl = document.getElementById('vid-url').value;
-            if (id) await updateDoc(doc(db, "watch_and_do", id), { title, videoUrl });
-            else await addDoc(collection(db, "watch_and_do"), { title, videoUrl, orderIndex: videosData.length });
+            const category = document.getElementById('vid-category').value;
+            if (id) await updateDoc(doc(db, "watch_and_do", id), { title, videoUrl, category });
+            else await addDoc(collection(db, "watch_and_do"), { title, videoUrl, category, orderIndex: videosData.length });
             closeVideoModal(); loadVideos();
         };
         window.deleteVideo = async (id) => { if(confirm("Sil?")) { await deleteDoc(doc(db, "watch_and_do", id)); loadVideos(); } };
@@ -904,6 +1110,98 @@
             loadNotifications();
         };
         window.deleteNotification = async (id) => { if(confirm("Sil?")) { await deleteDoc(doc(db, "notifications", id)); loadNotifications(); } };
+
+        // WEB SLIDER LOGIC
+        window.loadWebSliders = async () => {
+            const tbody = document.getElementById('webslider-list');
+            const q = query(collection(db, "web_sliders"), orderBy("orderIndex"));
+            const qs = await getDocs(q);
+            webSlidersData = [];
+            tbody.innerHTML = "";
+            qs.forEach(docSnap => webSlidersData.push({ id: docSnap.id, ...docSnap.data() }));
+            webSlidersData.forEach((ws, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-6 py-4">${index + 1}</td>
+                    <td class="px-6 py-4"><img src="${ws.imageUrl}" class="h-16 w-32 object-cover rounded border"></td>
+                    <td class="px-6 py-4 text-xs">${ws.redirectUrl || '-'}</td>
+                    <td class="px-6 py-4 text-center">
+                        <button onclick="editWebSlider('${ws.id}')" class="mx-1"><i class="fas fa-edit"></i></button>
+                        <button onclick="moveWebSlider(${index}, 'up')" class="mx-1"><i class="fas fa-chevron-up"></i></button>
+                        <button onclick="moveWebSlider(${index}, 'down')" class="mx-1"><i class="fas fa-chevron-down"></i></button>
+                        <button onclick="deleteWebSlider('${ws.id}')" class="text-red-500 mx-1"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            if (webSlidersData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="p-10 text-center text-slate-400 italic">Henüz slider görseli eklenmemiş.</td></tr>';
+            }
+        };
+
+        window.editWebSlider = (id) => {
+            const item = webSlidersData.find(w => w.id === id);
+            document.getElementById('ws-id').value = item.id;
+            document.getElementById('ws-old-image').value = item.imageUrl;
+            document.getElementById('ws-url').value = item.redirectUrl || "";
+            document.getElementById('wsmodal-title').textContent = "Slider Düzenle";
+            document.getElementById('ws-btn-text').textContent = "Değişiklikleri Kaydet";
+            document.getElementById('webslider-modal').classList.remove('hidden');
+        };
+
+        window.saveWebSlider = async () => {
+            const id = document.getElementById('ws-id').value;
+            const url = sanitizeUrl(document.getElementById('ws-url').value);
+            const file = document.getElementById('ws-file').files[0];
+            let imageUrl = document.getElementById('ws-old-image').value;
+            
+            const btn = document.getElementById('ws-save-btn');
+            btn.disabled = true;
+            btn.innerHTML = 'Kaydediliyor...';
+            
+            try {
+                if (file) {
+                    const sRef = ref(storage, `web_sliders/${Date.now()}_${file.name}`);
+                    await uploadBytes(sRef, file);
+                    imageUrl = await getDownloadURL(sRef);
+                }
+                if (!imageUrl) {
+                    alert("Lütfen bir görsel seçin!");
+                    btn.disabled = false;
+                    btn.innerHTML = 'Kaydet ve Ekle';
+                    return;
+                }
+                if (id) {
+                    await updateDoc(doc(db, "web_sliders", id), { redirectUrl: url, imageUrl });
+                } else {
+                    await addDoc(collection(db, "web_sliders"), { redirectUrl: url, imageUrl, orderIndex: webSlidersData.length });
+                }
+                closeWebSliderModal();
+                loadWebSliders();
+            } catch(e) { 
+                alert("Hata!"); 
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Kaydet ve Ekle';
+            }
+        };
+
+        window.deleteWebSlider = async (id) => {
+            if (confirm("Bu slider silinsin mi?")) {
+                await deleteDoc(doc(db, "web_sliders", id));
+                loadWebSliders();
+            }
+        };
+
+        window.moveWebSlider = async (idx, dir) => {
+            if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === webSlidersData.length - 1)) return;
+            const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
+            const batch = writeBatch(db);
+            batch.update(doc(db, "web_sliders", webSlidersData[idx].id), { orderIndex: targetIdx });
+            batch.update(doc(db, "web_sliders", webSlidersData[targetIdx].id), { orderIndex: idx });
+            await batch.commit();
+            loadWebSliders();
+        };
     </script>
 </body>
 </html>

@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ustalar.com | Kurumsal Teknoloji ve Hizmet Ekosistemi</title>
+    <title>Ustalar TV | İzle, Öğren, Uygula</title>
     <link rel="icon" type="image/png" href="assets/images/ustalar_icon.png">
+    
+    <!-- TailWind CSS & Font Awesome & Outfit Font -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.1.0/css/flag-icons.min.css">
     
     <script>
         tailwind.config = {
@@ -19,6 +20,12 @@
                             orange: '#f97316',
                             dark: '#ea580c',
                             light: '#fdba74'
+                        },
+                        yt: {
+                            bg: '#0f0f0f',
+                            card: '#1f1f1f',
+                            text: '#f1f1f1',
+                            muted: '#aaaaaa'
                         }
                     },
                     fontFamily: {
@@ -28,360 +35,239 @@
             }
         }
     </script>
+    
     <style>
-        body { font-family: 'Outfit', sans-serif; }
-        html { scroll-behavior: smooth; }
-
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f0f0f;
+            color: #f1f1f1;
         }
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-
         
-        /* Gizli Google Translate */
-        #google_translate_element { display: none !important; }
-        .goog-te-banner-frame { display: none !important; }
-        body { top: 0 !important; }
+        /* Custom scrollbar matching YouTube style */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0f0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563;
+        }
+
+        /* Glassmorphism utility */
+        .glass-header {
+            background: rgba(15, 15, 15, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Ambient Glow */
+        .ambient-glow {
+            text-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Hero Background Slider Fade */
+        .slide {
+            transition: opacity 1.2s ease-in-out;
+        }
+        
+        /* Category Pills scrollbar hides */
+        .scroll-pills::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-pills {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
+<body class="antialiased overflow-x-hidden relative">
 
-    <!-- HEADER -->
-    <header class="fixed w-full z-50 bg-white border-b border-slate-200 transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center group">
-                <img src="assets/images/about_logos.png" alt="Ustalar Logo" class="h-12 w-auto object-contain group-hover:scale-105 transition-transform">
+    <!-- PRELOADER (AÇILIŞ ANİMASYONU) -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-yt-bg flex flex-col items-center justify-center transition-opacity duration-500">
+        <div class="relative w-28 h-28 flex items-center justify-center mb-6">
+            <!-- Pulsing red/orange glow -->
+            <div class="absolute inset-0 bg-brand-orange/30 rounded-full blur-2xl animate-pulse"></div>
+            <!-- Loading Spinning ring -->
+            <div class="absolute inset-0 border-t-2 border-r-2 border-brand-orange rounded-full animate-spin"></div>
+            <!-- TV / Play Icon Wrapper -->
+            <div class="w-16 h-16 bg-gradient-to-br from-brand-orange to-red-600 rounded-2xl flex items-center justify-center text-white shadow-[0_0_25px_rgba(249,115,22,0.5)] relative z-10 animate-bounce">
+                <i class="fas fa-tv text-3xl"></i>
+            </div>
+        </div>
+        <h2 class="text-white font-extrabold tracking-widest text-xl mb-1 ambient-glow">USTALAR TV</h2>
+        <p class="text-brand-light text-sm opacity-80 animate-pulse">İçerikler Yükleniyor...</p>
+    </div>
+
+    <!-- HEADER (ORTALANMIŞ LOGO VE ALTINDA MENÜLER) -->
+    <header class="glass-header py-6 sticky top-0 z-50">
+        <div class="container mx-auto px-6 flex flex-col items-center">
+            <!-- Centered Logo (Enlarged) -->
+            <a href="ustalar_tv.html" class="mb-5 group flex justify-center">
+                <img src="assets/images/ustalarTV.png" alt="Ustalar TV Logo" class="h-20 md:h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
             </a>
 
-            <!-- Masaüstü Menü -->
-            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-slate-600 font-semibold relative">
-                <a href="index.html" class="hover:text-brand-orange transition-colors">Anasayfa</a>
-
-                <!-- Kurumsal Dropdown -->
-                <div class="relative group">
-                    <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
-                        Kurumsal <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                    </button>
-                    <!-- Dropdown Content -->
-                    <div class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
-                        <a href="hakkimizda.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Hakkımızda</a>
-                        <a href="iletisim.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">İletişim</a>
-                    </div>
-                </div>
-
-                <a href="hizmetlerimiz.html" class="hover:text-brand-orange transition-colors">Hizmetlerimiz</a>
-                <a href="kentsel_donusum.html" class="hover:text-brand-orange transition-colors">Kentsel Dönüşüm</a>
-                <a href="ustalar_tv.html" class="hover:text-brand-orange transition-colors">Ustalar TV</a>
-                
-                <!-- AI Dropdown -->
-                <div class="relative group">
-                    <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
-                        AI <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                    </button>
-                    <!-- Dropdown Content -->
-                    <div class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
-                        <a href="ustalar_of_ai.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Ustalar OF AI</a>
-                        <a href="fabrica_ai.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">FabricaAI</a>
-                    </div>
-                </div>
+            <!-- Centered Navigation Menus -->
+            <nav class="flex flex-wrap justify-center items-center gap-6 md:gap-8 text-yt-muted font-bold text-sm tracking-wide">
+                <a href="ustalar_tv.html" class="hover:text-brand-orange transition-colors">Anasayfa</a>
+                <a href="#videos-section" class="hover:text-brand-orange transition-colors">Videolar</a>
+                <a href="#footer-section" class="hover:text-brand-orange transition-colors">İletişim</a>
+                <a href="index.html" class="ml-2 bg-brand-orange hover:bg-orange-600 text-white px-4 py-2 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 shadow-lg shadow-brand-orange/20 flex items-center gap-1.5">
+                    <i class="fas fa-external-link-alt text-[10px]"></i> Ustalar.com'a Git
+                </a>
             </nav>
-
-            <!-- Sağ Butonlar -->
-            <div class="hidden lg:flex items-center space-x-4">
-                <button onclick="toggleLang()" class="lang-toggle-btn flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
-                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
-                </button>
-                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home" class="text-brand-orange border-2 border-brand-orange hover:bg-brand-orange hover:text-white px-5 py-2 rounded-xl font-bold transition-all">
-                    <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="bg-brand-orange text-white px-5 py-2 rounded-xl font-bold hover:bg-brand-dark hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center">
-                    <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
-                    İndir
-                </a>
-            </div>
-
-            <!-- Mobil Hamburger Buton -->
-            <button id="mobile-menu-btn" class="lg:hidden text-slate-600 hover:text-brand-orange transition focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
-
-        <!-- Mobil Menü İçeriği -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
-            <div class="px-6 py-6 flex flex-col space-y-4">
-                <a href="index.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Anasayfa</a>
-
-                <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
-                    <span class="text-slate-800 font-bold text-lg">Kurumsal</span>
-                    <a href="hakkimizda.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Hakkımızda</a>
-                    <a href="iletisim.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- İletişim</a>
-                </div>
-
-                <a href="hizmetlerimiz.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hizmetlerimiz</a>
-                <a href="kentsel_donusum.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Kentsel Dönüşüm</a>
-                <a href="ustalar_tv.html" class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Ustalar TV</a>
-                
-                <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
-                    <span class="text-slate-800 font-bold text-lg">AI</span>
-                    <a href="ustalar_of_ai.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Ustalar OF AI</a>
-                    <a href="fabrica_ai.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- FabricaAI</a>
-                </div>
-                <hr class="border-slate-100">
-                <button onclick="toggleLang()" class="lang-toggle-btn w-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-5 py-3 rounded-xl transition-all font-bold">
-                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
-                </button>
-                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home" class="text-center text-brand-orange border-2 border-brand-orange px-5 py-3 rounded-xl font-bold transition-all mobile-link">
-                    <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="bg-brand-orange text-white px-5 py-3 rounded-xl font-bold text-center shadow-md mobile-link flex items-center justify-center">
-                    <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
-                    İndir
-                </a>
-            </div>
         </div>
     </header>
 
-    <!-- USTALAR TV HERO & MAIN -->
-    <section class="pt-32 pb-20 lg:pt-40 lg:pb-20 bg-[#0f172a] relative overflow-hidden font-sans">
-        <!-- Arka Plan Işıkları -->
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-500 rounded-full mix-blend-screen filter blur-[150px] opacity-20"></div>
-        <div class="absolute bottom-20 left-10 w-[400px] h-[400px] bg-brand-orange rounded-full mix-blend-screen filter blur-[150px] opacity-15"></div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <!-- 1. Hero Başlık Grubu -->
-            <div class="text-center mb-16">
-                <div class="flex items-center justify-center mb-6">
-                    <h1 class="text-5xl md:text-7xl font-black text-white tracking-tight uppercase">
-                        USTALAR <span class="text-brand-orange">TV</span>
-                    </h1>
-                    <i class="fas fa-play text-brand-orange text-4xl md:text-5xl ml-4"></i>
-                </div>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-yellow-500 mb-6 tracking-widest uppercase">
-                    İZLE • ÖĞREN • UYGULA • BÜYÜ
-                </h2>
-                <p class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-                    Türkiye'nin dört bir yanından ustalar, servisler, yapı marketler ve markalar tek platformda buluşuyor.
-                    <span class="text-yellow-500 font-bold block mt-2">İzle-Yap mantığı ile Ustalar.com'a değer katıyoruz.</span>
-                </p>
-            </div>
-
-            <!-- 2. Bilgi ve Güven Platformu & Ekran Görseli -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-                <!-- Sol Taraf -->
-                <div>
-                    <h3 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-                        BİLGİ VE <br>
-                        GÜVENİN <br>
-                        <span class="text-yellow-500">BULUŞTUĞU</span> <br>
-                        TEK PLATFORM
-                    </h3>
-                    <p class="text-slate-400 text-lg mb-10 leading-relaxed max-w-md">
-                        Ustalar TV, yapı sektöründe doğru bilgiye ulaşmanızı, en iyi ürünlere erişmenizi ve güvenilir ustalarla buluşmanızı sağlar.
-                    </p>
-                    <ul class="space-y-6">
-                        <li class="flex items-center text-white text-xl font-bold tracking-wide">
-                            <i class="fas fa-check-circle text-yellow-500 text-3xl mr-4"></i> GÜVENİLİR İÇERİK
-                        </li>
-                        <li class="flex items-center text-white text-xl font-bold tracking-wide">
-                            <i class="fas fa-play-circle text-yellow-500 text-3xl mr-4"></i> GERÇEK USTALAR
-                        </li>
-                        <li class="flex items-center text-white text-xl font-bold tracking-wide">
-                            <i class="fas fa-chart-bar text-yellow-500 text-3xl mr-4"></i> GERÇEK ÇÖZÜMLER
-                        </li>
-                    </ul>
-                    
-                    <!-- WhatsApp Butonu -->
-                    <div class="mt-12 flex justify-center lg:justify-start">
-                        <a href="https://wa.me/905324666068" target="_blank" class="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition-all shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_25px_rgba(34,197,94,0.7)] animate-bounce hover:animate-none group">
-                            <i class="fab fa-whatsapp text-3xl mr-3 group-hover:scale-110 transition-transform"></i>
-                            Daha Fazlası İçin Ulaşın
-                        </a>
-                    </div>
-                </div>
-                <!-- Sağ Taraf (Görsel) -->
-                <div class="relative flex justify-center lg:justify-end group">
-                    <div class="absolute inset-0 bg-yellow-500/20 blur-3xl rounded-full transform group-hover:scale-110 transition duration-700"></div>
-                    <img src="assets/images/ustalarTv.png" alt="Ustalar TV Ekranı" class="relative z-10 w-full max-w-2xl object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform hover:-translate-y-2 transition duration-500">
-                </div>
-            </div>
-
-            <!-- 3. İzle-Yap Ekosistemi Şeması -->
-            <div class="mb-24">
-                <div class="text-center mb-12">
-                    <h3 class="text-2xl font-bold text-white tracking-widest uppercase inline-block border-b-2 border-yellow-500 pb-2">İZLE-YAP <span class="text-slate-400">EKOSİSTEMİ</span></h3>
-                </div>
-                
-                <!-- Yatay Akış -->
-                <div class="flex flex-col md:flex-row items-center justify-between relative">
-                    <!-- Arka Kesik Çizgi (sadece masaüstü) -->
-                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 border-t-2 border-dashed border-slate-700 -z-10 transform -translate-y-12"></div>
-
-                    <!-- Step 1 -->
-                    <div class="flex flex-col items-center text-center w-full md:w-1/5 mb-8 md:mb-0 relative z-10 group">
-                        <div class="w-24 h-24 rounded-full bg-[#0f172a] border-4 border-yellow-500 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(234,179,8,0.3)] group-hover:shadow-[0_0_30px_rgba(234,179,8,0.6)] transition-all">
-                            <i class="fas fa-play text-4xl text-yellow-500"></i>
-                        </div>
-                        <h4 class="text-yellow-500 font-bold text-lg mb-2">İZLE</h4>
-                        <p class="text-slate-400 text-sm">Binlerce eğitim, ipucu ve uygulama videosunu izle.</p>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="flex flex-col items-center text-center w-full md:w-1/5 mb-8 md:mb-0 relative z-10 group">
-                        <div class="w-24 h-24 rounded-full bg-[#0f172a] border-4 border-cyan-400 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(34,211,238,0.3)] group-hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] transition-all">
-                            <i class="fas fa-brain text-4xl text-cyan-400"></i>
-                        </div>
-                        <h4 class="text-cyan-400 font-bold text-lg mb-2">ANALİZ ET</h4>
-                        <p class="text-slate-400 text-sm">AI destekli analiz ile projenin maliyetini ve ihtiyacını öğren.</p>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="flex flex-col items-center text-center w-full md:w-1/5 mb-8 md:mb-0 relative z-10 group">
-                        <div class="w-24 h-24 rounded-full bg-[#0f172a] border-4 border-green-500 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(34,197,94,0.3)] group-hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] transition-all">
-                            <i class="fas fa-shopping-cart text-4xl text-green-500"></i>
-                        </div>
-                        <h4 class="text-green-500 font-bold text-lg mb-2">ÜRÜNE ULAŞ</h4>
-                        <p class="text-slate-400 text-sm">İhtiyacın olan ürünlere tek tıkla ulaş ve sipariş ver.</p>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="flex flex-col items-center text-center w-full md:w-1/5 mb-8 md:mb-0 relative z-10 group">
-                        <div class="w-24 h-24 rounded-full bg-[#0f172a] border-4 border-yellow-400 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(250,204,21,0.3)] group-hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all">
-                            <i class="fas fa-hard-hat text-4xl text-yellow-400"></i>
-                        </div>
-                        <h4 class="text-yellow-400 font-bold text-lg mb-2">USTA BUL</h4>
-                        <p class="text-slate-400 text-sm">Bölgenizdeki en uygun ustaları keşfet ve iletişime geç.</p>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="flex flex-col items-center text-center w-full md:w-1/5 relative z-10 group">
-                        <div class="w-24 h-24 rounded-full bg-[#0f172a] border-4 border-indigo-400 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(129,140,248,0.3)] group-hover:shadow-[0_0_30px_rgba(129,140,248,0.6)] transition-all">
-                            <i class="fas fa-check text-4xl text-indigo-400"></i>
-                        </div>
-                        <h4 class="text-indigo-400 font-bold text-lg mb-2">UYGULA & TAMAMLA</h4>
-                        <p class="text-slate-400 text-sm">Doğru ürün, doğru usta ile işini güvenle tamamla.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. Alt Kutu (Neden Ustalar TV & İstatistikler) -->
-            <div class="bg-slate-900 border border-brand-orange/50 rounded-3xl p-8 lg:p-12 shadow-[0_0_30px_rgba(234,88,12,0.15)] flex flex-col xl:flex-row gap-12 xl:gap-8 justify-between items-stretch">
-                <!-- Sol Taraf (Neden) -->
-                <div class="xl:w-5/12 xl:border-r border-slate-700 xl:pr-8">
-                    <h3 class="text-3xl font-black text-white mb-8 tracking-wide">NEDEN USTALAR TV?</h3>
-                    <ul class="space-y-5">
-                        <li class="flex items-center text-slate-300 text-lg group">
-                            <i class="fas fa-check-circle text-yellow-500 mr-4 group-hover:scale-125 transition-transform"></i> Sektörün ilk İzle-Yap video platformu
-                        </li>
-                        <li class="flex items-center text-slate-300 text-lg group">
-                            <i class="fas fa-check-circle text-yellow-500 mr-4 group-hover:scale-125 transition-transform"></i> Güvenilir usta ve marka ağı
-                        </li>
-                        <li class="flex items-center text-slate-300 text-lg group">
-                            <i class="fas fa-check-circle text-yellow-500 mr-4 group-hover:scale-125 transition-transform"></i> AI destekli proje ve maliyet analizi
-                        </li>
-                        <li class="flex items-center text-slate-300 text-lg group">
-                            <i class="fas fa-check-circle text-yellow-500 mr-4 group-hover:scale-125 transition-transform"></i> Ürün – usta – bilgi entegrasyonu
-                        </li>
-                        <li class="flex items-center text-slate-300 text-lg group">
-                            <i class="fas fa-check-circle text-yellow-500 mr-4 group-hover:scale-125 transition-transform"></i> Sürekli büyüyen içerik ve topluluk
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Sağ Taraf (İstatistikler) -->
-                <div class="xl:w-7/12 flex flex-col justify-center">
-                    <div class="text-center xl:text-left mb-10">
-                        <h3 class="text-2xl text-slate-300 font-bold mb-1">SADECE İÇERİK DEĞİL,</h3>
-                        <h2 class="text-4xl md:text-5xl font-black text-brand-orange">DEĞER ÜRETİYORUZ!</h2>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-users text-4xl text-blue-400 mb-4"></i>
-                            <span class="text-2xl md:text-3xl font-black text-white mb-1">50.000+</span>
-                            <span class="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wide">Aktif Usta ve Servis</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-play-circle text-4xl text-green-400 mb-4"></i>
-                            <span class="text-2xl md:text-3xl font-black text-white mb-1">10.000+</span>
-                            <span class="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wide">Video İçerik</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-shopping-cart text-4xl text-yellow-400 mb-4"></i>
-                            <span class="text-2xl md:text-3xl font-black text-white mb-1">100.000+</span>
-                            <span class="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wide">Ürün Çeşidi</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <i class="fas fa-globe text-4xl text-slate-300 mb-4"></i>
-                            <span class="text-2xl md:text-3xl font-black text-white mb-1">81 İL</span>
-                            <span class="text-xs md:text-sm text-slate-400 font-bold uppercase tracking-wide">Türkiye Geneli Erişim</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+    <!-- SLIDER'LI KISA HERO ALANI -->
+    <section id="hero" class="relative w-full h-[240px] md:h-[280px] flex items-center justify-center overflow-hidden z-10 border-b border-white/5">
+        <!-- Slider Images Background -->
+        <div id="slider-container" class="absolute inset-0 z-0">
+            <!-- Slide 1 -->
+            <div class="slide active absolute inset-0 bg-cover bg-center opacity-100" style="background-image: url('https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop');"></div>
+            <!-- Slide 2 -->
+            <div class="slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356f27?q=80&w=1600&auto=format&fit=crop');"></div>
+            <!-- Slide 3 -->
+            <div class="slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1600&auto=format&fit=crop');"></div>
+        </div>
+        
+        <!-- Slider Dark Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-black/50 to-black/80 z-10"></div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-20 text-center px-6">
+            <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase mb-2">
+                USTALAR <span class="text-brand-orange animate-pulse">TV</span>
+            </h2>
+            <p class="text-slate-300 text-xs md:text-sm max-w-xl mx-auto leading-relaxed opacity-90">
+                Türkiye'nin en kapsamlı yapı ekosistemi. İşin uzmanından pratik çözümler, adımlar ve püf noktaları. İzleyin, öğrenin, kendiniz uygulayın!
+            </p>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-white py-16 border-t border-slate-200">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center mb-6">
-                        <img src="assets/images/about_logos.png" alt="Logo" class="h-10 w-auto object-contain">
+    <!-- KATEGORİ SEÇİM ALANI TAŞINDI -->
+
+    <!-- MAIN MEDIA PLAYER CONTAINER (SİNEMATİK AKTİF OYNATICI) -->
+    <section id="player-container-section" class="py-8 bg-yt-bg border-b border-white/5 hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Oynatıcı (Iframe) Bölümü -->
+                <div class="lg:col-span-2 aspect-video rounded-3xl overflow-hidden bg-black/40 border border-white/5 shadow-2xl relative">
+                    <iframe id="main-video-player" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+                <!-- Aktif Video Detayları ve WhatsApp Butonu -->
+                <div class="bg-[#181818]/60 border border-white/5 rounded-3xl p-6 md:p-8 backdrop-blur-md flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute -right-20 -top-20 w-48 h-48 bg-brand-orange/5 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <div class="space-y-4">
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-bold px-3 py-1 rounded-full border border-brand-orange/20">
+                            Şimdi Oynatılıyor
+                        </span>
+                        <h1 id="active-video-title" class="text-xl md:text-2xl font-extrabold text-white tracking-tight leading-snug">Video Yükleniyor...</h1>
+                        
+                        <div class="pt-2 border-t border-white/5">
+                            <h4 class="text-xs font-bold text-brand-orange uppercase tracking-wider mb-2">Video Hakkında</h4>
+                            <p id="active-video-desc" class="text-yt-muted leading-relaxed text-sm">
+                                Ustalar TV özel yapım eğitim serisi. Bu video ile ilgili detaylı bilgi ve malzeme desteği için WhatsApp üzerinden ustamıza hemen ulaşın.
+                            </p>
+                        </div>
                     </div>
-                    <p class="text-slate-500 leading-relaxed mb-6 max-w-sm">
-                        İnşaatın A'dan Z'ye tüm süreçlerinde, yapay zeka destekli çözümler ve kurumsal hizmetlerle yanınızdayız.
-                    </p>
-                    <div class="text-slate-500 text-[15px] mb-6">
-                        <p class="mb-2"><i class="fas fa-map-marker-alt w-5 text-brand-orange"></i> Yakuplu Mahallesi İnönü Caddesi 124.Sk No:21/B Yakuplu / İstanbul</p>
-                        <p><i class="fas fa-phone-alt w-5 text-brand-orange"></i> Telefon: +90 532 466 60 68</p>
-                    </div>
-                    <div class="flex space-x-4 mb-6">
-                        <a href="https://facebook.com/ustalarcom" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com/ustalarcom" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com/@sektorturk" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-youtube"></i></a>
-                    </div>
-                    <div>
-                        <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="inline-flex items-center bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-slate-800 transition shadow-md">
-                            <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
-                            İndir
+
+                    <!-- WhatsApp CTA -->
+                    <div class="pt-6">
+                        <a id="whatsapp-share-btn" href="https://wa.me/905324666068" target="_blank" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3.5 px-5 rounded-2xl font-bold text-sm transition-all shadow-[0_4px_15px_rgba(37,211,102,0.2)] hover:shadow-[0_4px_20px_rgba(37,211,102,0.4)] flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-lg mr-2 animate-bounce"></i> Ustaya Soru Sor / Sipariş Ver
                         </a>
                     </div>
                 </div>
-                
-                <div>
-                    <h4 class="text-slate-900 font-bold mb-6">Ekosistem</h4>
-                    <ul class="space-y-3 text-slate-500">
-                        <li><a href="hizmetlerimiz.html" class="hover:text-brand-orange transition">Hizmetlerimiz</a></li><li><a href="kentsel_donusum.html" class="hover:text-brand-orange transition">Kentsel Dönüşüm</a></li>
-                        <li><a href="ustalar_tv.html" class="hover:text-brand-orange transition">Ustalar TV</a></li>
-                        <li><a href="ustalar_of_ai.html" class="hover:text-brand-orange transition">Ustalar OF AI</a></li>
-                        <li><a href="fabrica_ai.html" class="hover:text-brand-orange transition">Fabrica AI</a></li>
-                    </ul>
-                </div>
 
-                <div>
-                    <h4 class="text-slate-900 font-bold mb-6">Kurumsal</h4>
-                    <ul class="space-y-3 text-slate-500">
-                        <li><a href="hakkimizda.html" class="hover:text-brand-orange transition">Hakkımızda</a></li>
-                        <li><a href="iletisim.html" class="hover:text-brand-orange transition">İletişim</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Kullanım Koşulları</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Gizlilik Politikası</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">KVKK Metni</a></li>
-                    </ul>
-                </div>
             </div>
-            
-            <div class="pt-8 border-t border-slate-100 flex flex-col text-sm text-slate-500">
-                <p>&copy; 2026 Ustalar.com | Tüm Hakları Saklıdır.</p>
-                <div class="mt-2">
-                    <a href="admin/" class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
-                        <i class="fas fa-lock mr-2 text-xs"></i> Yönetim Paneli
+        </div>
+    </section>
+
+    <!-- SHY GRİD: VİDEO SIRALAMASI -->
+    <main id="videos-section" class="container mx-auto px-4 md:px-6 py-12 relative z-10">
+        
+        <!-- Grid Header -->
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-white/5">
+            <h3 class="text-xl md:text-2xl font-black text-white flex items-center">
+                <i class="fas fa-play-circle text-brand-orange mr-3"></i> 
+                Videolarımız
+            </h3>
+            <span id="videos-count" class="text-xs bg-white/5 border border-white/10 px-3 py-1 rounded-full text-yt-muted font-bold">0 Video</span>
+        </div>
+
+        <!-- Kategori Seçim Butonları -->
+        <div class="flex items-center space-x-3 overflow-x-auto pb-4 mb-8 scroll-pills" id="category-pills">
+            <button class="category-pill active px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-brand-orange text-white border border-brand-orange transition-all duration-300 whitespace-nowrap" data-cat="all">Tümü</button>
+            <button class="category-pill px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-[#1e1e1e] text-yt-muted border border-white/5 hover:border-white/10 hover:text-white transition-all duration-300 whitespace-nowrap" data-cat="inşaat">İnşaat</button>
+            <button class="category-pill px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-[#1e1e1e] text-yt-muted border border-white/5 hover:border-white/10 hover:text-white transition-all duration-300 whitespace-nowrap" data-cat="su">Su Tesisat</button>
+            <button class="category-pill px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-[#1e1e1e] text-yt-muted border border-white/5 hover:border-white/10 hover:text-white transition-all duration-300 whitespace-nowrap" data-cat="elektrik">Elektrik</button>
+            <button class="category-pill px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-[#1e1e1e] text-yt-muted border border-white/5 hover:border-white/10 hover:text-white transition-all duration-300 whitespace-nowrap" data-cat="alçı">Alçı & Sıva</button>
+            <button class="category-pill px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-[#1e1e1e] text-yt-muted border border-white/5 hover:border-white/10 hover:text-white transition-all duration-300 whitespace-nowrap" data-cat="silikon">Silikon</button>
+        </div>
+
+        <!-- Arama Motoru Alanı -->
+        <div class="max-w-md mx-auto mb-10 relative">
+            <div class="relative group">
+                <input type="text" id="video-search-input" placeholder="Video başlıklarında arama yapın..." class="w-full bg-[#1e1e1e] text-white placeholder-yt-muted border border-white/5 focus:border-brand-orange/60 focus:ring-1 focus:ring-brand-orange/60 transition-all duration-300 rounded-2xl py-3.5 pl-12 pr-10 text-sm font-semibold outline-none shadow-inner group-hover:border-white/10">
+                <i class="fas fa-search absolute left-4.5 top-1/2 -translate-y-1/2 text-yt-muted text-sm group-focus-within:text-brand-orange transition-colors"></i>
+                <button id="clear-search-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-yt-muted hover:text-white transition-colors hidden">
+                    <i class="fas fa-times-circle text-base"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Video Cards Grid -->
+        <div id="video-grid-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Dynamic video cards load here -->
+        </div>
+
+        <!-- Grid Empty State -->
+        <div id="grid-empty-state" class="text-center py-20 bg-[#121212]/50 border border-dashed border-white/5 rounded-3xl hidden">
+            <i class="fas fa-video-slash text-5xl text-yt-muted mb-4"></i>
+            <h4 class="text-white font-bold text-lg mb-2">Bu Kategoride Video Bulunamadı</h4>
+            <p class="text-yt-muted text-sm">Filtreleme kriterlerine uygun içerik şu an mevcut değil.</p>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer-section" class="bg-[#0b0b0b] border-t border-white/5 py-16 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center">
+                <!-- Brand logo copy -->
+                <div class="flex flex-col items-center space-y-3">
+                    <img src="assets/images/ustalarTV.png" alt="Logo" class="h-14 w-auto opacity-95">
+                    <span class="text-yt-muted text-sm">&copy; 2026 Ustalar TV. Tüm Hakları Saklıdır.</span>
+                </div>
+                <!-- Links -->
+                <div class="flex items-center justify-center space-x-6 md:space-x-8 text-sm text-yt-muted font-bold">
+                    <a href="ustalar_tv.html" class="hover:text-white transition-colors">Anasayfa</a>
+                    <a href="#videos-section" class="hover:text-white transition-colors">Videolar</a>
+                    <a href="#footer-section" class="hover:text-white transition-colors">İletişim</a>
+                    <a href="index.html" class="text-xs bg-white/5 hover:bg-white/10 text-white px-3.5 py-1.5 rounded-lg border border-white/10 transition-all flex items-center gap-1">
+                        Ustalar.com'a Git <i class="fas fa-external-link-alt text-[9px] opacity-75"></i>
+                    </a>
+                </div>
+                <!-- Buttons -->
+                <div class="flex flex-col items-center space-y-3">
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/905324666068" target="_blank" class="w-full max-w-[220px] bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 px-5 rounded-2xl font-bold text-xs transition-all shadow-[0_4px_12px_rgba(37,211,102,0.15)] flex items-center justify-center">
+                        <i class="fab fa-whatsapp text-lg mr-2"></i> WhatsApp İletişim
+                    </a>
+                    <!-- Google Play Button -->
+                    <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank" class="w-full max-w-[220px] bg-white/5 hover:bg-white/10 text-white border border-white/10 py-3 px-5 rounded-2xl font-bold text-xs transition-all flex items-center justify-center">
+                        <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
+                        Google Play İndir
                     </a>
                 </div>
             </div>
@@ -391,37 +277,287 @@
     <!-- ASİSTAN -->
     <script src="assets/js/asistan.js"></script>
 
+    <!-- FIREBASE AND PLAYLIST SCRIPT -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-    <!-- SCRIPTS -->
-    <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-md');
-            } else {
-                navbar.classList.remove('shadow-md');
+        const firebaseConfig = {
+            apiKey: "AIzaSyBAmoQg6AaXFqbLO7dQajuYXtZ-1NnXQmo",
+            authDomain: "ustalar-com.firebaseapp.com",
+            projectId: "ustalar-com",
+            storageBucket: "ustalar-com.firebasestorage.app",
+            messagingSenderId: "958611497982",
+            appId: "1:958611497982:web:74f2c99382be74863d56af"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let allVideos = [];
+        let filteredVideos = [];
+
+        // BACKGROUND HERO SLIDER ANIMATION
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('#slider-container .slide');
+        
+        function startSlider() {
+            if (slides.length <= 1) return;
+            setInterval(() => {
+                slides[currentSlide].classList.remove('opacity-100');
+                slides[currentSlide].classList.add('opacity-0');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.remove('opacity-0');
+                slides[currentSlide].classList.add('opacity-100');
+            }, 5000);
+        }
+
+        // Extracts YouTube ID from various link types
+        function getYouTubeId(url) {
+            if (!url) return null;
+            let videoId = null;
+            try {
+                const urlObj = new URL(url);
+                if (urlObj.hostname === 'youtu.be') {
+                    videoId = urlObj.pathname.slice(1);
+                } else if (urlObj.pathname.startsWith('/shorts/')) {
+                    videoId = urlObj.pathname.split('/')[2];
+                } else if (urlObj.pathname.startsWith('/embed/')) {
+                    videoId = urlObj.pathname.split('/')[2];
+                } else {
+                    videoId = urlObj.searchParams.get('v');
+                }
+            } catch (e) {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                const match = url.match(regExp);
+                if (match && match[2].length === 11) {
+                    videoId = match[2];
+                }
             }
-        });
+            return videoId;
+        }
 
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        // Sets the currently active video in the cinematic player
+        window.setActiveVideo = function(id, playImmediately = false) {
+            const video = allVideos.find(v => v.id === id);
+            if (!video) return;
 
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.onclick = () => mobileMenu.classList.toggle('hidden');
-            mobileLinks.forEach(link => {
-                link.onclick = () => mobileMenu.classList.add('hidden');
+            const playerSection = document.getElementById('player-container-section');
+            playerSection.classList.remove('hidden');
+
+            const ytId = getYouTubeId(video.videoUrl);
+            const player = document.getElementById('main-video-player');
+
+            if (ytId) {
+                player.src = `https://www.youtube-nocookie.com/embed/${ytId}?autoplay=${playImmediately ? 1 : 0}&rel=0`;
+            }
+
+            // Update details
+            document.getElementById('active-video-title').textContent = video.title;
+            
+            // Generate customized WhatsApp link for this video
+            const waBtn = document.getElementById('whatsapp-share-btn');
+            const encodedText = encodeURIComponent(`Merhaba, Ustalar TV'deki "${video.title}" videosu hakkında detaylı bilgi almak istiyorum.`);
+            waBtn.href = `https://wa.me/905324666068?text=${encodedText}`;
+
+            // Highlight active video card in grid
+            document.querySelectorAll('.video-card-item').forEach(card => {
+                const cardId = card.getAttribute('data-id');
+                if (cardId === id) {
+                    card.classList.add('border-brand-orange', 'bg-brand-orange/5', 'shadow-lg');
+                    card.classList.remove('border-white/5', 'bg-[#181818]/40');
+                } else {
+                    card.classList.remove('border-brand-orange', 'bg-brand-orange/5', 'shadow-lg');
+                    card.classList.add('border-white/5', 'bg-[#181818]/40');
+                }
+            });
+
+            // Smooth scroll to active player view
+            if (playImmediately) {
+                window.scrollTo({
+                    top: playerSection.getBoundingClientRect().top + window.scrollY - 100,
+                    behavior: 'smooth'
+                });
+            }
+        };
+
+        // Renders the video grid cards
+        function renderVideoGrid(videosToRender) {
+            const grid = document.getElementById('video-grid-container');
+            const countBadge = document.getElementById('videos-count');
+            const emptyState = document.getElementById('grid-empty-state');
+
+            grid.innerHTML = "";
+            countBadge.textContent = `${videosToRender.length} Video`;
+
+            if (videosToRender.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            videosToRender.forEach((video) => {
+                const ytId = getYouTubeId(video.videoUrl);
+                const thumbnail = ytId 
+                    ? `https://img.youtube.com/vi/${ytId}/mqdefault.jpg`
+                    : 'https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=400&auto=format&fit=crop';
+
+                const card = document.createElement('div');
+                card.className = `video-card-item flex flex-col p-4 rounded-3xl border border-white/5 bg-[#181818]/40 hover:bg-[#202020] hover:border-white/10 transition-all duration-300 cursor-pointer group`;
+                card.setAttribute('data-id', video.id);
+                card.onclick = () => window.setActiveVideo(video.id, true);
+
+                card.innerHTML = `
+                    <!-- Video Thumbnail -->
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border border-white/5 mb-4 shrink-0">
+                        <img src="${thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${video.title}">
+                        <!-- Hover Play Overlay -->
+                        <div class="absolute inset-0 bg-black/45 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-play text-white text-lg bg-brand-orange p-3.5 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.6)] transform scale-90 group-hover:scale-100 transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    <!-- Meta -->
+                    <div class="flex-1 flex flex-col justify-between">
+                        <h4 class="text-white text-sm font-bold leading-snug line-clamp-2 group-hover:text-brand-orange transition-colors duration-300 mb-2">
+                            ${video.title}
+                        </h4>
+                        <div class="flex items-center justify-between mt-2 pt-2 border-t border-white/5 text-[11px] text-yt-muted font-semibold">
+                            <span><i class="fas fa-hard-hat text-[9px] mr-1"></i> Ustalar TV Özel</span>
+                            <span class="hover:text-brand-orange transition-colors"><i class="fas fa-play-circle mr-1"></i> İzle</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
         }
+
+        let activeCategory = 'all';
+        let searchQuery = '';
+
+        function applyFilters() {
+            // 1. Filter by category
+            let tempVideos = [];
+            if (activeCategory === 'all') {
+                tempVideos = [...allVideos];
+            } else {
+                tempVideos = allVideos.filter(video => {
+                    // Check if explicit category is set and matches
+                    if (video.category) {
+                        return video.category === activeCategory;
+                    }
+                    // Fallback to title keywords if no explicit category is set
+                    const titleLower = video.title.toLowerCase();
+                    if (activeCategory === 'inşaat') {
+                        return titleLower.includes('inşaat') || titleLower.includes('yapı') || titleLower.includes('tuğla') || titleLower.includes('beton') || titleLower.includes('harç') || titleLower.includes('kaba');
+                    }
+                    if (activeCategory === 'su') {
+                        return titleLower.includes('su') || titleLower.includes('tesisat') || titleLower.includes('boru') || titleLower.includes('musluk') || titleLower.includes('banyo') || titleLower.includes('pimaş') || titleLower.includes('batarya');
+                    }
+                    if (activeCategory === 'elektrik') {
+                        return titleLower.includes('elektrik') || titleLower.includes('kablo') || titleLower.includes('priz') || titleLower.includes('sigorta') || titleLower.includes('lamba') || titleLower.includes('aydınlatma') || titleLower.includes('anahtar');
+                    }
+                    if (activeCategory === 'alçı') {
+                        return titleLower.includes('alçı') || titleLower.includes('sıva') || titleLower.includes('boya') || titleLower.includes('kartonpiyer') || titleLower.includes('duvar kağıdı') || titleLower.includes('macun');
+                    }
+                    if (activeCategory === 'silikon') {
+                        return titleLower.includes('silikon') || titleLower.includes('derz') || titleLower.includes('mastik') || titleLower.includes('yapıştırıcı') || titleLower.includes('epoksi');
+                    }
+                    return false;
+                });
+            }
+
+            // 2. Filter by search query
+            if (searchQuery.trim() !== '') {
+                const queryLower = searchQuery.toLowerCase().trim();
+                tempVideos = tempVideos.filter(video => video.title.toLowerCase().includes(queryLower));
+            }
+
+            filteredVideos = tempVideos;
+            renderVideoGrid(filteredVideos);
+        }
+
+        // Filters videos locally based on category
+        function filterCategory(category) {
+            activeCategory = category;
+            applyFilters();
+        }
+
+        // Search Input Listeners
+        const searchInput = document.getElementById('video-search-input');
+        const clearSearchBtn = document.getElementById('clear-search-btn');
+
+        if (searchInput && clearSearchBtn) {
+            searchInput.addEventListener('input', function() {
+                searchQuery = this.value;
+                if (searchQuery.length > 0) {
+                    clearSearchBtn.classList.remove('hidden');
+                } else {
+                    clearSearchBtn.classList.add('hidden');
+                }
+                applyFilters();
+            });
+
+            clearSearchBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                searchQuery = '';
+                this.classList.add('hidden');
+                applyFilters();
+                searchInput.focus();
+            });
+        }
+
+        // Fetch videos from Firestore watch_and_do collection
+        async function fetchVideos() {
+            try {
+                const q = query(collection(db, "watch_and_do"), orderBy("orderIndex"));
+                const qs = await getDocs(q);
+
+                allVideos = [];
+                qs.forEach(docSnap => {
+                    allVideos.push({
+                        id: docSnap.id,
+                        ...docSnap.data()
+                    });
+                });
+
+                filteredVideos = [...allVideos];
+                renderVideoGrid(filteredVideos);
+
+            } catch (error) {
+                console.error("Veriler getirilemedi:", error);
+                document.getElementById('video-grid-container').innerHTML = '<p class="text-red-400 text-center col-span-full py-10">Veri yükleme hatası oluştu.</p>';
+            } finally {
+                hidePreloader();
+            }
+        }
+
+        function hidePreloader() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => preloader.remove(), 500);
+            }
+        }
+
+        // Category pills click events
+        document.querySelectorAll('.category-pill').forEach(pill => {
+            pill.addEventListener('click', function() {
+                document.querySelectorAll('.category-pill').forEach(p => {
+                    p.classList.remove('active', 'bg-brand-orange', 'text-white', 'border-brand-orange');
+                    p.classList.add('bg-[#1e1e1e]', 'text-yt-muted', 'border-white/5');
+                });
+                this.classList.add('active', 'bg-brand-orange', 'text-white', 'border-brand-orange');
+                this.classList.remove('bg-[#1e1e1e]', 'text-yt-muted', 'border-white/5');
+                
+                const cat = this.getAttribute('data-cat');
+                filterCategory(cat);
+            });
+        });
+
+        // Initialize Page
+        startSlider();
+        fetchVideos();
     </script>
-
-
-
-    <!-- DİL YÖNETİMİ -->
-    <script src="assets/js/language.js"></script>
-
 </body>
 </html>
-
-
-
