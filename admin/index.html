@@ -23,6 +23,18 @@
 </head>
 <body class="min-h-screen flex flex-col md:flex-row">
 
+    <!-- GLOBAL LOADING OVERLAY -->
+    <div id="global-loader" class="fixed inset-0 z-[9999] bg-slate-900/60 backdrop-blur-sm flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white p-6 rounded-2xl shadow-2xl flex flex-col items-center max-w-xs w-full text-center">
+            <div class="relative flex items-center justify-center mb-4">
+                <div class="absolute w-12 h-12 rounded-full border border-orange-500/20 animate-ping opacity-75"></div>
+                <div class="w-10 h-10 border-4 border-slate-100 border-t-orange-500 rounded-full animate-spin"></div>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 tracking-wide">Yükleniyor...</h3>
+            <p class="text-xs text-slate-400 mt-1">Lütfen bekleyin, işlem gerçekleştiriliyor.</p>
+        </div>
+    </div>
+
     <!-- LOGIN SCREEN -->
     <div id="login-screen" class="fixed inset-0 z-[100] bg-slate-900 flex items-center justify-center p-4">
         <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
@@ -34,7 +46,7 @@
             <form id="login-form" class="space-y-6">
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2 text-left">Kullanıcı Adı</label>
-                    <input type="text" id="email" placeholder="admin" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-orange-500 outline-none">
+                    <input type="text" id="email" placeholder="Kullanıcı adını girin" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-orange-500 outline-none">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-2 text-left">Şifre</label>
@@ -57,28 +69,28 @@
             </div>
             <nav class="space-y-2">
                 <div onclick="switchView('ads')" id="nav-ads" class="nav-link flex items-center p-3 rounded-xl font-semibold active">
-                    <i class="fas fa-bullhorn w-6"></i> Reklamlar
+                    <i class="fas fa-bullhorn w-6"></i> Mobil Reklamlar
                 </div>
                 <div onclick="switchView('services')" id="nav-services" class="nav-link flex items-center p-3 rounded-xl font-semibold">
-                    <i class="fas fa-tools w-6"></i> Hizmetler
+                    <i class="fas fa-tools w-6"></i> Mobil Hizmetler
                 </div>
                 <div onclick="switchView('brand')" id="nav-brand" class="nav-link flex items-center p-3 rounded-xl font-semibold">
-                    <i class="fas fa-certificate w-6"></i> Brand Yönetimi
+                    <i class="fas fa-certificate w-6"></i> Mobil Brand Yönetimi
                 </div>
                 <div onclick="switchView('izleyap')" id="nav-izleyap" class="nav-link flex items-center p-3 rounded-xl font-semibold">
-                    <i class="fas fa-play-circle w-6"></i> Ustalar TV
+                    <i class="fas fa-play-circle w-6"></i> Ustalar TV Web & Mobil
                 </div>
                 <div onclick="switchView('catalog')" id="nav-catalog" class="nav-link flex items-center p-3 rounded-xl font-semibold">
-                    <i class="fas fa-book-open w-6"></i> Yapı Katalog
+                    <i class="fas fa-book-open w-6"></i> Yapı Katalog Web & Mobil
                 </div>
                 <div onclick="switchView('news')" id="nav-news" class="nav-link flex items-center p-3 rounded-xl font-semibold">
-                    <i class="fas fa-newspaper w-6"></i> Yapı Haberler
+                    <i class="fas fa-newspaper w-6"></i> Mobil Yapı Haberler
                 </div>
                 <div onclick="switchView('webslider')" id="nav-webslider" class="nav-link flex items-center p-3 rounded-xl font-semibold">
                     <i class="fas fa-images w-6"></i> Web Slider
                 </div>
                 <div onclick="switchView('notifications')" id="nav-notifications" class="nav-link flex items-center p-3 rounded-xl font-semibold">
-                    <i class="fas fa-paper-plane w-6"></i> Bildirim Gönder
+                    <i class="fas fa-paper-plane w-6"></i> Mobil Açılış Bildirimi Gönder
                 </div>
                 <div onclick="logout()" class="nav-link flex items-center p-3 rounded-xl font-semibold mt-10 text-red-400 hover:text-red-300">
                     <i class="fas fa-sign-out-alt w-6"></i> Çıkış Yap
@@ -92,7 +104,7 @@
             <!-- ADS VIEW -->
             <div id="view-ads" class="view-content">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-800">Reklam Yönetimi</h2>
+                    <h2 class="text-3xl font-bold text-slate-800">Mobil Reklamlar</h2>
                     <p class="text-slate-500">Her sayfa için özel Alt ve Üst banner alanlarını yönetin.</p>
                 </div>
 
@@ -176,7 +188,7 @@
             <div id="view-services" class="view-content hidden">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                     <div>
-                        <h2 class="text-3xl font-bold text-slate-800">Hizmet Yönetimi</h2>
+                        <h2 class="text-3xl font-bold text-slate-800">Mobil Hizmetler</h2>
                         <p class="text-slate-500">Hizmetler sayfasındaki ana hizmetleri yönetin.</p>
                     </div>
                     <button onclick="openServiceModal('services')" class="btn-orange text-white font-bold px-6 py-3 rounded-xl shadow-lg flex items-center">
@@ -207,7 +219,7 @@
             <!-- BRAND VIEW -->
             <div id="view-brand" class="view-content hidden">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-800">Brand Yönetimi</h2>
+                    <h2 class="text-3xl font-bold text-slate-800">Mobil Brand Yönetimi</h2>
                     <p class="text-slate-500">Brand sayfasındaki hizmet kutularını yönetin.</p>
                 </div>
 
@@ -245,7 +257,7 @@
             <div id="view-catalog" class="view-content hidden">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                     <div>
-                        <h2 class="text-3xl font-bold text-slate-800">Yapı Katalog Yönetimi</h2>
+                        <h2 class="text-3xl font-bold text-slate-800">Yapı Katalog Web & Mobil</h2>
                         <p class="text-slate-500">Yapı Katalog sayfasındaki ürün kartlarını yönetin.</p>
                     </div>
                     <button onclick="openServiceModal('catalog_products')" class="btn-orange text-white font-bold px-6 py-3 rounded-xl shadow-lg flex items-center">
@@ -306,7 +318,7 @@
             <div id="view-izleyap" class="view-content hidden">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                     <div>
-                        <h2 class="text-3xl font-bold text-slate-800">Ustalar TV Yönetimi</h2>
+                        <h2 class="text-3xl font-bold text-slate-800">Ustalar TV Web & Mobil</h2>
                         <p class="text-slate-500">Uygulama içindeki eğitim videolarını ve içerikleri yönetin.</p>
                     </div>
                     <button onclick="openVideoModal()" class="btn-orange text-white font-bold px-6 py-3 rounded-xl shadow-lg flex items-center">
@@ -338,7 +350,7 @@
             <!-- NOTIFICATIONS VIEW -->
             <div id="view-notifications" class="view-content hidden">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-800">Bildirim Yönetimi</h2>
+                    <h2 class="text-3xl font-bold text-slate-800">Mobil Açılış Bildirimi Gönder</h2>
                     <p class="text-slate-500">Uygulamayı yükleyen tüm kullanıcılara anlık bildirim gönderin.</p>
                 </div>
 
@@ -397,7 +409,7 @@
             <!-- NEWS VIEW -->
             <div id="view-news" class="view-content hidden">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-800">Yapı Haberler</h2>
+                    <h2 class="text-3xl font-bold text-slate-800">Mobil Yapı Haberler</h2>
                     <p class="text-slate-500">Haberler sayfasındaki duyuru listesini yönetin.</p>
                 </div>
 
@@ -624,6 +636,44 @@
         const db = getFirestore(app);
         const storage = getStorage(app);
 
+        // GLOBAL LOADER UTILITIES
+        window.showLoader = () => {
+            const loader = document.getElementById('global-loader');
+            if (loader) {
+                loader.classList.remove('hidden');
+                loader.offsetHeight; // Reflow
+                loader.classList.remove('opacity-0');
+            }
+        };
+
+        window.hideLoader = (delay = 0) => {
+            const loader = document.getElementById('global-loader');
+            if (loader) {
+                setTimeout(() => {
+                    loader.classList.add('opacity-0');
+                    setTimeout(() => {
+                        loader.classList.add('hidden');
+                    }, 300);
+                }, delay);
+            }
+        };
+
+        window.runWithLoader = async (action) => {
+            window.showLoader();
+            const startTime = Date.now();
+            try {
+                await action();
+            } catch (err) {
+                console.error(err);
+                alert("İşlem sırasında bir hata oluştu: " + (err.message || err));
+            } finally {
+                const elapsedTime = Date.now() - startTime;
+                const minDuration = 1200; // 1.2s minimum loading time
+                const remainingTime = Math.max(0, minDuration - elapsedTime);
+                window.hideLoader(remainingTime);
+            }
+        };
+
         let servicesData = [];
         let brandServicesData = [];
         let catalogData = [];
@@ -633,24 +683,26 @@
         let webSlidersData = [];
 
         window.switchView = (view) => {
-            document.querySelectorAll('.view-content').forEach(v => v.classList.add('hidden'));
-            document.getElementById(`view-${view}`).classList.remove('hidden');
-            document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-            document.getElementById(`nav-${view}`).classList.add('active');
-            if(view === 'services') loadServices();
-            if(view === 'brand') loadBrandServices();
-            if(view === 'catalog') {
-                loadCatalog();
-                loadCatalogCompanies();
-            }
-            if(view === 'news') {
-                loadNews();
-            }
-            if(view === 'webslider') {
-                loadWebSliders();
-            }
-            if(view === 'izleyap') loadVideos();
-            if(view === 'notifications') loadNotifications();
+            window.runWithLoader(async () => {
+                document.querySelectorAll('.view-content').forEach(v => v.classList.add('hidden'));
+                document.getElementById(`view-${view}`).classList.remove('hidden');
+                document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+                document.getElementById(`nav-${view}`).classList.add('active');
+                
+                let promises = [];
+                if(view === 'services') promises.push(loadServices());
+                if(view === 'brand') promises.push(loadBrandServices());
+                if(view === 'catalog') {
+                    promises.push(loadCatalog());
+                    promises.push(loadCatalogCompanies());
+                }
+                if(view === 'news') promises.push(loadNews());
+                if(view === 'webslider') promises.push(loadWebSliders());
+                if(view === 'izleyap') promises.push(loadVideos());
+                if(view === 'notifications') promises.push(loadNotifications());
+                
+                await Promise.all(promises);
+            });
         };
 
         window.logout = () => signOut(auth);
@@ -728,7 +780,9 @@
                 localStorage.setItem('lastAdminActivity', Date.now());
                 document.getElementById('login-screen').classList.add('hidden');
                 document.getElementById('dashboard-layout').classList.remove('hidden');
-                loadAdSettings();
+                window.runWithLoader(async () => {
+                    await loadAdSettings();
+                });
             } else {
                 localStorage.removeItem('lastAdminActivity');
                 document.getElementById('login-screen').classList.remove('hidden');
@@ -741,7 +795,9 @@
             let emailValue = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             if (emailValue.toLowerCase() === 'admin') emailValue = 'admin@ustalar.com';
-            try { await signInWithEmailAndPassword(auth, emailValue, password); } catch (err) { alert("Giriş Hatası!"); }
+            await window.runWithLoader(async () => {
+                await signInWithEmailAndPassword(auth, emailValue, password);
+            });
         };
 
         const sanitizeUrl = (url) => {
@@ -818,13 +874,10 @@
         };
 
         window.saveCurrentBanner = async () => {
-            const page = document.getElementById('ad-page-selector').value;
-            const pos = document.getElementById('ad-pos-selector').value;
-            const docId = `${page}_${pos}`;
-            const status = document.getElementById('save-status');
-            status.textContent = "Kaydediliyor...";
-            status.classList.remove('hidden');
-            try {
+            await window.runWithLoader(async () => {
+                const page = document.getElementById('ad-page-selector').value;
+                const pos = document.getElementById('ad-pos-selector').value;
+                const docId = `${page}_${pos}`;
                 let data = { isActive: document.getElementById('ad-isActive').checked, title: document.getElementById('ad-title').value, linkUrl: sanitizeUrl(document.getElementById('ad-linkUrl').value) };
                 const file = document.getElementById('ad-file').files[0];
                 if (file) {
@@ -833,9 +886,8 @@
                     data.imageUrl = await getDownloadURL(sRef);
                 }
                 await setDoc(doc(db, "banners", docId), data, { merge: true });
-                status.textContent = "✓ Başarıyla Kaydedildi!";
-                setTimeout(() => { status.classList.add('hidden'); loadCurrentBanner(); }, 1500);
-            } catch(e) { status.textContent = "Hata!"; }
+                await loadCurrentBanner();
+            });
         };
 
         async function loadAdSettings() { updatePositionsAndLoad(); }
@@ -884,18 +936,14 @@
         };
 
         window.saveNews = async () => {
-            const id = document.getElementById('news-id').value;
-            const title = document.getElementById('news-title').value;
-            const description = document.getElementById('news-desc').value;
-            const linkUrl = sanitizeUrl(document.getElementById('news-url').value);
-            const file = document.getElementById('news-file').files[0];
-            let imageUrl = document.getElementById('news-old-image').value;
-            
-            const btn = document.getElementById('news-save-btn');
-            btn.disabled = true;
-            btn.innerHTML = 'Kaydediliyor...';
-            
-            try {
+            await window.runWithLoader(async () => {
+                const id = document.getElementById('news-id').value;
+                const title = document.getElementById('news-title').value;
+                const description = document.getElementById('news-desc').value;
+                const linkUrl = sanitizeUrl(document.getElementById('news-url').value);
+                const file = document.getElementById('news-file').files[0];
+                let imageUrl = document.getElementById('news-old-image').value;
+                
                 if (file) {
                     const sRef = ref(storage, `news/${Date.now()}_${file.name}`);
                     await uploadBytes(sRef, file);
@@ -908,29 +956,29 @@
                     await addDoc(collection(db, "news"), { title, description, linkUrl, imageUrl, orderIndex: newsData.length });
                 }
                 closeNewsModal();
-                loadNews();
-            } catch(e) { alert("Hata!"); }
-            finally {
-                btn.disabled = false;
-                btn.innerHTML = '<span id="news-btn-text">Duyuruyu Kaydet</span>';
-            }
+                await loadNews();
+            });
         };
-
+ 
         window.deleteNews = async (id) => { 
             if(confirm("Duyuru silinsin mi?")) { 
-                await deleteDoc(doc(db, "news", id)); 
-                loadNews(); 
+                await window.runWithLoader(async () => {
+                    await deleteDoc(doc(db, "news", id)); 
+                    await loadNews(); 
+                });
             } 
         };
-
+ 
         window.moveNews = async (idx, dir) => {
             if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === newsData.length - 1)) return;
-            const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
-            const batch = writeBatch(db);
-            batch.update(doc(db, "news", newsData[idx].id), { orderIndex: targetIdx });
-            batch.update(doc(db, "news", newsData[targetIdx].id), { orderIndex: idx });
-            await batch.commit();
-            loadNews();
+            await window.runWithLoader(async () => {
+                const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
+                const batch = writeBatch(db);
+                batch.update(doc(db, "news", newsData[idx].id), { orderIndex: targetIdx });
+                batch.update(doc(db, "news", newsData[targetIdx].id), { orderIndex: idx });
+                await batch.commit();
+                await loadNews();
+            });
         };
 
         // SERVICES
@@ -1006,48 +1054,54 @@
         };
 
         window.saveService = async () => {
-            const coll = document.getElementById('srv-target-collection').value;
-            const id = document.getElementById('srv-id').value;
-            const name = document.getElementById('srv-name').value;
-            const url = sanitizeUrl(document.getElementById('srv-url').value);
-            const file = document.getElementById('srv-file').files[0];
-            let imageUrl = document.getElementById('srv-old-image').value;
-            if (file) {
-                const sRef = ref(storage, `${coll}/${Date.now()}_${file.name}`);
-                await uploadBytes(sRef, file);
-                imageUrl = await getDownloadURL(sRef);
-            }
-            if (id) await updateDoc(doc(db, coll, id), { name, redirectUrl: url, imageUrl });
-            else await addDoc(collection(db, coll), { name, redirectUrl: url, imageUrl, orderIndex: (coll === 'services' ? servicesData : (coll === 'brand_services' ? brandServicesData : (coll === 'catalog_companies' ? catalogCompaniesData : catalogData))).length });
-            closeServiceModal();
-            if (coll === 'services') loadServices();
-            else if (coll === 'brand_services') loadBrandServices();
-            else if (coll === 'catalog_companies') loadCatalogCompanies();
-            else loadCatalog();
+            await window.runWithLoader(async () => {
+                const coll = document.getElementById('srv-target-collection').value;
+                const id = document.getElementById('srv-id').value;
+                const name = document.getElementById('srv-name').value;
+                const url = sanitizeUrl(document.getElementById('srv-url').value);
+                const file = document.getElementById('srv-file').files[0];
+                let imageUrl = document.getElementById('srv-old-image').value;
+                if (file) {
+                    const sRef = ref(storage, `${coll}/${Date.now()}_${file.name}`);
+                    await uploadBytes(sRef, file);
+                    imageUrl = await getDownloadURL(sRef);
+                }
+                if (id) await updateDoc(doc(db, coll, id), { name, redirectUrl: url, imageUrl });
+                else await addDoc(collection(db, coll), { name, redirectUrl: url, imageUrl, orderIndex: (coll === 'services' ? servicesData : (coll === 'brand_services' ? brandServicesData : (coll === 'catalog_companies' ? catalogCompaniesData : catalogData))).length });
+                closeServiceModal();
+                if (coll === 'services') await loadServices();
+                else if (coll === 'brand_services') await loadBrandServices();
+                else if (coll === 'catalog_companies') await loadCatalogCompanies();
+                else await loadCatalog();
+            });
         };
-
+ 
         window.deleteService = async (id, coll) => {
             if (confirm("Silinsin mi?")) {
-                await deleteDoc(doc(db, coll, id));
-                if (coll === 'services') loadServices();
-                else if (coll === 'brand_services') loadBrandServices();
-                else if (coll === 'catalog_companies') loadCatalogCompanies();
-                else loadCatalog();
+                await window.runWithLoader(async () => {
+                    await deleteDoc(doc(db, coll, id));
+                    if (coll === 'services') await loadServices();
+                    else if (coll === 'brand_services') await loadBrandServices();
+                    else if (coll === 'catalog_companies') await loadCatalogCompanies();
+                    else await loadCatalog();
+                });
             }
         };
-
+ 
         window.moveService = async (idx, dir, coll) => {
             const data = coll === 'services' ? servicesData : (coll === 'brand_services' ? brandServicesData : (coll === 'catalog_companies' ? catalogCompaniesData : catalogData));
             if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === data.length - 1)) return;
-            const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
-            const batch = writeBatch(db);
-            batch.update(doc(db, coll, data[idx].id), { orderIndex: targetIdx });
-            batch.update(doc(db, coll, data[targetIdx].id), { orderIndex: idx });
-            await batch.commit();
-            if (coll === 'services') loadServices();
-            else if (coll === 'brand_services') loadBrandServices();
-            else if (coll === 'catalog_companies') loadCatalogCompanies();
-            else loadCatalog();
+            await window.runWithLoader(async () => {
+                const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
+                const batch = writeBatch(db);
+                batch.update(doc(db, coll, data[idx].id), { orderIndex: targetIdx });
+                batch.update(doc(db, coll, data[targetIdx].id), { orderIndex: idx });
+                await batch.commit();
+                if (coll === 'services') await loadServices();
+                else if (coll === 'brand_services') await loadBrandServices();
+                else if (coll === 'catalog_companies') await loadCatalogCompanies();
+                else await loadCatalog();
+            });
         };
 
         // VIDEOS
@@ -1081,16 +1135,27 @@
             document.getElementById('video-modal').classList.remove('hidden');
         };
         window.saveVideo = async () => {
-            const id = document.getElementById('vid-id').value;
-            const title = document.getElementById('vid-title').value;
-            const videoUrl = document.getElementById('vid-url').value;
-            const category = document.getElementById('vid-category').value;
-            if (id) await updateDoc(doc(db, "watch_and_do", id), { title, videoUrl, category });
-            else await addDoc(collection(db, "watch_and_do"), { title, videoUrl, category, orderIndex: videosData.length });
-            closeVideoModal(); loadVideos();
+            await window.runWithLoader(async () => {
+                const id = document.getElementById('vid-id').value;
+                const title = document.getElementById('vid-title').value;
+                const videoUrl = document.getElementById('vid-url').value;
+                const category = document.getElementById('vid-category').value;
+                if (id) await updateDoc(doc(db, "watch_and_do", id), { title, videoUrl, category });
+                else await addDoc(collection(db, "watch_and_do"), { title, videoUrl, category, orderIndex: videosData.length });
+                closeVideoModal(); 
+                await loadVideos();
+            });
         };
-        window.deleteVideo = async (id) => { if(confirm("Sil?")) { await deleteDoc(doc(db, "watch_and_do", id)); loadVideos(); } };
-
+ 
+        window.deleteVideo = async (id) => { 
+            if(confirm("Sil?")) { 
+                await window.runWithLoader(async () => {
+                    await deleteDoc(doc(db, "watch_and_do", id)); 
+                    await loadVideos(); 
+                });
+            } 
+        };
+ 
         // NOTIFICATIONS
         async function loadNotifications() {
             const tbody = document.getElementById('notifications-list');
@@ -1103,15 +1168,27 @@
                 tbody.appendChild(tr);
             });
         }
+ 
         window.sendNotification = async () => {
             const title = document.getElementById('notif-title').value;
             const body = document.getElementById('notif-body').value;
             if(!title || !body) return;
-            await addDoc(collection(db, "notifications"), { title, body, sentAt: Date.now(), status: 'pending' });
-            document.getElementById('notif-title').value = ""; document.getElementById('notif-body').value = "";
-            loadNotifications();
+            await window.runWithLoader(async () => {
+                await addDoc(collection(db, "notifications"), { title, body, sentAt: Date.now(), status: 'pending' });
+                document.getElementById('notif-title').value = ""; 
+                document.getElementById('notif-body').value = "";
+                await loadNotifications();
+            });
         };
-        window.deleteNotification = async (id) => { if(confirm("Sil?")) { await deleteDoc(doc(db, "notifications", id)); loadNotifications(); } };
+ 
+        window.deleteNotification = async (id) => { 
+            if(confirm("Sil?")) { 
+                await window.runWithLoader(async () => {
+                    await deleteDoc(doc(db, "notifications", id)); 
+                    await loadNotifications(); 
+                });
+            } 
+        };
 
         // WEB SLIDER LOGIC
         window.loadWebSliders = async () => {
@@ -1157,11 +1234,7 @@
             const file = document.getElementById('ws-file').files[0];
             let imageUrl = document.getElementById('ws-old-image').value;
             
-            const btn = document.getElementById('ws-save-btn');
-            btn.disabled = true;
-            btn.innerHTML = 'Kaydediliyor...';
-            
-            try {
+            await window.runWithLoader(async () => {
                 if (file) {
                     const sRef = ref(storage, `web_sliders/${Date.now()}_${file.name}`);
                     await uploadBytes(sRef, file);
@@ -1169,8 +1242,6 @@
                 }
                 if (!imageUrl) {
                     alert("Lütfen bir görsel seçin!");
-                    btn.disabled = false;
-                    btn.innerHTML = 'Kaydet ve Ekle';
                     return;
                 }
                 if (id) {
@@ -1179,30 +1250,29 @@
                     await addDoc(collection(db, "web_sliders"), { redirectUrl: url, imageUrl, orderIndex: webSlidersData.length });
                 }
                 closeWebSliderModal();
-                loadWebSliders();
-            } catch(e) { 
-                alert("Hata!"); 
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = 'Kaydet ve Ekle';
-            }
+                await loadWebSliders();
+            });
         };
-
+ 
         window.deleteWebSlider = async (id) => {
             if (confirm("Bu slider silinsin mi?")) {
-                await deleteDoc(doc(db, "web_sliders", id));
-                loadWebSliders();
+                await window.runWithLoader(async () => {
+                    await deleteDoc(doc(db, "web_sliders", id));
+                    await loadWebSliders();
+                });
             }
         };
-
+ 
         window.moveWebSlider = async (idx, dir) => {
             if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === webSlidersData.length - 1)) return;
-            const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
-            const batch = writeBatch(db);
-            batch.update(doc(db, "web_sliders", webSlidersData[idx].id), { orderIndex: targetIdx });
-            batch.update(doc(db, "web_sliders", webSlidersData[targetIdx].id), { orderIndex: idx });
-            await batch.commit();
-            loadWebSliders();
+            await window.runWithLoader(async () => {
+                const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
+                const batch = writeBatch(db);
+                batch.update(doc(db, "web_sliders", webSlidersData[idx].id), { orderIndex: targetIdx });
+                batch.update(doc(db, "web_sliders", webSlidersData[targetIdx].id), { orderIndex: idx });
+                await batch.commit();
+                await loadWebSliders();
+            });
         };
     </script>
 </body>

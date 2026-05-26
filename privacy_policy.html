@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gizlilik Politikası | Ustalar.com</title>
+    <link rel="icon" type="image/png" href="assets/images/ustalar_icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.1.0/css/flag-icons.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#f97316',
+                            dark: '#ea580c',
+                            light: '#fdba74'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Gizli Google Translate */
+        #google_translate_element {
+            display: none !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        body {
+            top: 0 !important;
+        }
+
+        /* Okuma İlerleme Çubuğu */
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(to right, #f97316, #ea580c);
+            width: 0%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white flex flex-col min-h-screen">
+
+    <!-- Okuma İlerleme Çubuğu -->
+    <div id="scrollProgress" class="progress-bar"></div>
+
+    <!-- HEADER -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200 transition-all duration-300"
+        id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center group">
+                <img src="assets/images/about_logos.png" alt="Ustalar Logo"
+                    class="h-12 w-auto object-contain group-hover:scale-105 transition-transform">
+            </a>
+
+            <!-- Masaüstü Menü -->
+            <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-slate-600 font-semibold relative">
+                <a href="index.html" class="hover:text-brand-orange transition-colors">Anasayfa</a>
+
+                <!-- Kurumsal Dropdown -->
+                <div class="relative group">
+                    <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
+                        Kurumsal <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <!-- Dropdown Content -->
+                    <div class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
+                        <a href="index.html#hakkimizda" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Hakkımızda</a>
+                        <a href="index.html#iletisim" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">İletişim</a>
+                    </div>
+                </div>
+
+                <a href="index.html#ekosistem" class="hover:text-brand-orange transition-colors">Hizmetlerimiz</a>
+
+                <!-- AI Dropdown -->
+                <div class="relative group">
+                    <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
+                        AI <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </button>
+                    <!-- Dropdown Content -->
+                    <div
+                        class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
+                        <a href="ustalar_of_ai.html"
+                            class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Ustalar
+                            OF AI</a>
+                        <a href="fabrica_ai.html"
+                            class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">FabricaAI</a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Sağ Butonlar -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <button onclick="toggleLang()"
+                    class="lang-toggle-btn flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
+                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
+                </button>
+
+                <!-- Ustalar TV Butonu -->
+                <a href="ustalar_tv.html" title="Ustalar TV"
+                    class="text-red-500 bg-red-50 hover:bg-red-500 hover:text-white border border-red-500/30 w-10 h-10 rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-sm hover:shadow-md">
+                    <i class="fas fa-tv"></i>
+                </a>
+                
+                <!-- Yapı Katalog Butonu -->
+                <a href="yapi_katalog.html" title="Yapı Katalog"
+                    class="text-brand-orange bg-orange-50 hover:bg-brand-orange hover:text-white border border-brand-orange/30 w-10 h-10 rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-sm hover:shadow-md">
+                    <i class="fas fa-book-open"></i>
+                </a>
+                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home"
+                    class="text-brand-orange border-2 border-brand-orange hover:bg-brand-orange hover:text-white px-5 py-2 rounded-xl font-bold transition-all">
+                    <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank"
+                    class="bg-brand-orange text-white px-5 py-2 rounded-xl font-bold hover:bg-brand-dark hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center">
+                    <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
+                    İndir
+                </a>
+            </div>
+
+            <!-- Mobil Hamburger Buton & Ekstralar -->
+            <div class="flex items-center lg:hidden space-x-3">
+                <!-- Ustalar TV Butonu (Mobil) -->
+                <a href="ustalar_tv.html" title="Ustalar TV"
+                    class="text-red-500 bg-red-50 hover:bg-red-500 hover:text-white border border-red-500/30 w-10 h-10 rounded-lg transition-all text-lg flex items-center justify-center">
+                    <i class="fas fa-tv"></i>
+                </a>
+                <a href="yapi_katalog.html" title="Yapı Katalog"
+                    class="text-brand-orange bg-orange-50 hover:bg-brand-orange hover:text-white border border-brand-orange/30 w-10 h-10 rounded-lg transition-all text-lg flex items-center justify-center">
+                    <i class="fas fa-book-open"></i>
+                </a>
+                <button id="mobile-menu-btn"
+                    class="text-slate-600 hover:text-brand-orange transition focus:outline-none w-10 h-10 flex items-center justify-center">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobil Menü İçeriği -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
+            <div class="px-6 py-6 flex flex-col space-y-4">
+                <a href="index.html"
+                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Anasayfa</a>
+
+                <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
+                    <span class="text-slate-800 font-bold text-lg">Kurumsal</span>
+                    <a href="index.html#hakkimizda" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Hakkımızda</a>
+                    <a href="index.html#iletisim" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- İletişim</a>
+                </div>
+
+                <a href="index.html#ekosistem"
+                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hizmetlerimiz</a>
+
+                <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
+                    <span class="text-slate-800 font-bold text-lg">AI</span>
+                    <a href="ustalar_of_ai.html"
+                        class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Ustalar
+                        OF AI</a>
+                    <a href="fabrica_ai.html"
+                        class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">-
+                        FabricaAI</a>
+                </div>
+                <hr class="border-slate-100">
+                <button onclick="toggleLang()"
+                    class="lang-toggle-btn w-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-5 py-3 rounded-xl transition-all font-bold">
+                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
+                </button>
+                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home"
+                    class="text-center text-brand-orange border-2 border-brand-orange px-5 py-3 rounded-xl font-bold transition-all mobile-link">
+                    <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank"
+                    class="bg-brand-orange text-white px-5 py-3 rounded-xl font-bold text-center shadow-md mobile-link flex items-center justify-center">
+                    <img src="assets/images/google-play.png" alt="Google Play" class="h-5 w-auto object-contain mr-2">
+                    İndir
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ANASAYFA GÖRSEL/GRAFİK ARKA PLAN -->
+    <main class="flex-grow pt-28 pb-16 lg:pt-36 lg:pb-24">
+        <!-- Arka Plan Dekorasyonları -->
+        <div class="absolute top-20 right-0 w-[400px] h-[400px] bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 pointer-events-none"></div>
+        <div class="absolute top-40 left-10 w-[300px] h-[300px] bg-slate-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 max-w-6xl">
+            <!-- Sayfa Başlığı -->
+            <div class="text-center mb-12">
+                <span class="bg-orange-100 text-brand-orange text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Yasal Bilgilendirme</span>
+                <h1 class="text-3xl md:text-5xl font-black text-slate-900 mt-4 mb-2">Gizlilik Politikası</h1>
+                <p class="text-slate-500 font-medium">Ustalar.com Web Sitesi ve Mobil Uygulaması Gizlilik Sözleşmesi</p>
+                <div class="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- İki Sütunlu Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+                
+                <!-- SOL SÜTUN - Sabit Menü (Desktop için) -->
+                <aside class="hidden lg:block lg:col-span-1 sticky top-28 bg-white border border-slate-200 p-6 rounded-2xl shadow-sm">
+                    <h3 class="font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2 flex items-center text-sm uppercase tracking-wide">
+                        <i class="fas fa-list-ol mr-2 text-brand-orange"></i> İçindekiler
+                    </h3>
+                    <nav class="space-y-1">
+                        <a href="#giris" class="block px-3 py-2 text-sm rounded-lg hover:bg-slate-50 text-slate-600 hover:text-brand-orange transition-colors font-medium">1. Giriş ve Kapsam</a>
+                        <a href="#veri-toplama" class="block px-3 py-2 text-sm rounded-lg hover:bg-slate-50 text-slate-600 hover:text-brand-orange transition-colors font-medium">2. Toplanan Veriler</a>
+                        <a href="#veri-metot" class="block px-3 py-2 text-sm rounded-lg hover:bg-slate-50 text-slate-600 hover:text-brand-orange transition-colors font-medium">3. Toplama Yöntemleri</a>
+                        <a href="#isleme-amac" class="block px-3 py-2 text-sm rounded-lg hover:bg-slate-50 text-slate-600 hover:text-brand-orange transition-colors font-medium">4. İşleme Amaçları</a>
+                        <a href="#veri-aktarim" class="block px-3 py-2 text-sm rounded-lg hover:bg-slate-50 text-slate-600 hover:text-brand-orange transition-colors font-medium">5. Veri Aktarımı</a>
+                        <a href="#veri-guvenlik" class="block px-3 py-2 text-sm rounded-lg hover:bg-slate-50 text-slate-600 hover:text-brand-orange transition-colors font-medium">6. Veri Güvenliği</a>
+                        <a href="#cerezler" class="block px-3 py-2 text-sm rounded-lg hover:bg-slate-50 text-slate-600 hover:text-brand-orange transition-colors font-medium">7. Çerez Politikası</a>
+                        <a href="#kullanici-haklar" class="block px-3 py-2 text-sm rounded-lg hover:bg-slate-50 text-slate-600 hover:text-brand-orange transition-colors font-medium">8. Haklarınız</a>
+                        <a href="#iletisim-bilgi" class="block px-3 py-2 text-sm rounded-lg hover:bg-slate-50 text-slate-600 hover:text-brand-orange transition-colors font-medium">9. İletişim ve Başvuru</a>
+                    </nav>
+                </aside>
+
+                <!-- SAĞ SÜTUN - Detaylı Gizlilik Politikası İçeriği -->
+                <div class="lg:col-span-3 bg-white border border-slate-200 rounded-3xl p-6 md:p-10 shadow-sm leading-relaxed text-slate-700 space-y-12">
+                    
+                    <!-- Son Güncelleme -->
+                    <div class="border-b border-slate-100 pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div class="flex items-center text-xs text-slate-400 font-bold uppercase tracking-wider">
+                            <i class="far fa-calendar-alt mr-2 text-brand-orange text-sm"></i> Son Güncelleme: 25 Mayıs 2026
+                        </div>
+                        <div class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-md font-semibold">
+                            Versiyon: 1.0.0 (KVKK ve GDPR Uyumlu)
+                        </div>
+                    </div>
+
+                    <!-- 1. GİRİŞ VE KAPSAM -->
+                    <section id="giris" class="scroll-mt-28">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center mr-3 text-sm font-bold">1</span>
+                            Giriş ve Kapsam
+                        </h2>
+                        <div class="space-y-4 text-[15px]">
+                            <p>
+                                <strong>Ustalar.com</strong> (bundan böyle "Platform" veya "Biz" olarak anılacaktır) olarak, kullanıcılarımızın kişisel verilerinin korunması ve gizliliğinin sağlanması en önemli önceliklerimizden biridir. 
+                                Bu Gizlilik Politikası, web sitemiz (<strong>ustalar.com</strong>) ve mobil uygulamamız (<strong>com.ustalar.ustalar_com</strong>) dahil olmak üzere sunduğumuz tüm dijital hizmetlerin kullanımı sırasında elde ettiğimiz verileri nasıl topladığımızı, kullandığımızı, sakladığımızı ve paylaştığımızı açıklamaktadır.
+                            </p>
+                            <p class="bg-orange-50 border-l-4 border-brand-orange p-4 rounded-r-xl text-slate-700 font-medium">
+                                Platformumuzu ziyaret ederek, üye olarak veya mobil uygulamamızı cihazınıza indirip kullanarak bu sözleşmede belirtilen veri işleme ve gizlilik esaslarını kabul etmiş sayılırsınız.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- 2. TOPLANAN KİŞİSEL VERİLER -->
+                    <section id="veri-toplama" class="scroll-mt-28">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center mr-3 text-sm font-bold">2</span>
+                            Toplanan Kişisel Veriler
+                        </h2>
+                        <div class="space-y-4 text-[15px]">
+                            <p>Sizlere sunduğumuz hizmetleri yürütebilmek, geliştirmek ve daha güvenli hale getirmek amacıyla aşağıdaki kategorilerde kişisel verilerinizi işlemekteyiz:</p>
+                            
+                            <ul class="space-y-3 pl-4 border-l-2 border-slate-100">
+                                <li>
+                                    <strong class="text-slate-900">Kimlik ve İletişim Bilgileri:</strong> Ad, soyad, e-posta adresi, telefon numarası, kurumsal unvan, T.C. Kimlik numarası (bazı profesyonel onay süreçlerinde) ve fiziksel adres.
+                                </li>
+                                <li>
+                                    <strong class="text-slate-900">Profil ve Profesyonel Bilgiler (Usta / Firma):</strong> Uzmanlık alanları, iş tecrübeleri, referans görselleri, ustalık belgeleri, çalışma saatleri, mesleki oda kayıtları ve vergi kimlik bilgileri.
+                                </li>
+                                <li>
+                                    <strong class="text-slate-900">İşlem ve Finansal Bilgiler:</strong> Alışveriş kayıtları, sipariş detayları, Yapı Market (YapiShop) üzerinden yapılan işlemler, ödeme geçmişi (kart bilgileri PCI-DSS uyumlu lisanslı ödeme altyapıları tarafından saklanır, tarafımızca kaydedilmez).
+                                </li>
+                                <li>
+                                    <strong class="text-slate-900">Kullanım ve Teknik Veriler:</strong> Cihaz modeli, işletim sistemi, IP adresi, uygulama içi tıklama ve gezinme verileri, log kayıtları, çerezler (cookies) ve reklam kimliği (IDFA/GAID).
+                                </li>
+                                <li>
+                                    <strong class="text-slate-900">Konum Bilgisi (Önemli):</strong> Mobil uygulamamızda hizmet talep eden kullanıcılar ile en yakın bölgedeki ustaların eşleştirilebilmesi için kullanıcının açık rızası alınarak hassas konum (GPS) ve yaklaşık konum verileri arka planda ve uygulama açıkken işlenebilir.
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- 3. VERİ TOPLAMA YÖNTEMLERİ -->
+                    <section id="veri-metot" class="scroll-mt-28">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center mr-3 text-sm font-bold">3</span>
+                            Verilerin Toplanma Yöntemleri ve Hukuki Sebepleri
+                        </h2>
+                        <div class="space-y-4 text-[15px]">
+                            <p>
+                                Kişisel verileriniz; üyelik formları, mobil uygulamamız, internet tarayıcınız üzerindeki çerezler, destek formları, müşteri temsilcilerimizle yaptığınız telefon görüşmeleri, WhatsApp iletişim kanallarımız ve Firebase entegrasyonlarımız üzerinden otomatik veya yarı otomatik yollarla toplanmaktadır.
+                            </p>
+                            <p>
+                                Verileriniz, <strong>6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK)</strong> Madde 5 ve 6 kapsamında şu hukuki sebeplere dayanılarak işlenir:
+                            </p>
+                            <ul class="list-disc pl-6 space-y-2">
+                                <li>Kullanıcının açık rızasının bulunması.</li>
+                                <li>Bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması (Hizmet ve kullanım şartları sözleşmelerimiz).</li>
+                                <li>Veri sorumlusu olarak yasal yükümlülüklerimizin yerine getirilmesi.</li>
+                                <li>İlgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla, meşru menfaatlerimiz için veri işlenmesinin zorunlu olması.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- 4. VERİLERİN İŞLENME AMAÇLARI -->
+                    <section id="isleme-amac" class="scroll-mt-28">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center mr-3 text-sm font-bold">4</span>
+                            Kişisel Verilerin İşlenme Amaçları
+                        </h2>
+                        <div class="space-y-4 text-[15px]">
+                            <p>Topladığımız veriler aşağıdaki amaçlar doğrultusunda işlenmektedir:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-900 mb-2 flex items-center"><i class="fas fa-handshake text-brand-orange mr-2"></i> Hizmet Sunumu ve Eşleştirme</h4>
+                                    <p class="text-sm">Usta ve hizmet arayan tarafları doğru konum ve uzmanlık analizleri ile buluşturmak, sipariş süreçlerini yönetmek.</p>
+                                </div>
+                                <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-900 mb-2 flex items-center"><i class="fas fa-robot text-brand-orange mr-2"></i> Yapay Zeka (AI) Çözümleri</h4>
+                                    <p class="text-sm">Ustalar OF AI ve Fabrica AI asistanlarımızın teknik sorularınıza en doğru cevapları vermesini ve analiz süreçlerini gerçekleştirmesini sağlamak.</p>
+                                </div>
+                                <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-900 mb-2 flex items-center"><i class="fas fa-lock text-brand-orange mr-2"></i> Güvenlik ve Profil Doğrulama</h4>
+                                    <p class="text-sm">Ustalık belgelerinin, kimliklerin ve firma bilgilerinin doğruluğunu kontrol ederek platformdaki dolandırıcılık ve güvenlik risklerini minimize etmek.</p>
+                                </div>
+                                <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-900 mb-2 flex items-center"><i class="fas fa-bullhorn text-brand-orange mr-2"></i> Pazarlama ve Bildirimler</h4>
+                                    <p class="text-sm">Açık rızanız dahilinde, en güncel kampanyalar, sipariş durumları, Ustalar TV yayınları ve Yapı Market fırsatları hakkında SMS, e-posta veya anlık bildirim göndermek.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 5. KİŞİSEL VERİLERİN AKTARILMASI -->
+                    <section id="veri-aktarim" class="scroll-mt-28">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center mr-3 text-sm font-bold">5</span>
+                            Kişisel Verilerin Aktarılması
+                        </h2>
+                        <div class="space-y-4 text-[15px]">
+                            <p>
+                                Ustalar.com, kullanıcıların kişisel verilerini üçüncü taraflara satmaz. Verileriniz, yasal mevzuata uygun olarak ve sadece aşağıdaki taraflarla, belirtilen sınırlar dahilinde paylaşılabilir:
+                            </p>
+                            <ul class="list-disc pl-6 space-y-2">
+                                <li><strong>Hizmet Ortaklarımızla:</strong> Talebiniz üzerine size hizmet sunacak olan doğrulanmış ustalar, müteahhitler veya lojistik firmalarıyla (sadece işlemin tamamlanması için gereken ad, telefon ve adres verileri paylaşılır).</li>
+                                <li><strong>Yetkili Kamu Kurum ve Kuruluşlarıyla:</strong> Yasal bir zorunluluk, adli süreç veya mahkeme kararı bulunması durumunda emniyet birimleri, mahkemeler ve ilgili resmi makamlarla.</li>
+                                <li><strong>Lisanslı Altyapı ve Veri İşleyicilerimizle:</strong> Firebase (uygulama analitiği ve bildirimler), bulut barındırma hizmetleri (Google Cloud, AWS) ve lisanslı ödeme geçitleri (Iyzico vb.) ile teknik gereksinimlerin karşılanması amacıyla paylaşım yapılmaktadır.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- 6. VERİ GÜVENLİĞİ VE SAKLAMA -->
+                    <section id="veri-guvenlik" class="scroll-mt-28">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center mr-3 text-sm font-bold">6</span>
+                            Veri Güvenliği ve Saklama Süresi
+                        </h2>
+                        <div class="space-y-4 text-[15px]">
+                            <p>
+                                Kişisel verilerinizin yetkisiz erişime, kaybolmaya, değiştirilmeye veya ifşa edilmesine karşı korunması amacıyla endüstri standardı olan **SSL şifreleme metotları, güvenlik duvarları, veri maskeleme yöntemleri** ve sınırlı erişim kontrolleri gibi idari ve teknik tedbirleri uygulamaktayız.
+                            </p>
+                            <p>
+                                Verileriniz, üyelik ilişkiniz devam ettiği sürece veya yasal mevzuatta (Vergi Usul Kanunu, Türk Ticaret Kanunu vb.) öngörülen zamanaşımı ve saklama süreleri boyunca güvenle muhafaza edilir. Saklama süresi sona eren veya üyelik silme talebinde bulunan kullanıcıların verileri, güvenli bir şekilde anonimleştirilir veya kalıcı olarak imha edilir.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- 7. ÇEREZ POLİTİKASI -->
+                    <section id="cerezler" class="scroll-mt-28">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center mr-3 text-sm font-bold">7</span>
+                            Çerezler (Cookies) Politikası
+                        </h2>
+                        <div class="space-y-4 text-[15px]">
+                            <p>
+                                Web sitemizin işlevselliğini artırmak, kullanıcı deneyimini özelleştirmek ve trafiği analiz etmek amacıyla birinci taraf ve üçüncü taraf çerezler kullanmaktayız. 
+                            </p>
+                            <p>
+                                Çerezler; tarayıcınızı hatırlamak, dil tercihlerinizi kaydetmek ve ilgi alanlarınıza yönelik reklamlar sunmak amacıyla cihazınıza kaydedilen küçük metin dosyalarıdır. Tarayıcı ayarlarınız üzerinden çerez kullanımını kısıtlama veya tamamen reddetme hakkına sahipsiniz. Ancak çerezlerin engellenmesi, web sitemizin bazı fonksiyonlarının düzgün çalışmamasına neden olabilir.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- 8. KULLANICI HAKLARI -->
+                    <section id="kullanici-haklar" class="scroll-mt-28">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center mr-3 text-sm font-bold">8</span>
+                            Kullanıcı Hakları (KVKK Madde 11 ve GDPR)
+                        </h2>
+                        <div class="space-y-4 text-[15px]">
+                            <p>KVKK'nın 11. Maddesi ve yürürlükteki yasal mevzuat kapsamında, verileriniz üzerinde aşağıdaki haklara sahipsiniz:</p>
+                            <div class="border border-slate-100 rounded-xl p-6 bg-slate-50/50 space-y-2">
+                                <p class="flex items-start"><i class="fas fa-check text-brand-orange mt-1.5 mr-3 text-sm"></i> <span>Kişisel verilerinizin işlenip işlenmediğini öğrenme,</span></p>
+                                <p class="flex items-start"><i class="fas fa-check text-brand-orange mt-1.5 mr-3 text-sm"></i> <span>İşlenmişse buna ilişkin bilgi talep etme ve kopyasını isteme,</span></p>
+                                <p class="flex items-start"><i class="fas fa-check text-brand-orange mt-1.5 mr-3 text-sm"></i> <span>Verilerin işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme,</span></p>
+                                <p class="flex items-start"><i class="fas fa-check text-brand-orange mt-1.5 mr-3 text-sm"></i> <span>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme,</span></p>
+                                <p class="flex items-start"><i class="fas fa-check text-brand-orange mt-1.5 mr-3 text-sm"></i> <span>Eksik veya yanlış işlenmişse düzeltilmesini, güncellenmesini isteme,</span></p>
+                                <p class="flex items-start"><i class="fas fa-check text-brand-orange mt-1.5 mr-3 text-sm"></i> <span>Verilerin işlenmesini gerektiren sebeplerin ortadan kalkması halinde silinmesini veya yok edilmesini talep etme,</span></p>
+                                <p class="flex items-start"><i class="fas fa-check text-brand-orange mt-1.5 mr-3 text-sm"></i> <span>Kanuna aykırı işleme sebebiyle zarar görmeniz durumunda zararın giderilmesini talep etme hakkı.</span></p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 9. İLETİŞİM VE BAŞVURU -->
+                    <section id="iletisim-bilgi" class="scroll-mt-28">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center mr-3 text-sm font-bold">9</span>
+                            İletişim ve Başvuru
+                        </h2>
+                        <div class="space-y-4 text-[15px]">
+                            <p>
+                                Gizlilik Politikamızla ilgili sorularınız, geri bildirimleriniz veya veri silme/güncelleme talepleriniz için bizimle dilediğiniz zaman aşağıdaki yasal iletişim kanallarımız üzerinden irtibata geçebilirsiniz:
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center text-xl shrink-0">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 mb-1">Adres Bilgisi</h5>
+                                        <p class="text-sm text-slate-500 leading-relaxed">
+                                            Yakuplu Mahallesi İnönü Caddesi 124.Sk No:21/B Yakuplu / İstanbul
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center text-xl shrink-0">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 mb-1">E-Posta & Telefon</h5>
+                                        <p class="text-sm text-slate-500">
+                                            destek@ustalar.com <br>
+                                            Telefon: +90 532 466 60 68
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="iletisim" class="bg-white py-16 border-t border-slate-200 mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <img src="assets/images/about_logos.png" alt="Logo" class="h-10 w-auto object-contain">
+                    </div>
+                    <p class="text-slate-500 leading-relaxed mb-6 max-w-sm">
+                        İnşaatın A'dan Z'ye tüm süreçlerinde, yapay zeka destekli çözümler ve kurumsal hizmetlerle
+                        yanınızdayız.
+                    </p>
+                    <div class="text-slate-500 text-[15px] mb-6">
+                        <p class="mb-2"><i class="fas fa-map-marker-alt w-5 text-brand-orange"></i> Yakuplu Mahallesi
+                            İnönü Caddesi 124.Sk No:21/B Yakuplu / İstanbul</p>
+                        <p><i class="fas fa-phone-alt w-5 text-brand-orange"></i> Telefon: +90 532 466 60 68</p>
+                    </div>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="https://facebook.com/ustalarcom"
+                            class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/ustalarcom"
+                            class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@sektorturk"
+                            class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                    <div>
+                        <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank"
+                            class="inline-flex items-center bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-slate-800 transition shadow-md">
+                            <img src="assets/images/google-play.png" alt="Google Play"
+                                class="h-5 w-auto object-contain mr-2">
+                            İndir
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="text-slate-900 font-bold mb-6">Konumumuz</h4>
+                    <div class="w-full h-56 rounded-2xl overflow-hidden shadow-sm border border-slate-200 relative group">
+                        <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Yakuplu%20Mahallesi%20%C4%B0n%C3%B6n%C3%BC%20Caddesi%20124.Sk%20No:21/B%20Yakuplu%20/%20%C4%B0stanbul&t=&z=15&ie=UTF8&iwloc=&output=embed" class="filter grayscale hover:grayscale-0 transition-all duration-500"></iframe>
+                        <a href="https://maps.app.goo.gl/miVfmqniGMV4yyXB7" target="_blank" class="absolute bottom-4 left-4 bg-brand-orange text-white text-xs font-bold px-4 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i> Haritada Aç
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-100 flex flex-col text-sm text-slate-500">
+                <p>&copy; 2026 Ustalar.com | Tüm Hakları Saklıdır.</p>
+                <div class="mt-2 flex space-x-4 flex-wrap gap-y-2">
+                    <a href="admin/"
+                        class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
+                        <i class="fas fa-lock mr-2 text-xs"></i> Yönetim Paneli
+                    </a>
+                    <span class="text-slate-300">|</span>
+                    <a href="privacy_policy.html"
+                        class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
+                        <i class="fas fa-user-shield mr-2 text-xs"></i> Gizlilik Politikası
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ASİSTAN -->
+    <script src="assets/js/asistan.js"></script>
+
+    <!-- SCRIPTS -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.onclick = () => mobileMenu.classList.toggle('hidden');
+            mobileLinks.forEach(link => {
+                link.onclick = () => mobileMenu.classList.add('hidden');
+            });
+        }
+
+        // Okuma İlerleme Çubuğu Yönetimi
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+    </script>
+
+    <!-- DİL YÖNETİMİ -->
+    <script src="assets/js/language.js"></script>
+
+</body>
+
+</html>

@@ -87,14 +87,12 @@
                     </button>
                     <!-- Dropdown Content -->
                     <div class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
-                        <a href="hakkimizda.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Hakkımızda</a>
-                        <a href="iletisim.html" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">İletişim</a>
+                        <a href="index.html#hakkimizda" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Hakkımızda</a>
+                        <a href="index.html#iletisim" class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">İletişim</a>
                     </div>
                 </div>
 
-                <a href="hizmetlerimiz.html" class="hover:text-brand-orange transition-colors">Hizmetlerimiz</a>
-                <a href="kentsel_donusum.html" class="hover:text-brand-orange transition-colors">Kentsel Dönüşüm</a>
-                <a href="ustalar_tv.html" class="hover:text-brand-orange transition-colors">Ustalar TV</a>
+                <a href="index.html#ekosistem" class="hover:text-brand-orange transition-colors">Hizmetlerimiz</a>
 
                 <!-- AI Dropdown -->
                 <div class="relative group">
@@ -119,6 +117,18 @@
                     class="lang-toggle-btn flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
                     <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
                 </button>
+
+                <!-- Ustalar TV Butonu -->
+                <a href="ustalar_tv.html" title="Ustalar TV"
+                    class="text-red-500 bg-red-50 hover:bg-red-500 hover:text-white border border-red-500/30 w-10 h-10 rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-sm hover:shadow-md">
+                    <i class="fas fa-tv"></i>
+                </a>
+                
+                <!-- Yapı Katalog Butonu -->
+                <a href="yapi_katalog.html" title="Yapı Katalog"
+                    class="text-brand-orange bg-orange-50 hover:bg-brand-orange hover:text-white border border-brand-orange/30 w-10 h-10 rounded-xl transition-all font-bold text-lg flex items-center justify-center shadow-sm hover:shadow-md">
+                    <i class="fas fa-book-open"></i>
+                </a>
                 <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home"
                     class="text-brand-orange border-2 border-brand-orange hover:bg-brand-orange hover:text-white px-5 py-2 rounded-xl font-bold transition-all">
                     <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
@@ -130,11 +140,22 @@
                 </a>
             </div>
 
-            <!-- Mobil Hamburger Buton -->
-            <button id="mobile-menu-btn"
-                class="lg:hidden text-slate-600 hover:text-brand-orange transition focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <!-- Mobil Hamburger Buton & Ekstralar -->
+            <div class="flex items-center lg:hidden space-x-3">
+                <!-- Ustalar TV Butonu (Mobil) -->
+                <a href="ustalar_tv.html" title="Ustalar TV"
+                    class="text-red-500 bg-red-50 hover:bg-red-500 hover:text-white border border-red-500/30 w-10 h-10 rounded-lg transition-all text-lg flex items-center justify-center">
+                    <i class="fas fa-tv"></i>
+                </a>
+                <a href="yapi_katalog.html" title="Yapı Katalog"
+                    class="text-brand-orange bg-orange-50 hover:bg-brand-orange hover:text-white border border-brand-orange/30 w-10 h-10 rounded-lg transition-all text-lg flex items-center justify-center">
+                    <i class="fas fa-book-open"></i>
+                </a>
+                <button id="mobile-menu-btn"
+                    class="text-slate-600 hover:text-brand-orange transition focus:outline-none w-10 h-10 flex items-center justify-center">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Mobil Menü İçeriği -->
@@ -145,18 +166,12 @@
 
                 <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
                     <span class="text-slate-800 font-bold text-lg">Kurumsal</span>
-                    <a href="hakkimizda.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Hakkımızda</a>
-                    <a href="iletisim.html" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- İletişim</a>
+                    <a href="index.html#hakkimizda" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Hakkımızda</a>
+                    <a href="index.html#iletisim" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- İletişim</a>
                 </div>
 
-                <a href="hizmetlerimiz.html"
+                <a href="index.html#ekosistem"
                     class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hizmetlerimiz</a>
-                <a href="kentsel_donusum.html"
-                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Kentsel
-                    Dönüşüm</a>
-                <a href="ustalar_tv.html"
-                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Ustalar
-                    TV</a>
 
                 <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
                     <span class="text-slate-800 font-bold text-lg">AI</span>
@@ -206,7 +221,7 @@
                     class="w-full sm:w-auto bg-brand-orange text-white px-8 py-3.5 rounded-xl font-bold hover:bg-brand-dark transition shadow-lg flex items-center justify-center">
                     <i class="fas fa-home mr-2"></i> Anasayfaya Dön
                 </a>
-                <a href="iletisim.html"
+                <a href="index.html#iletisim"
                     class="w-full sm:w-auto bg-white border border-slate-200 text-slate-700 px-8 py-3.5 rounded-xl font-bold hover:bg-slate-50 transition shadow-sm flex items-center justify-center">
                     <i class="fas fa-headset mr-2"></i> Bize Ulaşın
                 </a>
@@ -215,7 +230,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-white py-16 border-t border-slate-200 mt-auto">
+    <footer id="iletisim" class="bg-white py-16 border-t border-slate-200 mt-auto">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
@@ -252,38 +267,28 @@
                     </div>
                 </div>
 
-                <div>
-                    <h4 class="text-slate-900 font-bold mb-6">Ekosistem</h4>
-                    <ul class="space-y-3 text-slate-500">
-                        <li><a href="hizmetlerimiz.html" class="hover:text-brand-orange transition">Hizmetlerimiz</a>
-                        </li>
-                        <li><a href="kentsel_donusum.html" class="hover:text-brand-orange transition">Kentsel
-                                Dönüşüm</a></li>
-                        <li><a href="ustalar_tv.html" class="hover:text-brand-orange transition">Ustalar TV</a></li>
-                        <li><a href="ustalar_of_ai.html" class="hover:text-brand-orange transition">Ustalar OF AI</a>
-                        </li>
-                        <li><a href="fabrica_ai.html" class="hover:text-brand-orange transition">Fabrica AI</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-slate-900 font-bold mb-6">Kurumsal</h4>
-                    <ul class="space-y-3 text-slate-500">
-                        <li><a href="hakkimizda.html" class="hover:text-brand-orange transition">Hakkımızda</a></li>
-                        <li><a href="iletisim.html" class="hover:text-brand-orange transition">İletişim</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Kullanım Koşulları</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Gizlilik Politikası</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">KVKK Metni</a></li>
-                    </ul>
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="text-slate-900 font-bold mb-6">Konumumuz</h4>
+                    <div class="w-full h-56 rounded-2xl overflow-hidden shadow-sm border border-slate-200 relative group">
+                        <iframe width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Yakuplu%20Mahallesi%20%C4%B0n%C3%B6n%C3%BC%20Caddesi%20124.Sk%20No:21/B%20Yakuplu%20/%20%C4%B0stanbul&t=&z=15&ie=UTF8&iwloc=&output=embed" class="filter grayscale hover:grayscale-0 transition-all duration-500"></iframe>
+                        <a href="https://maps.app.goo.gl/miVfmqniGMV4yyXB7" target="_blank" class="absolute bottom-4 left-4 bg-brand-orange text-white text-xs font-bold px-4 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i> Haritada Aç
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="pt-8 border-t border-slate-100 flex flex-col text-sm text-slate-500">
                 <p>&copy; 2026 Ustalar.com | Tüm Hakları Saklıdır.</p>
-                <div class="mt-2">
+                <div class="mt-2 flex space-x-4 flex-wrap gap-y-2">
                     <a href="admin/"
                         class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
                         <i class="fas fa-lock mr-2 text-xs"></i> Yönetim Paneli
+                    </a>
+                    <span class="text-slate-300">|</span>
+                    <a href="privacy_policy.html"
+                        class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
+                        <i class="fas fa-user-shield mr-2 text-xs"></i> Gizlilik Politikası
                     </a>
                 </div>
             </div>

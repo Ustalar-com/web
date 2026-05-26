@@ -47,8 +47,6 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
-
-
         /* Gizli Google Translate */
         #google_translate_element {
             display: none !important;
@@ -61,10 +59,91 @@
         body {
             top: 0 !important;
         }
+
+        /* Preloader Styles */
+        #preloader {
+            transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .preloader-card {
+            animation: intro 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .preloader-logo {
+            animation: pulse-logo 2s ease-in-out infinite;
+        }
+
+        .preloader-spinner {
+            border: 3px solid rgba(249, 115, 22, 0.1);
+            border-top: 3px solid #f97316;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin-glow 1s linear infinite;
+        }
+
+        @keyframes intro {
+            0% {
+                transform: scale(0.9) translateY(10px);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes spin-glow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-logo {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(249, 115, 22, 0)); }
+            50% { transform: scale(1.03); filter: drop-shadow(0 0 15px rgba(249, 115, 22, 0.2)); }
+        }
+
+        @keyframes scroll-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100% - 1.5rem)); }
+        }
+        
+        .animate-scroll {
+            animation: scroll-marquee 30s linear infinite;
+        }
+        
+        .marquee-container:hover .animate-scroll {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white overflow-hidden">
+
+    <!-- PRELOADER -->
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-slate-900 flex flex-col justify-center items-center overflow-hidden">
+        <!-- Background Ambient Glow -->
+        <div class="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-brand-orange/20 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-orange-600/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+        
+        <!-- Glassmorphism Card -->
+        <div class="preloader-card bg-slate-800/40 backdrop-blur-xl border border-slate-700/30 p-10 rounded-[2.5rem] shadow-2xl flex flex-col items-center max-w-sm w-full mx-4 text-center">
+            <!-- Logo -->
+            <img src="assets/images/about_logos.png" alt="Ustalar Logo" class="preloader-logo h-16 w-auto object-contain mb-8">
+            
+            <!-- Custom Premium Spinner -->
+            <div class="relative flex items-center justify-center mb-6">
+                <!-- Inner Glow Ring -->
+                <div class="absolute w-12 h-12 rounded-full border border-brand-orange/20 animate-ping opacity-75"></div>
+                <div class="preloader-spinner"></div>
+            </div>
+            
+            <!-- Greeting & Subtext -->
+            <h2 class="text-xl font-bold text-white mb-2 tracking-wide">Ustalar.com</h2>
+            <p class="text-xs text-orange-400 font-bold uppercase tracking-widest mb-1">Geleceğin Yapı Ekosistemi</p>
+            <p class="text-slate-400 text-xs">Yükleniyor...</p>
+        </div>
+    </div>
 
     <!-- HEADER -->
     <header class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200 transition-all duration-300"
@@ -274,142 +353,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- YAPI MARKET -->
-                <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home"
-                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-orange-100 rounded-full blur-2xl group-hover:bg-brand-orange transition-colors opacity-50">
-                    </div>
-                    <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-brand-orange">
-                        <i class="fas fa-shopping-cart text-2xl group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-orange transition-colors uppercase tracking-wide">
-                        Yapı Market</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Ustalara ve profesyonellere
-                        özel geniş ürün yelpazesi ve avantajlı fiyatlar.</p>
-                </a>
-
-                <!-- USTALAR OF AI -->
-                <a href="ustalar_of_ai.html"
-                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-yellow-100 rounded-full blur-2xl group-hover:bg-yellow-400 transition-colors opacity-50">
-                    </div>
-                    <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-yellow-500">
-                        <i class="fas fa-hard-hat text-2xl group-hover:scale-110 transition-transform"></i>
-                        <i class="fas fa-robot absolute text-xs text-slate-900 -mt-3 ml-4"></i>
-                    </div>
-                    <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-yellow-600 transition-colors uppercase tracking-wide">
-                        Ustalar OF AI</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">İnşaatın A'dan Z'ye tüm
-                        süreçlerinde akıllı çözümler üreten yapay zeka asistanınız.</p>
-                </a>
-
-                <!-- FABRICA AI -->
-                <a href="fabrica_ai.html"
-                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-blue-100 rounded-full blur-2xl group-hover:bg-blue-500 transition-colors opacity-50">
-                    </div>
-                    <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-blue-500">
-                        <i class="fas fa-industry text-2xl group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors uppercase tracking-wide">
-                        Fabrica AI</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Üretimi dijitalleştiren,
-                        verimliliği artıran yapay zeka destekli üretim çözümleri.</p>
-                </a>
-
-                <!-- KENTSEL DÖNÜŞÜM PLATFORMU -->
-                <a href="kentsel_donusum.html" id="kentsel"
-                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-indigo-100 rounded-full blur-2xl group-hover:bg-indigo-500 transition-colors opacity-50">
-                    </div>
-                    <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-indigo-500">
-                        <i class="fas fa-city text-2xl group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors uppercase tracking-wide">
-                        Kentsel Dönüşüm</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Risk analizi, proje planlama,
-                        maliyet hesaplama ve dönüşüm süreçlerini dijitalleştiren platform.</p>
-                </a>
-
-                <!-- USTALAR TV -->
-                <a href="ustalar_tv.html"
-                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-red-100 rounded-full blur-2xl group-hover:bg-red-500 transition-colors opacity-50">
-                    </div>
-                    <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-red-500">
-                        <i class="fas fa-tv text-2xl group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-red-600 transition-colors uppercase tracking-wide">
-                        Ustalar TV</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">İzle-Yap mantığıyla eğitici
-                        içerikler, usta röportajları ve ilham veren projeler.</p>
-                </a>
-
-                <!-- YAPI KATALOG -->
-                <a href="yapi_katalog.html"
-                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-orange-100 rounded-full blur-2xl group-hover:bg-brand-orange transition-colors opacity-50">
-                    </div>
-                    <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-brand-orange">
-                        <i class="fas fa-book-open text-2xl group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-orange transition-colors uppercase tracking-wide">
-                        Yapı Katalog</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Geleceğin mimarisini inşa eden profesyoneller için en kapsamlı malzeme ve firma kataloğu.</p>
-                </a>
-
-                <!-- MOBİL UYGULAMA -->
-                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com"
-                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-brand-light rounded-full blur-2xl group-hover:bg-brand-orange transition-colors opacity-50">
-                    </div>
-                    <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-slate-800">
-                        <i class="fas fa-mobile-alt text-2xl group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-slate-700 transition-colors uppercase tracking-wide">
-                        Mobil</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Tüm hizmetlere tek dokunuşla
-                        ulaşın! Ustalar, ürünler, projeler ve daha fazlası cebinizde.</p>
-                </a>
-
-                <!-- KULE VİNÇ KİRALA -->
-                <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdBR2avN6KACdRzNDDngtkrkif5VYJjvjkOmyoHXweGaoJa8w/viewform"
-                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
-                    <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-amber-100 rounded-full blur-2xl group-hover:bg-amber-500 transition-colors opacity-50">
-                    </div>
-                    <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-amber-500">
-                        <i class="fas fa-truck-loading text-2xl group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-amber-600 transition-colors uppercase tracking-wide">
-                        Kule Vinç Kirala</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">İşinize en uygun kule vinç kiralama hizmeti için formu doldurun, teklif alın.</p>
-                </a>
-
-                <!-- USTALIK HİZMETİ -->
+                <!-- 1. USTALIK HİZMETİ -->
                 <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeGqFbP83KHEIJ6LgwijsttmzYJbQoJGZ1U535BEfIdcb8oIg/viewform"
                     class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
                     <div
@@ -425,24 +369,105 @@
                     <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Profesyonel ustalık hizmetleri talebinizi iletin, uzman ekibimiz sizinle iletişime geçsin.</p>
                 </a>
 
-                <!-- SANAL FUAR -->
-                <a target="_blank" href="https://wa.me/905324666068?text=Merhaba,%20Sanal%20Fuar%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                <!-- 2. FABRICA AI -->
+                <a href="fabrica_ai.html"
                     class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
                     <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-purple-100 rounded-full blur-2xl group-hover:bg-purple-500 transition-colors opacity-50">
+                        class="absolute -right-4 -top-4 w-24 h-24 bg-blue-100 rounded-full blur-2xl group-hover:bg-blue-500 transition-colors opacity-50">
                     </div>
                     <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-purple-500">
-                        <i class="fas fa-store text-2xl group-hover:scale-110 transition-transform"></i>
+                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-blue-500">
+                        <i class="fas fa-industry text-2xl group-hover:scale-110 transition-transform"></i>
                     </div>
                     <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors uppercase tracking-wide">
-                        Sanal Fuar</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">İnşaat ve yapı sektörünü dijital ortamda bir araya getirecek interaktif fuar deneyimi.</p>
+                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors uppercase tracking-wide">
+                        Fabrika AI</h3>
+                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Üretimi dijitalleştiren, verimliliği artıran yapay zeka destekli üretim çözümleri.</p>
                 </a>
 
-                <!-- EMLAK DEĞERLEME -->
-                <a target="_blank" href="https://wa.me/905324666068?text=Merhaba,%20Emlak%20De%C4%9Ferleme%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                <!-- 3. USTALAR OF AI -->
+                <a href="ustalar_of_ai.html"
+                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
+                    <div
+                        class="absolute -right-4 -top-4 w-24 h-24 bg-yellow-100 rounded-full blur-2xl group-hover:bg-yellow-400 transition-colors opacity-50">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-yellow-500">
+                        <i class="fas fa-hard-hat text-2xl group-hover:scale-110 transition-transform"></i>
+                        <i class="fas fa-robot absolute text-xs text-slate-900 -mt-3 ml-4"></i>
+                    </div>
+                    <h3
+                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-yellow-600 transition-colors uppercase tracking-wide">
+                        Ustalar OF AI</h3>
+                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">İnşaatın A'dan Z'ye tüm süreçlerinde akıllı çözümler üreten yapay zeka asistanınız.</p>
+                </a>
+
+                <!-- 4. KENTSEL DÖNÜŞÜM -->
+                <a href="kentsel_donusum.html" id="kentsel"
+                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
+                    <div
+                        class="absolute -right-4 -top-4 w-24 h-24 bg-indigo-100 rounded-full blur-2xl group-hover:bg-indigo-500 transition-colors opacity-50">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-indigo-500">
+                        <i class="fas fa-city text-2xl group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3
+                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors uppercase tracking-wide">
+                        Kentsel Dönüşüm</h3>
+                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Risk analizi, proje planlama, maliyet hesaplama ve dönüşüm süreçlerini dijitalleştiren platform.</p>
+                </a>
+
+                <!-- 5. İŞ MAKİNESİ KİRALAMA -->
+                <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdBR2avN6KACdRzNDDngtkrkif5VYJjvjkOmyoHXweGaoJa8w/viewform"
+                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
+                    <div
+                        class="absolute -right-4 -top-4 w-24 h-24 bg-amber-100 rounded-full blur-2xl group-hover:bg-amber-500 transition-colors opacity-50">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-amber-500">
+                        <i class="fas fa-truck-loading text-2xl group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3
+                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-amber-600 transition-colors uppercase tracking-wide">
+                        İş Makinesi Kiralama</h3>
+                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">İşinize en uygun iş makinesi kiralama hizmeti için formu doldurun, teklif alın.</p>
+                </a>
+
+                <!-- 6. USTALAR BARTER -->
+                <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScwtWlq77ABB6nEJqurYQ1MIzImbKfRYzWgq9nY7W9eJV6z4A/viewform"
+                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
+                    <div
+                        class="absolute -right-4 -top-4 w-24 h-24 bg-cyan-100 rounded-full blur-2xl group-hover:bg-cyan-500 transition-colors opacity-50">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-cyan-500">
+                        <i class="fas fa-right-left text-2xl group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3
+                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-cyan-600 transition-colors uppercase tracking-wide">
+                        Ustalar Barter</h3>
+                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Malzeme, hizmet veya iş gücü takası ile projelerinizi nakit akışı zorluğu yaşamadan tamamlayın.</p>
+                </a>
+
+                <!-- 7. USTALAR BRAND -->
+                <a target="_blank" href="https://wa.me/905324666068?text=Merhaba,%20Ustalar%20Brand%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
+                    <div
+                        class="absolute -right-4 -top-4 w-24 h-24 bg-rose-100 rounded-full blur-2xl group-hover:bg-rose-500 transition-colors opacity-50">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-rose-500">
+                        <i class="fas fa-crown text-2xl group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3
+                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-rose-600 transition-colors uppercase tracking-wide">
+                        Ustalar Brand</h3>
+                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Ustalar.com'un marka hizmetleri, kurumsal reklam ve marka iş birlikleri çözümleri.</p>
+                </a>
+
+                <!-- 8. EMLAK DEĞERLEME -->
+                <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScbmlo1oqkLQuxINH7D2d6iggH5lSaB8etlbocYPWYYWBIKgQ/viewform"
                     class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
                     <div
                         class="absolute -right-4 -top-4 w-24 h-24 bg-emerald-100 rounded-full blur-2xl group-hover:bg-emerald-500 transition-colors opacity-50">
@@ -457,20 +482,36 @@
                     <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Gayrimenkullerinizin güncel piyasa değerini yapay zeka ve uzman analizleriyle öğrenin.</p>
                 </a>
 
-                <!-- USTALAR BARTER -->
-                <a target="_blank" href="https://wa.me/905324666068?text=Merhaba,%20Ustalar%20Barter%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                <!-- 9. SANAL FUAR -->
+                <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSecBhw65VeRy5RYi-HQ7SkDm7nzBKQYNE076uyJEI7WUMIcuQ/viewform"
                     class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
                     <div
-                        class="absolute -right-4 -top-4 w-24 h-24 bg-cyan-100 rounded-full blur-2xl group-hover:bg-cyan-500 transition-colors opacity-50">
+                        class="absolute -right-4 -top-4 w-24 h-24 bg-purple-100 rounded-full blur-2xl group-hover:bg-purple-500 transition-colors opacity-50">
                     </div>
                     <div
-                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-cyan-500">
-                        <i class="fas fa-right-left text-2xl group-hover:scale-110 transition-transform"></i>
+                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-purple-500">
+                        <i class="fas fa-store text-2xl group-hover:scale-110 transition-transform"></i>
                     </div>
                     <h3
-                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-cyan-600 transition-colors uppercase tracking-wide">
-                        Ustalar Barter</h3>
-                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Malzeme, hizmet veya iş gücü takası ile projelerinizi nakit akışı zorluğu yaşamadan tamamlayın.</p>
+                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors uppercase tracking-wide">
+                        Sanal Fuar</h3>
+                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">İnşaat ve yapı sektörünü dijital ortamda bir araya getirecek interaktif fuar deneyimi.</p>
+                </a>
+
+                <!-- 10. TEDARİK ZİNCİRİ YÖNETİMİ (TEZİYO) -->
+                <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdUXIGssYi7vT1mu9P2H6cQ4nJ2_7j93w8xjKD3bjH_eO7poA/viewform"
+                    class="block bg-slate-50 p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
+                    <div
+                        class="absolute -right-4 -top-4 w-24 h-24 bg-teal-100 rounded-full blur-2xl group-hover:bg-teal-500 transition-colors opacity-50">
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center mb-6 text-teal-500">
+                        <i class="fas fa-network-wired text-2xl group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3
+                        class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-teal-600 transition-colors uppercase tracking-wide">
+                        Tedarik Zinciri (Teziyo)</h3>
+                    <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Malzeme tedariğinden şantiye lojistiğine kadar tüm tedarik süreçlerinizi akıllıca yönetin.</p>
                 </a>
 
             </div>
@@ -486,72 +527,132 @@
                 <p class="text-slate-500 font-medium">İhtiyacınız olan her an yanınızdayız.</p>
             </div>
 
-            <!-- Yatay ikonlu grid listesi -->
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            <!-- Sonsuz Kayan Alt Hizmet İkonları Bandı (Marquee) -->
+            <div class="mt-10 relative w-full overflow-hidden marquee-container">
+                <!-- Sağ ve Sol Yumuşak Geçiş Gradyanları (bg-slate-100 arka planı ile uyumlu) -->
+                <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-slate-100 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-slate-100 to-transparent z-10 pointer-events-none"></div>
+                
+                <!-- Kayan İçerik Taşıyıcısı -->
+                <div class="flex space-x-6">
+                    <!-- 1. Grup İkonlar -->
+                    <div class="flex space-x-6 shrink-0 animate-scroll py-2">
+                        <!-- Usta Ağı -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-hard-hat text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">USTA AĞI</span>
+                        </div>
 
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-hard-hat text-xl"></i>
+                        <!-- Proje Yönetimi -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-calendar-check text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">PROJE YÖNETİMİ</span>
+                        </div>
+
+                        <!-- Satınalma Çözümleri -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-shopping-basket text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">SATINALMA ÇÖZÜMLERİ</span>
+                        </div>
+
+                        <!-- Lojistik Destek -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-truck text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">LOJİSTİK DESTEK</span>
+                        </div>
+
+                        <!-- Finansal Çözümler -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-money-bill-wave text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">FİNANSAL ÇÖZÜMLER</span>
+                        </div>
+
+                        <!-- İhale & Teklif Yönetimi -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-file-contract text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">İHALE & TEKLİF</span>
+                        </div>
+
+                        <!-- Eğitim & Danışmanlık -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-graduation-cap text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">EĞİTİM & DANIŞMANLIK</span>
+                        </div>
                     </div>
-                    <span class="text-sm font-bold text-slate-800">Usta Ağı</span>
-                </div>
+                    
+                    <!-- 2. Grup İkonlar (Sonsuz Döngü için kopyalanmış kısım) -->
+                    <div class="flex space-x-6 shrink-0 animate-scroll py-2" aria-hidden="true">
+                        <!-- Usta Ağı -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-hard-hat text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">USTA AĞI</span>
+                        </div>
 
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-calendar-check text-xl"></i>
+                        <!-- Proje Yönetimi -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-calendar-check text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">PROJE YÖNETİMİ</span>
+                        </div>
+
+                        <!-- Satınalma Çözümleri -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-shopping-basket text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">SATINALMA ÇÖZÜMLERİ</span>
+                        </div>
+
+                        <!-- Lojistik Destek -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-truck text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">LOJİSTİK DESTEK</span>
+                        </div>
+
+                        <!-- Finansal Çözümler -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-money-bill-wave text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">FİNANSAL ÇÖZÜMLER</span>
+                        </div>
+
+                        <!-- İhale & Teklif Yönetimi -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-file-contract text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">İHALE & TEKLİF</span>
+                        </div>
+
+                        <!-- Eğitim & Danışmanlık -->
+                        <div class="flex flex-col items-center justify-center bg-white border border-slate-200/60 rounded-2xl p-4 w-44 h-28 shrink-0 hover:border-brand-orange hover:shadow-md hover:scale-105 transition-all duration-300 filter grayscale hover:grayscale-0 text-center group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-orange-50 text-brand-orange flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-graduation-cap text-lg"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-800 tracking-wide">EĞİTİM & DANIŞMANLIK</span>
+                        </div>
                     </div>
-                    <span class="text-sm font-bold text-slate-800">Proje Yönetimi</span>
                 </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-shopping-basket text-xl"></i>
-                    </div>
-                    <span class="text-sm font-bold text-slate-800">Satınalma<br>Çözümleri</span>
-                </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-truck text-xl"></i>
-                    </div>
-                    <span class="text-sm font-bold text-slate-800">Lojistik Destek</span>
-                </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-money-bill-wave text-xl"></i>
-                    </div>
-                    <span class="text-sm font-bold text-slate-800">Finansal<br>Çözümler</span>
-                </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-file-contract text-xl"></i>
-                    </div>
-                    <span class="text-sm font-bold text-slate-800">İhale & Teklif<br>Yönetimi</span>
-                </div>
-
-                <div
-                    class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100 text-center group cursor-default">
-                    <div
-                        class="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-slate-600 group-hover:text-brand-orange group-hover:bg-orange-50 transition">
-                        <i class="fas fa-graduation-cap text-xl"></i>
-                    </div>
-                    <span class="text-sm font-bold text-slate-800">Eğitim &<br>Danışmanlık</span>
-                </div>
-
             </div>
         </div>
     </section>
@@ -582,6 +683,7 @@
                     </p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -634,13 +736,23 @@
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-slate-100 flex flex-col text-sm text-slate-500">
-                <p>&copy; 2026 Ustalar.com | Tüm Hakları Saklıdır.</p>
-                <div class="mt-2">
-                    <a href="admin/"
-                        class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
-                        <i class="fas fa-lock mr-2 text-xs"></i> Yönetim Paneli
-                    </a>
+            <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center text-sm text-slate-500 gap-y-4">
+                <div>
+                    <p>&copy; 2026 Ustalar.com | Tüm Hakları Saklıdır.</p>
+                    <div class="mt-2 flex space-x-4 flex-wrap gap-y-2">
+                        <a href="admin/"
+                            class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
+                            <i class="fas fa-lock mr-2 text-xs"></i> Yönetim Paneli
+                        </a>
+                        <span class="text-slate-300">|</span>
+                        <a href="privacy_policy.html"
+                            class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
+                            <i class="fas fa-user-shield mr-2 text-xs"></i> Gizlilik Politikası
+                        </a>
+                    </div>
+                </div>
+                <div class="text-slate-400 font-medium">
+                    Geliştirici <a href="https://msoftis.blogspot.com/" target="_blank" class="text-slate-500 hover:text-brand-orange transition font-semibold">Msoftis</a> ❤️
                 </div>
             </div>
         </div>
@@ -781,6 +893,23 @@
 
     <!-- DİL YÖNETİMİ -->
     <script src="assets/js/language.js"></script>
+
+    <!-- PRELOADER SCRIPT -->
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.add('opacity-0', 'pointer-events-none');
+                    document.body.classList.remove('overflow-hidden');
+                    // Completely remove from DOM after transition finishes
+                    setTimeout(() => {
+                        preloader.remove();
+                    }, 800);
+                }, 1000); // 1-second delay for smooth animation duration
+            }
+        });
+    </script>
 
 </body>
 
