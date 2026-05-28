@@ -176,16 +176,15 @@
                 <!-- AI Dropdown -->
                 <div class="relative group">
                     <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
-                        AI <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        Yapay Zeka <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </button>
                     <!-- Dropdown Content -->
                     <div
                         class="absolute left-0 mt-0 w-48 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden z-50">
                         <a href="ustalar_of_ai.html"
-                            class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Ustalar
-                            OF AI</a>
+                            class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors border-b border-slate-50">Ustalar Of Ai</a>
                         <a href="fabrica_ai.html"
-                            class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">FabricaAI</a>
+                            class="px-4 py-3 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors">Fabrika Ai</a>
                     </div>
                 </div>
             </nav>
@@ -221,15 +220,11 @@
 
             <!-- Mobil Hamburger Buton & Ekstralar -->
             <div class="flex items-center lg:hidden space-x-3">
-                <!-- Ustalar TV Butonu (Mobil) -->
-                <a href="ustalar_tv.html" title="Ustalar TV"
-                    class="text-red-500 bg-red-50 hover:bg-red-500 hover:text-white border border-red-500/30 w-10 h-10 rounded-lg transition-all text-lg flex items-center justify-center">
-                    <i class="fas fa-tv"></i>
-                </a>
-                <a href="yapi_katalog.html" title="Yapı Katalog"
-                    class="text-brand-orange bg-orange-50 hover:bg-brand-orange hover:text-white border border-brand-orange/30 w-10 h-10 rounded-lg transition-all text-lg flex items-center justify-center">
-                    <i class="fas fa-book-open"></i>
-                </a>
+                <!-- TR/EN Dil Butonu (Mobil) -->
+                <button onclick="toggleLang()"
+                    class="lang-toggle-btn flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
+                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
+                </button>
                 <button id="mobile-menu-btn"
                     class="text-slate-600 hover:text-brand-orange transition focus:outline-none w-10 h-10 flex items-center justify-center">
                     <i class="fas fa-bars text-2xl"></i>
@@ -253,19 +248,13 @@
                     class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Hizmetlerimiz</a>
 
                 <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
-                    <span class="text-slate-800 font-bold text-lg">AI</span>
+                    <span class="text-slate-800 font-bold text-lg">Yapay Zeka</span>
                     <a href="ustalar_of_ai.html"
-                        class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Ustalar
-                        OF AI</a>
+                        class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Ustalar Of Ai</a>
                     <a href="fabrica_ai.html"
-                        class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">-
-                        FabricaAI</a>
+                        class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Fabrika Ai</a>
                 </div>
                 <hr class="border-slate-100">
-                <button onclick="toggleLang()"
-                    class="lang-toggle-btn w-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-5 py-3 rounded-xl transition-all font-bold">
-                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
-                </button>
                 <a target="_blank" href="https://yapishop.ustalar.com/index.php?route=common/home"
                     class="text-center text-brand-orange border-2 border-brand-orange px-5 py-3 rounded-xl font-bold transition-all mobile-link">
                     <i class="fas fa-shopping-cart mr-2"></i>Yapı Market
@@ -280,7 +269,7 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-gradient-to-b from-slate-50 to-white overflow-hidden relative">
+    <section class="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-gradient-to-br from-slate-50 via-orange-50/30 to-orange-100/20 overflow-hidden relative">
         <div
             class="absolute top-20 right-0 w-[500px] h-[500px] bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob">
         </div>
@@ -326,8 +315,25 @@
                 <div id="slider-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20">
                     <!-- Dots generated dynamically -->
                 </div>
-        </div>
-    </section>
+            </div>
+
+            <!-- Mobil İçin Slide Altındaki Butonlar -->
+            <div class="lg:hidden flex items-center justify-between space-x-3 mt-6 max-w-3xl mx-auto px-4">
+                <!-- Ustalar TV Butonu -->
+                <a href="ustalar_tv.html" 
+                    class="flex-1 flex items-center justify-center space-x-2 bg-gradient-to-r from-red-500 to-rose-600 text-white font-bold py-3.5 px-3 rounded-xl shadow-sm hover:shadow-md transition-all active:scale-95 duration-200 text-sm">
+                    <i class="fas fa-tv text-base"></i>
+                    <span>Ustalar TV</span>
+                </a>
+                
+                <!-- Yapı Katalog Butonu -->
+                <a href="yapi_katalog.html" 
+                    class="flex-1 flex items-center justify-center space-x-2 bg-gradient-to-r from-brand-orange to-orange-500 text-white font-bold py-3.5 px-3 rounded-xl shadow-sm hover:shadow-md transition-all active:scale-95 duration-200 text-sm">
+                    <i class="fas fa-book-open text-base"></i>
+                    <span>Yapı Katalog</span>
+                </a>
+            </div>
+        </section>
 
     <!-- REKLAM ALANI (720x90) -->
     <section class="py-12 bg-white flex justify-center items-center px-4 relative z-20 hidden">
@@ -510,7 +516,7 @@
                     </div>
                     <h3
                         class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-teal-600 transition-colors uppercase tracking-wide">
-                        Tedarik Zinciri (Teziyo)</h3>
+                        TEDARİK ZİNCİRİ YÖNETİMİ (TEZİYO)</h3>
                     <p class="text-slate-600 text-[15px] leading-relaxed mb-6 font-medium">Malzeme tedariğinden şantiye lojistiğine kadar tüm tedarik süreçlerinizi akıllıca yönetin.</p>
                 </a>
 
@@ -688,7 +694,7 @@
     </section>
 
     <!-- FOOTER -->
-    <footer id="iletisim" class="bg-white py-16 border-t border-slate-200">
+    <footer id="iletisim" class="bg-gradient-to-b from-white via-slate-50 to-orange-50/20 py-16 border-t border-slate-200">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
@@ -705,23 +711,35 @@
                         <p><i class="fas fa-phone-alt w-5 text-brand-orange"></i> Telefon: +90 532 466 60 68</p>
                     </div>
                     <div class="flex space-x-4 mb-6">
-                        <a href="https://facebook.com/ustalarcom"
+                        <a href="https://www.facebook.com/ustalar" target="_blank"
                             class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com/ustalarcom"
+                        <a href="https://www.instagram.com/ustalar_com/" target="_blank"
                             class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
                                 class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com/@sektorturk"
+                        <a href="https://www.linkedin.com/company/ustalarcom" target="_blank"
+                            class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com/@sektorturk" target="_blank"
                             class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i
                                 class="fab fa-youtube"></i></a>
                     </div>
-                    <div>
+                    <div class="flex flex-wrap items-center gap-3">
                         <a href="https://play.google.com/store/apps/details?id=com.ustalar.ustalar_com" target="_blank"
                             class="inline-flex items-center bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-slate-800 transition shadow-md">
                             <img src="assets/images/google-play.png" alt="Google Play"
                                 class="h-5 w-auto object-contain mr-2">
-                            İndir
+                            Google Play
                         </a>
+                        <div class="relative inline-flex">
+                            <div class="inline-flex items-center bg-slate-100 text-slate-400 px-5 py-2.5 rounded-xl font-bold cursor-not-allowed select-none border border-slate-200">
+                                <i class="fab fa-apple text-xl mr-2 text-slate-400"></i>
+                                App Store
+                            </div>
+                            <span class="absolute -top-2.5 -right-1.5 bg-orange-500 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded-md uppercase tracking-wider shadow-sm border border-white">
+                                Çok Yakında
+                            </span>
+                        </div>
                     </div>
                 </div>
 
