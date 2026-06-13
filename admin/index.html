@@ -81,10 +81,10 @@
                     <i class="fas fa-play-circle w-6"></i> Ustalar TV Web & Mobil
                 </div>
                 <div onclick="switchView('catalog')" id="nav-catalog" class="nav-link flex items-center p-3 rounded-xl font-semibold">
-                    <i class="fas fa-book-open w-6"></i> Yapı Katalog Web & Mobil
+                    <i class="fas fa-hammer w-6"></i> Ustalık Hizmetleri
                 </div>
                 <div onclick="switchView('news')" id="nav-news" class="nav-link flex items-center p-3 rounded-xl font-semibold">
-                    <i class="fas fa-newspaper w-6"></i> Mobil Yapı Haberler
+                    <i class="fas fa-newspaper w-6"></i> Yapı Haberler
                 </div>
                 <div onclick="switchView('webslider')" id="nav-webslider" class="nav-link flex items-center p-3 rounded-xl font-semibold">
                     <i class="fas fa-images w-6"></i> Web Slider
@@ -116,7 +116,7 @@
                                 <option value="home">Mobil Uygulama Ana Ekranı</option>
                                 <option value="webview">Ustalar.com Ana Sayfası</option>
                                 <option value="services">Hizmetlerimiz</option>
-                                <option value="catalog">Yapı Katalog</option>
+                                <option value="catalog">Ustalık Hizmetleri</option>
                                 <option value="news">Haberler</option>
                                 <option value="brand">Brand Sayfası</option>
                                 <option value="ustalar_tv">Ustalar TV</option>
@@ -257,11 +257,11 @@
             <div id="view-catalog" class="view-content hidden">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                     <div>
-                        <h2 class="text-3xl font-bold text-slate-800">Yapı Katalog Web & Mobil</h2>
-                        <p class="text-slate-500">Yapı Katalog sayfasındaki ürün kartlarını yönetin.</p>
+                        <h2 class="text-3xl font-bold text-slate-800">Ustalık Hizmetleri</h2>
+                        <p class="text-slate-500">Ustalık Hizmetleri sayfasındaki hizmet kartlarını yönetin.</p>
                     </div>
                     <button onclick="openServiceModal('catalog_products')" class="btn-orange text-white font-bold px-6 py-3 rounded-xl shadow-lg flex items-center">
-                        <i class="fas fa-plus mr-2"></i> Yeni Katalog Ekle
+                        <i class="fas fa-plus mr-2"></i> Yeni Hizmet Ekle
                     </button>
                 </div>
 
@@ -271,7 +271,7 @@
                             <thead class="bg-slate-50 border-b border-slate-200">
                                 <tr>
                                     <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Sıra</th>
-                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Katalog Adı</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Hizmet Adı</th>
                                     <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Link / Form</th>
                                     <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">İşlemler</th>
                                 </tr>
@@ -284,12 +284,12 @@
                     </div>
                 </div>
 
-                <!-- Firmalar Yönetimi (Katalog Sayfası) -->
+                <!-- Firmalar Yönetimi (Ustalık Hizmetleri Sayfası) -->
                 <div class="glass-card overflow-hidden mt-12">
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center p-6 border-b border-slate-200">
                         <div>
                             <h3 class="text-2xl font-bold text-slate-800">Firmalar Yönetimi</h3>
-                            <p class="text-slate-500 text-sm">Katalog sayfasında kayan logoları yönetin.</p>
+                            <p class="text-slate-500 text-sm">Ustalık Hizmetleri sayfasında kayan logoları yönetin.</p>
                         </div>
                         <button onclick="openServiceModal('catalog_companies')" class="btn-orange text-white font-bold px-4 py-2 rounded-lg flex items-center mt-4 md:mt-0">
                             <i class="fas fa-plus mr-2"></i> Yeni Firma Ekle
@@ -409,19 +409,15 @@
             <!-- NEWS VIEW -->
             <div id="view-news" class="view-content hidden">
                 <div class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-800">Mobil Yapı Haberler</h2>
-                    <p class="text-slate-500">Haberler sayfasındaki duyuru listesini yönetin.</p>
+                    <h2 class="text-3xl font-bold text-slate-800">Yapı Haberler</h2>
+                    <p class="text-slate-500">Haberler sayfasındaki haber listesini yönetin.</p>
                 </div>
 
 
 
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-800">Duyurular (Announcements)</h3>
-                        <p class="text-slate-500">Haberler sayfasında listelenecek duyuruları yönetin.</p>
-                    </div>
+                <div class="flex justify-end mb-8">
                     <button onclick="openNewsModal()" class="btn-orange text-white font-bold px-6 py-3 rounded-xl shadow-lg flex items-center">
-                        <i class="fas fa-plus mr-2"></i> Yeni Duyuru Ekle
+                        <i class="fas fa-plus mr-2"></i> Yeni Haber Ekle
                     </button>
                 </div>
 
@@ -555,14 +551,13 @@
     <div id="news-modal" class="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden overflow-y-auto">
         <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 transform transition-all my-8">
             <div class="flex justify-between items-center mb-6">
-                <h3 id="nmodal-title" class="text-2xl font-bold text-slate-800">Duyuru Ekle / Düzenle</h3>
+                <h3 id="nmodal-title" class="text-2xl font-bold text-slate-800">Haber Ekle / Düzenle</h3>
                 <button onclick="closeNewsModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
             </div>
             <div class="space-y-4">
                 <input type="hidden" id="news-id">
-                <input type="hidden" id="news-old-image">
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Duyuru Başlığı</label>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Haber Başlığı</label>
                     <input type="text" id="news-title" placeholder="Örn: Yeni Kampanya!" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
                 <div>
@@ -573,14 +568,10 @@
                     <label class="block text-sm font-semibold text-slate-700 mb-2">Yönlendirme Linki</label>
                     <input type="text" id="news-url" placeholder="https://..." class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Duyuru Görseli (Opsiyonel)</label>
-                    <input type="file" id="news-file" accept="image/*" class="w-full text-sm text-slate-500 file:bg-slate-100 file:px-4 file:py-2 file:rounded-lg file:border-0 cursor-pointer">
-                </div>
                 <div class="pt-4 flex space-x-3">
                     <button onclick="closeNewsModal()" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl">İptal</button>
                     <button id="news-save-btn" onclick="saveNews()" class="flex-[2] btn-orange text-white font-bold py-3 rounded-xl flex items-center justify-center">
-                        <span id="news-btn-text">Duyuruyu Kaydet</span>
+                        <span id="news-btn-text">Haberi Kaydet</span>
                     </button>
                 </div>
             </div>
@@ -733,13 +724,11 @@
 
         window.openNewsModal = () => {
             document.getElementById('news-id').value = "";
-            document.getElementById('news-old-image').value = "";
             document.getElementById('news-title').value = "";
             document.getElementById('news-desc').value = "";
             document.getElementById('news-url').value = "";
-            document.getElementById('news-file').value = "";
-            document.getElementById('nmodal-title').textContent = "Yeni Duyuru Ekle";
-            document.getElementById('news-btn-text').textContent = "Duyuruyu Kaydet";
+            document.getElementById('nmodal-title').textContent = "Yeni Haber Ekle";
+            document.getElementById('news-btn-text').textContent = "Haberi Kaydet";
             document.getElementById('news-modal').classList.remove('hidden');
         };
         window.closeNewsModal = () => document.getElementById('news-modal').classList.add('hidden');
@@ -892,19 +881,17 @@
 
         async function loadAdSettings() { updatePositionsAndLoad(); }
 
-        // NEWS MODULE (ANNOUNCEMENTS)
+        // NEWS MODULE (YAPI HABERLER)
         window.loadNews = async () => {
             const tbody = document.getElementById('news-list');
-            const qs = await getDocs(query(collection(db, "news"), orderBy("orderIndex")));
+            const qs = await getDocs(query(collection(db, "news"), orderBy("orderIndex", "desc")));
             newsData = []; tbody.innerHTML = "";
             qs.forEach(doc => newsData.push({ id: doc.id, ...doc.data() }));
             newsData.forEach((item, i) => {
                 const tr = document.createElement('tr');
-                const imgTag = item.imageUrl ? `<img src="${item.imageUrl}" class="h-10 w-10 mr-3 object-cover rounded">` : `<div class="h-10 w-10 mr-3 bg-slate-200 rounded flex items-center justify-center text-slate-400"><i class="fas fa-image"></i></div>`;
                 tr.innerHTML = `
                     <td class="px-6 py-4">${i + 1}</td>
-                    <td class="px-6 py-4 flex items-center">
-                        ${imgTag}
+                    <td class="px-6 py-4">
                         <div>
                             <div class="font-bold">${item.title}</div>
                             <div class="text-xs text-slate-500 line-clamp-1">${item.description || ''}</div>
@@ -920,17 +907,16 @@
                 `;
                 tbody.appendChild(tr);
             });
-            if (newsData.length === 0) tbody.innerHTML = '<tr><td colspan="4" class="p-10 text-center text-slate-400 italic">Henüz duyuru eklenmemiş.</td></tr>';
+            if (newsData.length === 0) tbody.innerHTML = '<tr><td colspan="4" class="p-10 text-center text-slate-400 italic">Henüz haber eklenmemiş.</td></tr>';
         };
 
         window.editNews = (id) => {
             const item = newsData.find(x => x.id === id);
             document.getElementById('news-id').value = item.id;
-            document.getElementById('news-old-image').value = item.imageUrl || "";
             document.getElementById('news-title').value = item.title;
             document.getElementById('news-desc').value = item.description || "";
             document.getElementById('news-url').value = item.linkUrl || "";
-            document.getElementById('nmodal-title').textContent = "Duyuruyu Düzenle";
+            document.getElementById('nmodal-title').textContent = "Haberi Düzenle";
             document.getElementById('news-btn-text').textContent = "Değişiklikleri Kaydet";
             document.getElementById('news-modal').classList.remove('hidden');
         };
@@ -941,19 +927,15 @@
                 const title = document.getElementById('news-title').value;
                 const description = document.getElementById('news-desc').value;
                 const linkUrl = sanitizeUrl(document.getElementById('news-url').value);
-                const file = document.getElementById('news-file').files[0];
-                let imageUrl = document.getElementById('news-old-image').value;
-                
-                if (file) {
-                    const sRef = ref(storage, `news/${Date.now()}_${file.name}`);
-                    await uploadBytes(sRef, file);
-                    imageUrl = await getDownloadURL(sRef);
-                }
                 
                 if (id) {
-                    await updateDoc(doc(db, "news", id), { title, description, linkUrl, imageUrl });
+                    await updateDoc(doc(db, "news", id), { title, description, linkUrl });
                 } else {
-                    await addDoc(collection(db, "news"), { title, description, linkUrl, imageUrl, orderIndex: newsData.length });
+                    let nextOrderIndex = 0;
+                    if (newsData.length > 0) {
+                        nextOrderIndex = Math.max(...newsData.map(x => typeof x.orderIndex === 'number' ? x.orderIndex : 0)) + 1;
+                    }
+                    await addDoc(collection(db, "news"), { title, description, linkUrl, orderIndex: nextOrderIndex });
                 }
                 closeNewsModal();
                 await loadNews();
@@ -961,7 +943,7 @@
         };
  
         window.deleteNews = async (id) => { 
-            if(confirm("Duyuru silinsin mi?")) { 
+            if(confirm("Haber silinsin mi?")) { 
                 await window.runWithLoader(async () => {
                     await deleteDoc(doc(db, "news", id)); 
                     await loadNews(); 
@@ -974,8 +956,8 @@
             await window.runWithLoader(async () => {
                 const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
                 const batch = writeBatch(db);
-                batch.update(doc(db, "news", newsData[idx].id), { orderIndex: targetIdx });
-                batch.update(doc(db, "news", newsData[targetIdx].id), { orderIndex: idx });
+                batch.update(doc(db, "news", newsData[idx].id), { orderIndex: newsData[targetIdx].orderIndex });
+                batch.update(doc(db, "news", newsData[targetIdx].id), { orderIndex: newsData[idx].orderIndex });
                 await batch.commit();
                 await loadNews();
             });

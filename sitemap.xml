@@ -37,7 +37,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ustalar.com/yapi_katalog.html</loc>
+    <loc>https://ustalar.com/ustalik_hizmeti.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ustalar.com/tedarik_zinciri.html</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

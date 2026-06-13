@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CQC Kalite, Dış Ticaret ve İş Güvenliği - ISO Standartları, Turquality, Helal Belgesi ve Üretim Yönetimi Danışmanlık Hizmetleri.">
+    <title>Eğitim & Danışmanlık | CQC - Ustalar.com</title>
+    <link rel="icon" type="image/png" href="assets/images/ustalar_icon.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#f97316',
+                            dark: '#ea580c',
+                            light: '#fdba74'
+                        },
+                        cqc: {
+                            blue: '#1e3a8a',
+                            lightBlue: '#3b82f6',
+                            teal: '#0d9488'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        html { scroll-behavior: smooth; }
+
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 45px -10px rgba(30, 58, 138, 0.08), 0 15px 20px -10px rgba(30, 58, 138, 0.04);
+        }
+
+        /* Floating background decoration animations */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+            50% { transform: translateY(-20px) scale(1.03) rotate(3deg); }
+        }
+        @keyframes float-fast {
+            0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+            50% { transform: translateY(-15px) scale(0.97) rotate(-3deg); }
+        }
+        .animate-float-slow {
+            animation: float-slow 10s ease-in-out infinite;
+        }
+        .animate-float-fast {
+            animation: float-fast 7s ease-in-out infinite;
+        }
+
+        /* Glow effects */
+        .card-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 30%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0.1) 70%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg);
+            transition: transform 0.6s ease;
+            pointer-events: none;
+        }
+        .card-shine:hover::after {
+            transform: translate(50%, 50%) rotate(45deg);
+        }
+
+        /* Google Translate Hiding */
+        #google_translate_element { display: none !important; }
+        .goog-te-banner-frame { display: none !important; }
+        body { top: 0 !important; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-cqc-blue selection:text-white">
+
+    <!-- HEADER -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200/60 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Brand Logo / CQC -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="flex items-center justify-center bg-gradient-to-br from-cqc-blue to-cqc-lightBlue text-white font-black text-2xl w-12 h-12 rounded-xl shadow-lg shadow-cqc-blue/20 group-hover:scale-105 transition-transform">
+                    CQC
+                </div>
+                <div>
+                    <h1 class="text-slate-900 font-extrabold text-lg leading-tight tracking-wide">CQC Belgelendirme</h1>
+                    <p class="text-xs text-cqc-lightBlue font-bold tracking-widest uppercase">Kalite & Dış Ticaret & İSG</p>
+                </div>
+            </a>
+            
+            <!-- Home Link -->
+            <a href="index.html" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-cqc-blue text-white hover:text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-md shadow-slate-900/10 hover:shadow-cqc-blue/20">
+                <i class="fas fa-arrow-left text-xs"></i> Anasayfa
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-slate-50 via-blue-50/10 to-slate-100 overflow-hidden relative">
+        <!-- Floating Ambient Blobs -->
+        <div class="absolute top-20 right-0 w-[550px] h-[550px] bg-blue-100/40 rounded-full mix-blend-multiply filter blur-3xl pointer-events-none animate-float-slow"></div>
+        <div class="absolute bottom-10 left-10 w-[450px] h-[450px] bg-teal-50/50 rounded-full mix-blend-multiply filter blur-3xl pointer-events-none animate-float-fast"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+            <!-- Badge -->
+            <span class="inline-flex items-center space-x-2 bg-blue-100 border border-blue-200 text-cqc-blue px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-wider uppercase">
+                <i class="fas fa-award text-sm animate-pulse mr-1.5"></i> Uluslararası Akredite Hizmet
+            </span>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900 mb-6">
+                " En İyi Yatırım <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cqc-blue to-cqc-lightBlue">Kalitedir</span> "
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-600 mb-12 leading-relaxed max-w-3xl mx-auto font-medium">
+                CQC; kalite yönetim sistemleri, dış ticaret mevzuatları ve iş güvenliği standartlarında uluslararası geçerliliğe sahip belgelendirme çözümleri sunan uzman danışmanlık ortağınızdır.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
+                <a href="#belgeler" class="w-full sm:w-auto bg-cqc-blue text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cqc-lightBlue transition-all shadow-lg shadow-cqc-blue/30 hover:shadow-cqc-lightBlue/30 hover:-translate-y-0.5 text-center">
+                    Belgeleri & Standartları İncele
+                </a>
+                <a href="https://wa.me/905324666068?text=Merhaba,%20CQC%20Belgelendirme%20ve%20Kalite%20Y%C3%B6netim%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" class="w-full sm:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-800 transition-all shadow-lg text-center flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-xl text-green-400"></i> Hızlı Teklif Al
+                </a>
+            </div>
+
+            <!-- Focus area highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200/60 shadow-sm hover-lift flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-cqc-blue flex items-center justify-center shrink-0">
+                        <i class="fas fa-check-double text-xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="font-extrabold text-slate-900 text-base">KALİTE YÖNETİMİ</div>
+                        <div class="text-slate-500 text-xs font-semibold">ISO Standartları</div>
+                    </div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200/60 shadow-sm hover-lift flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-teal-50 text-cqc-teal flex items-center justify-center shrink-0">
+                        <i class="fas fa-globe text-xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="font-extrabold text-slate-900 text-base">DIŞ TİCARET</div>
+                        <div class="text-slate-500 text-xs font-semibold">Marka & Devlet Destekleri</div>
+                    </div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200/60 shadow-sm hover-lift flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-red-50 text-red-500 flex items-center justify-center shrink-0">
+                        <i class="fas fa-hard-hat text-xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="font-extrabold text-slate-900 text-base">İŞ GÜVENLİĞİ</div>
+                        <div class="text-slate-500 text-xs font-semibold">Risk Analizi & Eğitimler</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ISO CERTIFICATES SECTION -->
+    <section id="belgeler" class="py-20 bg-white border-y border-slate-200/60">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">ISO Kalite Yönetim Sistemleri</h2>
+                <p class="text-slate-500 text-lg leading-relaxed">Şirketinizin operasyonel mükemmelliğini ve küresel pazarda güvenilirliğini tescilleyen temel standartlar.</p>
+                <div class="w-20 h-1 bg-cqc-blue mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- ISO Standards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- ISO 9001 -->
+                <div class="bg-slate-50 border border-slate-200/50 rounded-3xl p-8 hover-lift card-shine">
+                    <span class="text-xs font-bold text-cqc-lightBlue uppercase tracking-widest mb-2 block">Standard</span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">ISO 9001:2008</h4>
+                    <p class="text-slate-700 font-semibold mb-4 text-[15px]">Kalite Yönetim Sistemi</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Müşteri memnuniyetini artırmak ve süreç verimliliğini uluslararası standartlarda sürdürmek için gerekli yönetim altyapısı.</p>
+                </div>
+
+                <!-- ISO 22000 -->
+                <div class="bg-slate-50 border border-slate-200/50 rounded-3xl p-8 hover-lift card-shine">
+                    <span class="text-xs font-bold text-cqc-lightBlue uppercase tracking-widest mb-2 block">Standard</span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">ISO 22000:2008</h4>
+                    <p class="text-slate-700 font-semibold mb-4 text-[15px]">HACCP Gıda Güvenliği</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Tüm gıda zincirinde güvenliği sağlamak, gıda kaynaklı tehlikeleri önceden belirlemek ve kontrol altına almak için küresel sistem.</p>
+                </div>
+
+                <!-- ISO 14001 -->
+                <div class="bg-slate-50 border border-slate-200/50 rounded-3xl p-8 hover-lift card-shine">
+                    <span class="text-xs font-bold text-cqc-lightBlue uppercase tracking-widest mb-2 block">Standard</span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">ISO 14001:2008</h4>
+                    <p class="text-slate-700 font-semibold mb-4 text-[15px]">Çevre Yönetim Sistemi</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Üretim ve hizmet süreçlerinin çevreye olan zararlarını minimuma indirmek amacıyla tasarlanmış yönetim metodolojisi.</p>
+                </div>
+
+                <!-- ISO 18001 -->
+                <div class="bg-slate-50 border border-slate-200/50 rounded-3xl p-8 hover-lift card-shine">
+                    <span class="text-xs font-bold text-cqc-lightBlue uppercase tracking-widest mb-2 block">Standard</span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">ISO 18001:1999</h4>
+                    <p class="text-slate-700 font-semibold mb-4 text-[15px]">OHSAS Kalite & İş Güvenliği</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Çalışma ortamındaki riskleri analiz eden, iş kazalarını en aza indiren ve çalışan sağlığını güvenceye alan standart.</p>
+                </div>
+
+                <!-- ISO 10002 -->
+                <div class="bg-slate-50 border border-slate-200/50 rounded-3xl p-8 hover-lift card-shine">
+                    <span class="text-xs font-bold text-cqc-lightBlue uppercase tracking-widest mb-2 block">Standard</span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">ISO 10002:2004</h4>
+                    <p class="text-slate-700 font-semibold mb-4 text-[15px]">Müşteri Memnuniyeti</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">Müşteri şikayetlerinin geri bildirime dönüştürülmesi ve müşteri sadakatini artıracak şikayet yönetim sistemleri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTHER CERTIFICATIONS & DIRECTIVES -->
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Sektörel Uygunluk ve Marka Belgeleri</h2>
+                <p class="text-slate-500 text-lg leading-relaxed">Ticari faaliyetlerinizi genişletmek, ihracatı artırmak ve yasal uygunlukları tamamlamak için gerekli tesciller.</p>
+                <div class="w-20 h-1 bg-cqc-blue mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Other Certificates Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- 1. Hizmette Yeterlilik Belgesi -->
+                <div class="bg-white border border-slate-200/60 p-6 rounded-2xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-blue-50 text-cqc-blue flex items-center justify-center mb-4">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h5 class="font-extrabold text-slate-900 mb-2">Hizmette Yeterlilik Belgesi</h5>
+                    <p class="text-slate-500 text-xs leading-relaxed">Hizmet üreten iş yerlerinin, sundukları hizmetlerin kalitesini ve uygunluğunu belgelendiren resmi tescil.</p>
+                </div>
+
+                <!-- 2. Turquality - Marka Destekleri -->
+                <div class="bg-white border border-slate-200/60 p-6 rounded-2xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-teal-50 text-cqc-teal flex items-center justify-center mb-4">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h5 class="font-extrabold text-slate-900 mb-2">Turquality & Marka Destekleri</h5>
+                    <p class="text-slate-500 text-xs leading-relaxed">Devlet destekli markalaşma programları ve ihracat teşviklerine hak kazanma süreçlerinin yönetimi ve danışmanlığı.</p>
+                </div>
+
+                <!-- 3. Üretim Yönetimi Danışmanlığı -->
+                <div class="bg-white border border-slate-200/60 p-6 rounded-2xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-blue-50 text-cqc-blue flex items-center justify-center mb-4">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h5 class="font-extrabold text-slate-900 mb-2">Üretim Yönetimi Danışmanlığı</h5>
+                    <p class="text-slate-500 text-xs leading-relaxed">Fabrika verimliliği, üretim hatları optimizasyonu ve maliyet azaltma odaklı operasyonel danışmanlık hizmetleri.</p>
+                </div>
+
+                <!-- 4. Gıda Üretim İzin Belgesi -->
+                <div class="bg-white border border-slate-200/60 p-6 rounded-2xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-green-50 text-green-600 flex items-center justify-center mb-4">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h5 class="font-extrabold text-slate-900 mb-2">Gıda Üretim İzin Belgesi</h5>
+                    <p class="text-slate-500 text-xs leading-relaxed">Tarım ve Orman Bakanlığı standartlarına tam uyumluluk ve yasal gıda üretim tescil onay süreçleri.</p>
+                </div>
+
+                <!-- 5. CE / AB Direktifleri -->
+                <div class="bg-white border border-slate-200/60 p-6 rounded-2xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-blue-50 text-cqc-blue flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h5 class="font-extrabold text-slate-900 mb-2">CE / AB Direktifleri</h5>
+                    <p class="text-slate-500 text-xs leading-relaxed">Ürünlerinizin Avrupa Birliği pazarlarında serbestçe dolaşımı için güvenlik, sağlık ve çevre koruma gereklilikleri.</p>
+                </div>
+
+                <!-- 6. FSSC Belgesi -->
+                <div class="bg-white border border-slate-200/60 p-6 rounded-2xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h5 class="font-extrabold text-slate-900 mb-2">FSSC Belgesi</h5>
+                    <p class="text-slate-500 text-xs leading-relaxed">Gıda Güvenliği Sistem Sertifikasyonu (FSSC 22000) ile küresel perakende devleri karşısında tam akreditasyon.</p>
+                </div>
+
+                <!-- 7. Helal Belgesi -->
+                <div class="bg-white border border-slate-200/60 p-6 rounded-2xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-orange-50 text-brand-orange flex items-center justify-center mb-4">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h5 class="font-extrabold text-slate-900 mb-2">Helal Belgesi</h5>
+                    <p class="text-slate-500 text-xs leading-relaxed">İslami kurallara uygun gıda, kozmetik ve hizmet standartlarının tescillenerek geniş bir pazara açılma fırsatı.</p>
+                </div>
+
+                <!-- 8. TSE / TSEK Standartları -->
+                <div class="bg-white border border-slate-200/60 p-6 rounded-2xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-4">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h5 class="font-extrabold text-slate-900 mb-2">TSE & TSEK Standartları</h5>
+                    <p class="text-slate-500 text-xs leading-relaxed">Türk Standartları Enstitüsü kriterlerine uygunluk ve kalite belgelendirme süreçlerinin danışmanlığı.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / INQUIRY SECTION -->
+    <section id="iletisim" class="py-20 bg-white relative overflow-hidden">
+        <!-- Ambient grid pattern -->
+        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-100/30 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 max-w-4xl">
+            <div class="bg-slate-900 text-white rounded-[2.5rem] shadow-2xl p-8 md:p-12 relative overflow-hidden">
+                <!-- Background decoration overlay -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-600/20 rounded-full blur-2xl"></div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h3 class="text-3xl font-extrabold mb-4">CQC Belgelendirme ve Danışmanlık</h3>
+                        <p class="text-slate-300 mb-8 leading-relaxed text-sm">
+                            Hizmetlerimiz, ISO başvuruları ve uygunluk denetimleri hakkında detaylı bilgi ve fiyat teklifi almak için bizimle iletişime geçin.
+                        </p>
+                        
+                        <div class="space-y-4 text-sm text-slate-400">
+                            <p class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-cqc-lightBlue mt-1 mr-3 w-4 text-center"></i>
+                                <span>Yakuplu Merkez Mahallesi İnönü Caddesi 124.Sk No:21/B Yakuplu - Beylikdüzü / İstanbul</span>
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-phone-alt text-cqc-lightBlue mr-3 w-4 text-center"></i>
+                                <a href="https://wa.me/905324666068" target="_blank" class="hover:text-cqc-lightBlue transition-colors">+90 532 466 60 68</a>
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-envelope text-cqc-lightBlue mr-3 w-4 text-center"></i>
+                                <a href="mailto:ustalarfair@gmail.com" class="hover:text-cqc-lightBlue transition-colors">ustalarfair@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/5 backdrop-blur-md p-6 rounded-3xl border border-white/10 flex flex-col space-y-4">
+                        <span class="text-xs font-bold text-cqc-lightBlue uppercase tracking-wider text-center">Doğrudan İletişim Kanalları</span>
+                        <a href="https://wa.me/905324666068?text=Merhaba,%20CQC%20Belgelendirme%20ve%20Dan%C4%B1%C5%9Fmanl%C4%B1k%20hizmetleri%20hakk%C4%B1nda%20teklif%20almak%20istiyorum." target="_blank" class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-4 rounded-xl font-bold transition-all shadow-md">
+                            <i class="fab fa-whatsapp text-xl"></i> WhatsApp'tan İletişime Geç
+                        </a>
+                        <a href="mailto:ustalarfair@gmail.com?subject=CQC%20Belgelendirme%20Hizmeti%20Teklifi" class="flex items-center justify-center gap-2 bg-cqc-lightBlue hover:bg-cqc-blue text-white py-4 rounded-xl font-bold transition-all shadow-md">
+                            <i class="fas fa-envelope text-xl"></i> E-Posta ile Teklif Al
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <div class="flex items-center justify-center bg-gradient-to-br from-cqc-blue to-cqc-lightBlue text-white font-black text-xl w-10 h-10 rounded-lg mx-auto mb-4">
+                CQC
+            </div>
+            <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">Kalite yönetim sistemleri, dış ticaret süreçleri ve iş güvenliği danışmanlığı ile geleceğe sağlam adımlarla ilerleyin.</p>
+            <p class="text-slate-600 text-xs font-semibold">&copy; 2026 CQC Belgelendirme | Tüm Hakları Saklıdır. Ustalar.com Sinerji Ortağıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Google translate system script -->
+    <script src="assets/js/language.js"></script>
+</body>
+</html>

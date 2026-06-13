@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ustalar.com'un geleceğin yapı ve inşaat ekosistemine sunduğu yenilikçi çözümleri, pazar potansiyelini, hedeflerini ve yatırım fırsatlarını keşfedin.">
+    <title>Yatırımcı Köşesi | Ustalar.com</title>
+    <link rel="icon" type="image/png" href="assets/images/ustalar_icon.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#f97316',
+                            dark: '#ea580c',
+                            light: '#fdba74'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        html { scroll-behavior: smooth; }
+
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 45px -10px rgba(0, 0, 0, 0.08), 0 15px 20px -10px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Ambient floating decoration animations */
+        @keyframes float-slower {
+            0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+            50% { transform: translateY(-20px) scale(1.05) rotate(5deg); }
+        }
+        @keyframes float-faster {
+            0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+            50% { transform: translateY(-15px) scale(0.95) rotate(-5deg); }
+        }
+        .animate-float-slow {
+            animation: float-slower 9s ease-in-out infinite;
+        }
+        .animate-float-fast {
+            animation: float-faster 6s ease-in-out infinite;
+        }
+
+        /* Pulse glow */
+        .glow-pulse {
+            position: relative;
+        }
+        .glow-pulse::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0.4;
+            filter: blur(8px);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.03); opacity: 0.6; }
+        }
+
+        /* Translate element override */
+        #google_translate_element { display: none !important; }
+        .goog-te-banner-frame { display: none !important; }
+        body { top: 0 !important; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
+
+    <!-- TOP NAVIGATION -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200/60 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center group">
+                <img src="assets/images/about_logos.png" alt="Ustalar Logo" class="h-12 w-auto object-contain group-hover:scale-105 transition-transform">
+            </a>
+            
+            <!-- Home Link -->
+            <a href="index.html" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-brand-orange text-white hover:text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-md shadow-slate-900/10 hover:shadow-brand-orange/20">
+                <i class="fas fa-arrow-left text-xs"></i> Anasayfa
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-slate-50 via-orange-50/20 to-slate-100 overflow-hidden relative">
+        <!-- Ambient animated blobs -->
+        <div class="absolute top-20 right-0 w-[600px] h-[600px] bg-orange-100/40 rounded-full mix-blend-multiply filter blur-3xl pointer-events-none animate-float-slow"></div>
+        <div class="absolute bottom-10 left-10 w-[500px] h-[500px] bg-slate-200/50 rounded-full mix-blend-multiply filter blur-3xl pointer-events-none animate-float-fast"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+            <!-- Badge -->
+            <span class="inline-flex items-center space-x-2 bg-orange-100 border border-orange-200 text-brand-dark px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-wider uppercase">
+                <i class="fas fa-chart-line text-sm animate-pulse mr-1"></i> Yatırım ve Büyüme Fırsatı
+            </span>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900 mb-6">
+                Yapı ve İnşaat Sektörünün <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-orange-500">Dijital Geleceğini</span> İnşa Ediyoruz
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-600 mb-12 leading-relaxed max-w-3xl mx-auto font-medium">
+                Ustalar.com; geleneksel usta ağını, yapay zeka asistanlarını, kentsel dönüşüm yönetimini ve dijital tedarik zincirini tek bir çatı altında birleştiren, milyarlarca dolarlık inşaat ekosisteminin lider teknoloji platformudur.
+            </p>
+
+            <!-- Action buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
+                <a href="#iletisim" class="w-full sm:w-auto bg-brand-orange text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-dark transition-all shadow-lg shadow-brand-orange/30 hover:shadow-brand-dark/30 hover:-translate-y-0.5 text-center">
+                    Yatırımcı Sunumu Talep Et
+                </a>
+                <a href="https://wa.me/905324666068?text=Merhaba,%20Ustalar.com%20yat%C4%B1r%C4%B1m%20potansiyeli%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" class="w-full sm:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-800 transition-all shadow-lg text-center flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-xl text-green-400"></i> Hızlı İletişim
+                </a>
+            </div>
+
+            <!-- Key metrics grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200/60 shadow-sm hover-lift">
+                    <div class="text-brand-orange text-3xl font-extrabold mb-1">50.000+</div>
+                    <div class="text-slate-500 text-xs font-bold tracking-wider uppercase">Aktif Usta Ağı</div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200/60 shadow-sm hover-lift">
+                    <div class="text-brand-orange text-3xl font-extrabold mb-1">12+</div>
+                    <div class="text-slate-500 text-xs font-bold tracking-wider uppercase">Entegre Hizmet</div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200/60 shadow-sm hover-lift">
+                    <div class="text-brand-orange text-3xl font-extrabold mb-1">2+</div>
+                    <div class="text-slate-500 text-xs font-bold tracking-wider uppercase">Gelişmiş AI Çözümü</div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-slate-200/60 shadow-sm hover-lift">
+                    <div class="text-brand-orange text-3xl font-extrabold mb-1">%300+</div>
+                    <div class="text-slate-500 text-xs font-bold tracking-wider uppercase">Yıllık Büyüme Hızı</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE MISSION & PROBLEM-SOLUTION -->
+    <section class="py-20 bg-white border-y border-slate-200/60">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Neden Ustalar.com?</h2>
+                <p class="text-slate-500 text-lg leading-relaxed">İnşaat sektörü, küresel olarak dijitalleşmeye en geç adapte olan ama pazar hacmi en büyük sektörlerden biridir. Biz bu problemi çözüyoruz.</p>
+                <div class="w-20 h-1 bg-brand-orange mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+                <!-- Left Card: Problem -->
+                <div class="bg-red-50/50 border border-red-100 rounded-3xl p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-6">
+                            <i class="fas fa-exclamation-triangle text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6">Sektörel Problemler</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0"></span>
+                                <p class="text-slate-600"><strong class="text-slate-800">Güven Eksikliği:</strong> Müşteriler ile ustalar arasındaki ödeme, zamanlama ve kalite anlaşmazlıkları.</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0"></span>
+                                <p class="text-slate-600"><strong class="text-slate-800">Karmaşık Lojistik:</strong> Şantiyelerde malzeme sipariş, lojistik ve tedarik zincirlerinin kaotik yönetimi.</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-2 h-2 rounded-full bg-red-500 mt-2 shrink-0"></span>
+                                <p class="text-slate-600"><strong class="text-slate-800">Analiz ve Tahmin Yetersizliği:</strong> Kentsel dönüşüm, maliyet hesabı ve piyasa değerlemesinde veri eksikliği ve yavaşlık.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Card: Solution -->
+                <div class="bg-emerald-50/50 border border-emerald-100 rounded-3xl p-8 lg:p-10 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-6">
+                            <i class="fas fa-lightbulb text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6">Ustalar.com Çözümü</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
+                                <p class="text-slate-600"><strong class="text-slate-800">Tek Noktadan Dijital Ekosistem:</strong> Güvenilir usta bulmadan başlayıp B2B yapı market alışverişine kadar uzanan entegre süreç.</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
+                                <p class="text-slate-600"><strong class="text-slate-800">Yapay Zeka Entegrasyonu:</strong> Yapay zeka destekli teknik asistanlık (Ustalar OF AI) ve endüstriyel üretim analitiği (Fabrika AI).</p>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
+                                <p class="text-slate-600"><strong class="text-slate-800">Veriye Dayalı Akıllı Çözümler:</strong> Dijital Kentsel Dönüşüm, akıllı tedarik yönetim sistemi (TEZİYO) ve anında yapay zeka emlak değerlemesi.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ECOSYSTEM MAP & SERVICES -->
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Uçtan Uca Değer Yaratan Ekosistem</h2>
+                <p class="text-slate-500 text-lg leading-relaxed">Projelerimiz birbirini besleyen ve büyüten bir sinerjiyle çalışır.</p>
+                <div class="w-20 h-1 bg-brand-orange mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1. Kentsel Dönüşüm -->
+                <div class="bg-white border border-slate-200/60 rounded-3xl p-8 hover-lift card-shine">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-500 flex items-center justify-center mb-6">
+                        <i class="fas fa-city text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3 uppercase tracking-wide">Kentsel Dönüşüm</h4>
+                    <p class="text-slate-600 leading-relaxed text-[15px]">Risk analizi, mimari proje planlama, resmi süreç yönetimi ve inşaat maliyetlerinin şeffafça hesaplanmasını sağlayan dijital kentsel dönüşüm platformu.</p>
+                </div>
+
+                <!-- 2. B2B Yapı Market (YapiShop) -->
+                <div class="bg-white border border-slate-200/60 rounded-3xl p-8 hover-lift card-shine">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-50 text-brand-orange flex items-center justify-center mb-6">
+                        <i class="fas fa-book-open text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3 uppercase tracking-wide">Yapı Katalog & Market</h4>
+                    <p class="text-slate-600 leading-relaxed text-[15px]">Sektördeki en kaliteli yapı malzemelerinin listelendiği, toptan ve perakende e-ticaret altyapısını bir araya getiren Yapı Katalog ve e-ticaret (YapiShop) çözümleri.</p>
+                </div>
+
+                <!-- 3. Ustalar OF AI -->
+                <div class="bg-white border border-slate-200/60 rounded-3xl p-8 hover-lift card-shine">
+                    <div class="w-12 h-12 rounded-2xl bg-yellow-50 text-yellow-500 flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3 uppercase tracking-wide">Ustalar OF AI</h4>
+                    <p class="text-slate-600 leading-relaxed text-[15px]">İnşaat süreçlerinde teknik rehberlik yapan, maliyet hesabı yapabilen ve teknik mevzuatlara hakim, sektöre özel eğitilmiş yapay zeka asistanı.</p>
+                </div>
+
+                <!-- 4. Fabrika AI -->
+                <div class="bg-white border border-slate-200/60 rounded-3xl p-8 hover-lift card-shine">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-500 flex items-center justify-center mb-6">
+                        <i class="fas fa-industry text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3 uppercase tracking-wide">Fabrika AI</h4>
+                    <p class="text-slate-600 leading-relaxed text-[15px]">Endüstriyel tesisler ve fabrikalarda üretim verimliliğini artıran, arıza tahminleri yapan ve iş sağlığı güvenliğini denetleyen yapay zeka sistemleri.</p>
+                </div>
+
+                <!-- 5. TEZİYO (Tedarik Zinciri) -->
+                <div class="bg-white border border-slate-200/60 rounded-3xl p-8 hover-lift card-shine">
+                    <div class="w-12 h-12 rounded-2xl bg-teal-50 text-teal-500 flex items-center justify-center mb-6">
+                        <i class="fas fa-network-wired text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3 uppercase tracking-wide">TEZİYO Lojistik</h4>
+                    <p class="text-slate-600 leading-relaxed text-[15px]">Şantiyelere malzeme tedariğini ve lojistiği optimize eden, hammadde siparişlerinden araç rotalamaya kadar tüm tedarik zincirini akıllıca yöneten sistem.</p>
+                </div>
+
+                <!-- 6. Ustalar TV & Medya -->
+                <div class="bg-white border border-slate-200/60 rounded-3xl p-8 hover-lift card-shine">
+                    <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center mb-6">
+                        <i class="fas fa-tv text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3 uppercase tracking-wide">Ustalar TV</h4>
+                    <p class="text-slate-600 leading-relaxed text-[15px]">Eğitici ustalık içerikleri, usta akademisi, dijital reklam ve inşaat dünyasının ilk video/medya odaklı eğitim ve tanıtım platformu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION & GROWTH ROADMAP -->
+    <section class="py-20 bg-white border-b border-slate-200/60">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Gelecek Yol Haritası ve Büyüme</h2>
+                <p class="text-slate-500 text-lg leading-relaxed">Planlı adımlarla Türkiye'den küresel pazarlara uzanan sürdürülebilir büyüme modeli.</p>
+                <div class="w-20 h-1 bg-brand-orange mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Roadmap timeline -->
+            <div class="max-w-4xl mx-auto relative border-l-2 border-slate-200 pl-8 space-y-12">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <span class="absolute -left-[41px] top-1.5 bg-brand-orange text-white w-6 h-6 rounded-full flex items-center justify-center ring-4 ring-white shadow text-xs font-bold">
+                        1
+                    </span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-2">Ulusal Pazar Entegrasyonu (2024-2025) <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-0.5 rounded-full font-bold ml-2">Tamamlandı</span></h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Türkiye çapında 50.000 usta ve 100+ partner firmaya ulaşıldı. Kentsel Dönüşüm, Yapı Katalog ve Ustalar OF AI asistanı yayına alınarak ekosistemin çekirdeği başarıyla oluşturuldu.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative">
+                    <span class="absolute -left-[41px] top-1.5 bg-slate-900 text-white w-6 h-6 rounded-full flex items-center justify-center ring-4 ring-white shadow text-xs font-bold">
+                        2
+                    </span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-2">Finansman & Derinleşme (2026) <span class="bg-orange-100 text-brand-dark text-xs px-2.5 py-0.5 rounded-full font-bold ml-2">Devam Ediyor</span></h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Yatırım turu ile büyümeyi hızlandırmak, TEZİYO lojistik ağının toptan entegrasyonu, yapay zeka emlak değerleme algoritmalarının piyasaya sürülmesi ve Yapı Market zinciri iş birliklerinin genişletilmesi.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative">
+                    <span class="absolute -left-[41px] top-1.5 bg-slate-200 text-slate-600 w-6 h-6 rounded-full flex items-center justify-center ring-4 ring-white shadow text-xs font-bold">
+                        3
+                    </span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-2">Küresel Ölçek ve Blockchain (2027+) <span class="bg-slate-100 text-slate-500 text-xs px-2.5 py-0.5 rounded-full font-bold ml-2">Planlandı</span></h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Orta Doğu ve Avrupa pazarlarında pilot bölgelerin seçilmesi. Blockchain tabanlı hakediş, akıllı sözleşme güvenli ödeme sistemleri ve uluslararası lisanslama modelleri.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION (CONTACT FORM) -->
+    <section id="iletisim" class="py-20 bg-slate-50 relative overflow-hidden">
+        <!-- Background light shapes -->
+        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-orange-100/30 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 max-w-3xl">
+            <div class="bg-white border border-slate-200/60 rounded-[2.5rem] shadow-2xl p-8 md:p-12 text-center relative glow-pulse">
+                <h3 class="text-3xl font-extrabold text-slate-900 mb-4">Geleceğe Birlikte Adım Atalım</h3>
+                <p class="text-slate-600 mb-8 max-w-xl mx-auto leading-relaxed">
+                    Yatırım fırsatları, detaylı finansal projeksiyonlar ve pitch-deck sunumumuz hakkında bilgi almak için formu doldurun veya doğrudan bizimle iletişime geçin.
+                </p>
+
+                <!-- Action Form / Info -->
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-2xl border border-slate-200/50">
+                            <div class="w-10 h-10 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center mb-3">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">E-Posta</span>
+                            <a href="mailto:ustalarfair@gmail.com" class="text-slate-800 font-bold hover:text-brand-orange transition-colors">ustalarfair@gmail.com</a>
+                        </div>
+
+                        <div class="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-2xl border border-slate-200/50">
+                            <div class="w-10 h-10 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center mb-3">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <span class="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Telefon / WhatsApp</span>
+                            <a href="https://wa.me/905324666068" target="_blank" class="text-slate-800 font-bold hover:text-brand-orange transition-colors">+90 532 466 60 68</a>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <a href="https://wa.me/905324666068?text=Merhaba,%20Ustalar.com%20yat%C4%B1r%C4%B1mc%C4%B1%20pitchdeck%20sunumunu%20talep%20etmek%20istiyorum." target="_blank" class="inline-flex items-center justify-center bg-brand-orange text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-brand-dark transition-all shadow-lg shadow-brand-orange/40 w-full group">
+                            Yatırımcı Sunumunu WhatsApp'tan Talep Et
+                            <i class="fas fa-chevron-right ml-3 group-hover:translate-x-1.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <img src="assets/images/about_logos.png" alt="Ustalar Logo" class="h-10 w-auto object-contain mx-auto mb-6 opacity-80">
+            <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">Ustalar.com, yapay zeka ve entegre dijital çözümlerle donatılmış Türkiye'nin en kapsamlı yapı ve inşaat ekosistemidir.</p>
+            <p class="text-slate-600 text-xs font-semibold">&copy; 2026 Ustalar.com | Tüm Hakları Saklıdır. Sadece Yetkili Yatırımcı Bilgilendirmesi İçindir.</p>
+        </div>
+    </footer>
+
+    <!-- Google translate system script -->
+    <script src="assets/js/language.js"></script>
+</body>
+</html>

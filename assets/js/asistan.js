@@ -309,7 +309,7 @@
         if (audioCtx.state === 'suspended') audioCtx.resume();
 
         const osc = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
+        const gainNode = audioCtx.gain || audioCtx.createGain();
 
         osc.connect(gainNode);
         gainNode.connect(audioCtx.destination);
@@ -443,7 +443,7 @@
             } else if (lowerText.includes("tedarik") || lowerText.includes("teziyo")) {
                 aiResponse = "**Tedarik Zinciri (Teziyo):** Malzeme tedariğinden şantiye lojistiğine kadar tüm süreçleri optimize eden, maliyet ve zaman tasarrufu sağlayan akıllı lojistik ve tedarik yönetim platformudur.\n\n" +
                     "<div class='flex flex-col sm:flex-row gap-2 mt-3' style='display: flex; flex-direction: column; gap: 8px; margin-top: 12px;'>" +
-                    "<a href='https://docs.google.com/forms/d/e/1FAIpQLSdUXIGssYi7vT1mu9P2H6cQ4nJ2_7j93w8xjKD3bjH_eO7poA/viewform' target='_blank' class='btn-assistant-action orange'><i class='fas fa-file-alt mr-1.5'></i> Bilgi & Kayıt Formu</a>" +
+                    "<a href='tedarik_zinciri.html' class='btn-assistant-action orange'><i class='fas fa-info-circle mr-1.5'></i> Sayfayı İncele</a>" +
                     "<a href='https://wa.me/905324666068?text=Merhaba, Tedarik Zinciri (Teziyo) sistemi hakkında bilgi almak istiyorum.' target='_blank' class='btn-assistant-action green'><i class='fab fa-whatsapp mr-1.5'></i> WhatsApp İletişim</a>" +
                     "</div>";
             } else if (lowerText.includes("hizmetlerimiz") || lowerText.includes("hizmet")) {
