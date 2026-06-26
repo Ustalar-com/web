@@ -209,8 +209,6 @@
 
             <!-- Masaüstü Menü -->
             <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-slate-600 font-semibold relative">
-                <a href="index.html" class="hover:text-brand-orange transition-colors">Anasayfa</a>
-
                 <!-- Kurumsal Dropdown -->
                 <div class="relative group">
                     <button class="flex items-center hover:text-brand-orange transition-colors focus:outline-none py-2">
@@ -244,10 +242,32 @@
 
             <!-- Sağ Butonlar -->
             <div class="hidden lg:flex items-center space-x-4">
-                <button onclick="toggleLang()"
-                    class="lang-toggle-btn flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
-                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
-                </button>
+                <!-- Dil Dropdown (Masaüstü) -->
+                <div class="relative group z-50">
+                    <button class="flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm focus:outline-none">
+                        <span class="active-lang-flag fi fi-tr mr-2 rounded-sm text-lg"></span> 
+                        <span class="active-lang-name">TR</span>
+                        <i class="fas fa-chevron-down ml-2 text-xs opacity-60"></i>
+                    </button>
+                    <!-- Dropdown Menüsü -->
+                    <div class="absolute right-0 mt-2 w-32 bg-white border border-slate-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden">
+                        <button onclick="changeLang('tr')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left border-b border-slate-50 font-semibold text-slate-700 w-full">
+                            <span class="fi fi-tr mr-2 rounded-sm"></span> Türkçe
+                        </button>
+                        <button onclick="changeLang('en')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left border-b border-slate-50 font-semibold text-slate-700 w-full">
+                            <span class="fi fi-gb mr-2 rounded-sm"></span> English
+                        </button>
+                        <button onclick="changeLang('ru')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left border-b border-slate-50 font-semibold text-slate-700 w-full">
+                            <span class="fi fi-ru mr-2 rounded-sm"></span> Русский
+                        </button>
+                        <button onclick="changeLang('de')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left border-b border-slate-50 font-semibold text-slate-700 w-full">
+                            <span class="fi fi-de mr-2 rounded-sm"></span> Deutsch
+                        </button>
+                        <button onclick="changeLang('fr')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left font-semibold text-slate-700 w-full">
+                            <span class="fi fi-fr mr-2 rounded-sm"></span> Français
+                        </button>
+                    </div>
+                </div>
 
                 <!-- Ustalar TV Butonu -->
                 <a href="ustalar_tv.html" title="Ustalar TV"
@@ -256,7 +276,7 @@
                 </a>
                 
 
-                <a href="yapi_katalog.html"
+                <a href="ustalar-yapi-katalog/index.html"
                     class="text-brand-orange border-2 border-brand-orange hover:bg-brand-orange hover:text-white px-5 py-2 rounded-xl font-bold transition-all">
                     <i class="fas fa-book-open mr-2"></i>Yapı Katalog
                 </a>
@@ -269,11 +289,21 @@
 
             <!-- Mobil Hamburger Buton & Ekstralar -->
             <div class="flex items-center lg:hidden space-x-3">
-                <!-- TR/EN Dil Butonu (Mobil) -->
-                <button onclick="toggleLang()"
-                    class="lang-toggle-btn flex items-center bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
-                    <span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN
-                </button>
+                <!-- Dil Seçici (Mobil Native Select) -->
+                <div class="relative flex items-center bg-slate-100 border border-slate-200 text-slate-700 px-3 py-2 rounded-xl transition-all font-bold text-sm">
+                    <span class="active-lang-flag fi fi-tr mr-2 rounded-sm text-lg pointer-events-none"></span>
+                    <select onchange="changeLang(this.value)" class="bg-transparent font-bold focus:outline-none appearance-none pr-5 cursor-pointer text-slate-700" id="mobile-lang-select">
+                        <option value="tr">TR</option>
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="de">DE</option>
+                        <option value="fr">FR</option>
+                    </select>
+                    <!-- Custom Arrow Icon -->
+                    <div class="absolute right-2.5 pointer-events-none opacity-60">
+                        <i class="fas fa-chevron-down text-[10px]"></i>
+                    </div>
+                </div>
                 <button id="mobile-menu-btn"
                     class="text-slate-600 hover:text-brand-orange transition focus:outline-none w-10 h-10 flex items-center justify-center">
                     <i class="fas fa-bars text-2xl"></i>
@@ -284,9 +314,6 @@
         <!-- Mobil Menü İçeriği -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
             <div class="px-6 py-6 flex flex-col space-y-4">
-                <a href="index.html"
-                    class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Anasayfa</a>
-
                 <div class="flex flex-col space-y-2 border-t border-slate-50 pt-2 pb-2">
                     <span class="text-slate-800 font-bold text-lg">Kurumsal</span>
                     <a href="#hakkimizda" class="pl-4 text-slate-500 hover:text-brand-orange font-medium transition mobile-link">- Hakkımızda</a>
@@ -306,7 +333,7 @@
                 <a href="https://emlak.ustalar.com.tr"
                     class="text-slate-600 hover:text-brand-orange font-semibold text-lg transition mobile-link">Fırsat İlanlar</a>
                 <hr class="border-slate-100">
-                <a href="yapi_katalog.html"
+                <a href="ustalar-yapi-katalog/index.html"
                     class="text-center text-brand-orange border-2 border-brand-orange px-5 py-3 rounded-xl font-bold transition-all mobile-link">
                     <i class="fas fa-book-open mr-2"></i>Yapı Katalog
                 </a>
@@ -339,7 +366,7 @@
                 Dijital çözümlerimiz ve yenilikçi projelerimizle sektöre değer katıyoruz.
             </p>
 
-            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 mb-8">
                 <a href="https://wa.me/905324666068" target="_blank"
                     class="w-full sm:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition shadow-lg flex items-center justify-center group">
                     <i class="fab fa-whatsapp text-xl mr-2"></i>
@@ -349,6 +376,11 @@
                     class="w-full sm:w-auto bg-red-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-red-700 transition shadow-lg flex items-center justify-center group">
                     <i class="fas fa-clipboard-list mr-2 text-xl animate-pulse"></i>
                     Acil Usta Çağır
+                </a>
+                <a href="https://forms.gle/YV44Li7MypqBNcPV9" target="_blank"
+                    class="w-full sm:w-auto bg-brand-orange text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-dark transition shadow-lg flex items-center justify-center group">
+                    <i class="far fa-calendar-check text-xl mr-2"></i>
+                    Görüşme Talebi
                 </a>
             </div>
 
@@ -394,7 +426,7 @@
             <div id="news-box-wrapper" class="hidden max-w-3xl mx-auto bg-white rounded-2xl border border-slate-200/80 shadow-xl p-5 mt-10 text-left relative z-20">
                 <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
                     <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fas fa-newspaper text-brand-orange animate-pulse"></i> Yapı Haberleri
+                        <i class="fas fa-newspaper text-brand-orange animate-pulse"></i> Yapı Bülten
                     </h3>
                 </div>
                 

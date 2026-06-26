@@ -89,6 +89,9 @@
                 <div onclick="switchView('webslider')" id="nav-webslider" class="nav-link flex items-center p-3 rounded-xl font-semibold">
                     <i class="fas fa-images w-6"></i> Web Slider
                 </div>
+                <div onclick="switchView('yapi-katalog')" id="nav-yapi-katalog" class="nav-link flex items-center p-3 rounded-xl font-semibold">
+                    <i class="fas fa-book-open w-6"></i> Yapı Katalog
+                </div>
                 <div onclick="switchView('notifications')" id="nav-notifications" class="nav-link flex items-center p-3 rounded-xl font-semibold">
                     <i class="fas fa-paper-plane w-6"></i> Mobil Açılış Bildirimi Gönder
                 </div>
@@ -406,6 +409,101 @@
                 </div>
             </div>
 
+            <!-- YAPI KATALOG VIEW -->
+            <div id="view-yapi-katalog" class="view-content hidden">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold text-slate-800">Yapı Katalog Yönetimi</h2>
+                    <p class="text-slate-500">Yapı Katalog sayfasındaki slider slaytlarını, kategorileri ve PDF kataloglarını yönetin.</p>
+                </div>
+
+                <!-- 1. HERO SLIDER SECTION -->
+                <div class="glass-card p-6 md:p-8 mb-10">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Katalog Slider (Hero Slaytları)</h3>
+                            <p class="text-xs text-slate-500">Katalog sayfasının en üstündeki slaytları yönetin. Görsellerin 1920x1080 piksel olması önerilir.</p>
+                        </div>
+                        <button onclick="openYapiSliderModal()" class="btn-orange text-white font-bold px-5 py-2.5 rounded-xl shadow-md text-sm flex items-center">
+                            <i class="fas fa-plus mr-2"></i> Slayt Ekle
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 border-b border-slate-200">
+                                <tr>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Sıra</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Görsel</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Başlık / Açıklama</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Katalog Linki</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="yapi-slider-list">
+                                <tr><td colspan="5" class="p-10 text-center text-slate-400 italic">Yükleniyor...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. CATEGORIES SECTION -->
+                <div class="glass-card p-6 md:p-8 mb-10">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Yapı Ürün & Hizmet Kataloğu (Kategoriler)</h3>
+                            <p class="text-xs text-slate-500">Ürün kategorilerini ve bunların ikonlarını yönetin.</p>
+                        </div>
+                        <button onclick="openYapiCategoryModal()" class="btn-orange text-white font-bold px-5 py-2.5 rounded-xl shadow-md text-sm flex items-center">
+                            <i class="fas fa-plus mr-2"></i> Yeni Kategori Ekle
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 border-b border-slate-200">
+                                <tr>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Sıra</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Kategori</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">İkon</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Açıklama</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="yapi-categories-list">
+                                <tr><td colspan="5" class="p-10 text-center text-slate-400 italic">Yükleniyor...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3. CATALOG ITEMS SECTION -->
+                <div class="glass-card p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-slate-100 pb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Kataloglar (PDF Belgeleri)</h3>
+                            <p class="text-xs text-slate-500">Kategorilere ait PDF kataloglarını yükleyin ve yönetin.</p>
+                        </div>
+                        <button onclick="openYapiCatalogModal()" class="btn-orange text-white font-bold px-5 py-2.5 rounded-xl shadow-md text-sm flex items-center">
+                            <i class="fas fa-plus mr-2"></i> Yeni Katalog Ekle
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 border-b border-slate-200">
+                                <tr>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Sıra</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Katalog Başlığı</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">Kategori</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase">PDF Dosyası</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase text-center">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="yapi-catalogs-list">
+                                <tr><td colspan="5" class="p-10 text-center text-slate-400 italic">Yükleniyor...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <!-- NEWS VIEW -->
             <div id="view-news" class="view-content hidden">
                 <div class="mb-8">
@@ -606,6 +704,107 @@
         </div>
     </div>
 
+    <!-- MODAL FOR YAPI SLIDER -->
+    <div id="yapi-slider-modal" class="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="ysmodal-title" class="text-2xl font-bold text-slate-800">Slayt Ekle / Düzenle</h3>
+                <button onclick="closeYapiSliderModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="space-y-4">
+                <input type="hidden" id="ys-id">
+                <input type="hidden" id="ys-old-image">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Başlık</label>
+                    <input type="text" id="ys-title" placeholder="Örn: Estetik ve Koruyucu Çatı Çözümleri" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Açıklama</label>
+                    <textarea id="ys-desc" rows="3" placeholder="Slayt açıklaması..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Katalog İncele Butonu Linki</label>
+                    <input type="text" id="ys-url" placeholder="https://..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Slayt Görseli (1920x1080 piksel)</label>
+                    <input type="file" id="ys-file" accept="image/*" class="w-full text-sm text-slate-500 file:bg-slate-100 file:px-4 file:py-2 file:rounded-lg file:border-0 cursor-pointer">
+                </div>
+                <div class="pt-4 flex space-x-3">
+                    <button onclick="closeYapiSliderModal()" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl">İptal</button>
+                    <button onclick="saveYapiSlider()" class="flex-[2] btn-orange text-white font-bold py-3 rounded-xl flex items-center justify-center">
+                        <span id="ys-btn-text">Kaydet ve Ekle</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR YAPI CATEGORY -->
+    <div id="yapi-category-modal" class="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="ycmodal-title" class="text-2xl font-bold text-slate-800">Kategori Ekle / Düzenle</h3>
+                <button onclick="closeYapiCategoryModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="space-y-4">
+                <input type="hidden" id="yc-id">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Kategori Başlığı</label>
+                    <input type="text" id="yc-name" placeholder="Örn: ÇATI" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Lucide İkon Adı</label>
+                    <input type="text" id="yc-icon" placeholder="Örn: home, layers, wrench, bath, sofa, briefcase..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Açıklama</label>
+                    <textarea id="yc-desc" rows="3" placeholder="Kategori açıklaması..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                </div>
+                <div class="pt-4 flex space-x-3">
+                    <button onclick="closeYapiCategoryModal()" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl">İptal</button>
+                    <button onclick="saveYapiCategory()" class="flex-[2] btn-orange text-white font-bold py-3 rounded-xl flex items-center justify-center">
+                        <span id="yc-btn-text">Kaydet ve Ekle</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR YAPI CATALOG -->
+    <div id="yapi-catalog-modal" class="fixed inset-0 z-[110] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="yitmodal-title" class="text-2xl font-bold text-slate-800">Katalog Ekle / Düzenle</h3>
+                <button onclick="closeYapiCatalogModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="space-y-4">
+                <input type="hidden" id="yit-id">
+                <input type="hidden" id="yit-old-pdf">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Katalog Başlığı</label>
+                    <input type="text" id="yit-title" placeholder="Örn: Katalog 1 veya Çatı Kataloğu" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Kategori</label>
+                    <select id="yit-category" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-orange-500">
+                        <!-- Loaded dynamically -->
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">PDF Dosyası Yükle</label>
+                    <input type="file" id="yit-file" accept="application/pdf" class="w-full text-sm text-slate-500 file:bg-slate-100 file:px-4 file:py-2 file:rounded-lg file:border-0 cursor-pointer">
+                </div>
+                <div class="pt-4 flex space-x-3">
+                    <button onclick="closeYapiCatalogModal()" class="flex-1 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl">İptal</button>
+                    <button onclick="saveYapiCatalog()" class="flex-[2] btn-orange text-white font-bold py-3 rounded-xl flex items-center justify-center">
+                        <span id="yit-btn-text">Kaydet ve Ekle</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FIREBASE AND JS LOGIC -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -672,6 +871,9 @@
         let videosData = [];
         let newsData = [];
         let webSlidersData = [];
+        let yapiSlidesData = [];
+        let yapiCategoriesData = [];
+        let yapiCatalogsData = [];
 
         window.switchView = (view) => {
             window.runWithLoader(async () => {
@@ -689,6 +891,11 @@
                 }
                 if(view === 'news') promises.push(loadNews());
                 if(view === 'webslider') promises.push(loadWebSliders());
+                if(view === 'yapi-katalog') {
+                    promises.push(loadYapiSlides());
+                    promises.push(loadYapiCategories());
+                    promises.push(loadYapiCatalogs());
+                }
                 if(view === 'izleyap') promises.push(loadVideos());
                 if(view === 'notifications') promises.push(loadNotifications());
                 
@@ -1254,6 +1461,365 @@
                 batch.update(doc(db, "web_sliders", webSlidersData[targetIdx].id), { orderIndex: idx });
                 await batch.commit();
                 await loadWebSliders();
+            });
+        };
+
+        // ----------------------------------------------------
+        // YAPI KATALOG MODALS OPEN/CLOSE LOGIC
+        // ----------------------------------------------------
+        window.openYapiSliderModal = () => {
+            document.getElementById('ys-id').value = "";
+            document.getElementById('ys-old-image').value = "";
+            document.getElementById('ys-title').value = "";
+            document.getElementById('ys-desc').value = "";
+            document.getElementById('ys-url').value = "";
+            document.getElementById('ys-file').value = "";
+            document.getElementById('ysmodal-title').textContent = "Slayt Ekle";
+            document.getElementById('ys-btn-text').textContent = "Kaydet ve Ekle";
+            document.getElementById('yapi-slider-modal').classList.remove('hidden');
+        };
+        window.closeYapiSliderModal = () => document.getElementById('yapi-slider-modal').classList.add('hidden');
+
+        window.openYapiCategoryModal = () => {
+            document.getElementById('yc-id').value = "";
+            document.getElementById('yc-name').value = "";
+            document.getElementById('yc-icon').value = "";
+            document.getElementById('yc-desc').value = "";
+            document.getElementById('ycmodal-title').textContent = "Kategori Ekle";
+            document.getElementById('yc-btn-text').textContent = "Kaydet ve Ekle";
+            document.getElementById('yapi-category-modal').classList.remove('hidden');
+        };
+        window.closeYapiCategoryModal = () => document.getElementById('yapi-category-modal').classList.add('hidden');
+
+        window.openYapiCatalogModal = () => {
+            document.getElementById('yit-id').value = "";
+            document.getElementById('yit-old-pdf').value = "";
+            document.getElementById('yit-title').value = "";
+            document.getElementById('yit-file').value = "";
+            document.getElementById('yitmodal-title').textContent = "Katalog Ekle";
+            document.getElementById('yit-btn-text').textContent = "Kaydet ve Ekle";
+            
+            // Populate category select list
+            const select = document.getElementById('yit-category');
+            select.innerHTML = '<option value="">Kategori Seçin</option>';
+            yapiCategoriesData.forEach(cat => {
+                const opt = document.createElement('option');
+                opt.value = cat.id;
+                opt.textContent = cat.name;
+                select.appendChild(opt);
+            });
+
+            document.getElementById('yapi-catalog-modal').classList.remove('hidden');
+        };
+        window.closeYapiCatalogModal = () => document.getElementById('yapi-catalog-modal').classList.add('hidden');
+
+        // ----------------------------------------------------
+        // YAPI KATALOG CRUD ACTIONS
+        // ----------------------------------------------------
+
+        // 1. SLIDER ACTIONS
+        window.loadYapiSlides = async () => {
+            const tbody = document.getElementById('yapi-slider-list');
+            const q = query(collection(db, "yapi_katalog_slides"), orderBy("orderIndex"));
+            const qs = await getDocs(q);
+            yapiSlidesData = [];
+            tbody.innerHTML = "";
+            qs.forEach(docSnap => yapiSlidesData.push({ id: docSnap.id, ...docSnap.data() }));
+            
+            yapiSlidesData.forEach((slide, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-6 py-4">${index + 1}</td>
+                    <td class="px-6 py-4"><img src="${slide.imageUrl}" class="h-12 w-20 object-cover rounded border"></td>
+                    <td class="px-6 py-4">
+                        <div class="font-bold text-slate-800">${slide.title}</div>
+                        <div class="text-xs text-slate-500 line-clamp-1">${slide.description || ''}</div>
+                    </td>
+                    <td class="px-6 py-4 text-xs">${slide.redirectUrl || '-'}</td>
+                    <td class="px-6 py-4 text-center">
+                        <button onclick="editYapiSlider('${slide.id}')" class="mx-1"><i class="fas fa-edit"></i></button>
+                        <button onclick="moveYapiSlider(${index}, 'up')" class="mx-1"><i class="fas fa-chevron-up"></i></button>
+                        <button onclick="moveYapiSlider(${index}, 'down')" class="mx-1"><i class="fas fa-chevron-down"></i></button>
+                        <button onclick="deleteYapiSlider('${slide.id}')" class="text-red-500 mx-1"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            if (yapiSlidesData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="p-10 text-center text-slate-400 italic">Henüz slayt eklenmemiş.</td></tr>';
+            }
+        };
+
+        window.editYapiSlider = (id) => {
+            const item = yapiSlidesData.find(w => w.id === id);
+            document.getElementById('ys-id').value = item.id;
+            document.getElementById('ys-old-image').value = item.imageUrl;
+            document.getElementById('ys-title').value = item.title;
+            document.getElementById('ys-desc').value = item.description || "";
+            document.getElementById('ys-url').value = item.redirectUrl || "";
+            document.getElementById('ysmodal-title').textContent = "Slayt Düzenle";
+            document.getElementById('ys-btn-text').textContent = "Değişiklikleri Kaydet";
+            document.getElementById('yapi-slider-modal').classList.remove('hidden');
+        };
+
+        window.saveYapiSlider = async () => {
+            const id = document.getElementById('ys-id').value;
+            const title = document.getElementById('ys-title').value.trim();
+            const description = document.getElementById('ys-desc').value.trim();
+            const url = sanitizeUrl(document.getElementById('ys-url').value);
+            const file = document.getElementById('ys-file').files[0];
+            let imageUrl = document.getElementById('ys-old-image').value;
+            
+            if (!title) {
+                alert("Lütfen bir başlık girin!");
+                return;
+            }
+
+            await window.runWithLoader(async () => {
+                if (file) {
+                    const sRef = ref(storage, `yapi_katalog_slides/${Date.now()}_${file.name}`);
+                    await uploadBytes(sRef, file);
+                    imageUrl = await getDownloadURL(sRef);
+                }
+                if (!imageUrl) {
+                    alert("Lütfen bir görsel seçin!");
+                    return;
+                }
+                
+                const slideData = { title, description, redirectUrl: url, imageUrl };
+                if (id) {
+                    await updateDoc(doc(db, "yapi_katalog_slides", id), slideData);
+                } else {
+                    slideData.orderIndex = yapiSlidesData.length;
+                    await addDoc(collection(db, "yapi_katalog_slides"), slideData);
+                }
+                closeYapiSliderModal();
+                await loadYapiSlides();
+            });
+        };
+
+        window.deleteYapiSlider = async (id) => {
+            if (confirm("Bu slayt silinsin mi?")) {
+                await window.runWithLoader(async () => {
+                    await deleteDoc(doc(db, "yapi_katalog_slides", id));
+                    await loadYapiSlides();
+                });
+            }
+        };
+
+        window.moveYapiSlider = async (idx, dir) => {
+            if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === yapiSlidesData.length - 1)) return;
+            await window.runWithLoader(async () => {
+                const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
+                const batch = writeBatch(db);
+                batch.update(doc(db, "yapi_katalog_slides", yapiSlidesData[idx].id), { orderIndex: targetIdx });
+                batch.update(doc(db, "yapi_katalog_slides", yapiSlidesData[targetIdx].id), { orderIndex: idx });
+                await batch.commit();
+                await loadYapiSlides();
+            });
+        };
+
+        // 2. CATEGORIES ACTIONS
+        window.loadYapiCategories = async () => {
+            const tbody = document.getElementById('yapi-categories-list');
+            const q = query(collection(db, "yapi_katalog_categories"), orderBy("orderIndex"));
+            const qs = await getDocs(q);
+            yapiCategoriesData = [];
+            tbody.innerHTML = "";
+            qs.forEach(docSnap => yapiCategoriesData.push({ id: docSnap.id, ...docSnap.data() }));
+
+            yapiCategoriesData.forEach((cat, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-6 py-4">${index + 1}</td>
+                    <td class="px-6 py-4 font-bold text-slate-800">${cat.name}</td>
+                    <td class="px-6 py-4"><span class="px-2 py-1 rounded bg-slate-100 text-xs font-mono">${cat.icon || '-'}</span></td>
+                    <td class="px-6 py-4 text-xs text-slate-500">${cat.description || ''}</td>
+                    <td class="px-6 py-4 text-center">
+                        <button onclick="editYapiCategory('${cat.id}')" class="mx-1"><i class="fas fa-edit"></i></button>
+                        <button onclick="moveYapiCategory(${index}, 'up')" class="mx-1"><i class="fas fa-chevron-up"></i></button>
+                        <button onclick="moveYapiCategory(${index}, 'down')" class="mx-1"><i class="fas fa-chevron-down"></i></button>
+                        <button onclick="deleteYapiCategory('${cat.id}')" class="text-red-500 mx-1"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            if (yapiCategoriesData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="p-10 text-center text-slate-400 italic">Henüz kategori eklenmemiş.</td></tr>';
+            }
+        };
+
+        window.editYapiCategory = (id) => {
+            const item = yapiCategoriesData.find(w => w.id === id);
+            document.getElementById('yc-id').value = item.id;
+            document.getElementById('yc-name').value = item.name;
+            document.getElementById('yc-icon').value = item.icon || "";
+            document.getElementById('yc-desc').value = item.description || "";
+            document.getElementById('ycmodal-title').textContent = "Kategori Düzenle";
+            document.getElementById('yc-btn-text').textContent = "Değişiklikleri Kaydet";
+            document.getElementById('yapi-category-modal').classList.remove('hidden');
+        };
+
+        window.saveYapiCategory = async () => {
+            const id = document.getElementById('yc-id').value;
+            const name = document.getElementById('yc-name').value.trim();
+            const icon = document.getElementById('yc-icon').value.trim();
+            const description = document.getElementById('yc-desc').value.trim();
+
+            if (!name) {
+                alert("Lütfen kategori adı girin!");
+                return;
+            }
+
+            await window.runWithLoader(async () => {
+                const catData = { name, icon, description };
+                if (id) {
+                    await updateDoc(doc(db, "yapi_katalog_categories", id), catData);
+                } else {
+                    catData.orderIndex = yapiCategoriesData.length;
+                    await addDoc(collection(db, "yapi_katalog_categories"), catData);
+                }
+                closeYapiCategoryModal();
+                await loadYapiCategories();
+            });
+        };
+
+        window.deleteYapiCategory = async (id) => {
+            if (confirm("Bu kategoriyi silmek istediğinizden emin misiniz?")) {
+                await window.runWithLoader(async () => {
+                    await deleteDoc(doc(db, "yapi_katalog_categories", id));
+                    await loadYapiCategories();
+                });
+            }
+        };
+
+        window.moveYapiCategory = async (idx, dir) => {
+            if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === yapiCategoriesData.length - 1)) return;
+            await window.runWithLoader(async () => {
+                const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
+                const batch = writeBatch(db);
+                batch.update(doc(db, "yapi_katalog_categories", yapiCategoriesData[idx].id), { orderIndex: targetIdx });
+                batch.update(doc(db, "yapi_katalog_categories", yapiCategoriesData[targetIdx].id), { orderIndex: idx });
+                await batch.commit();
+                await loadYapiCategories();
+            });
+        };
+
+        // 3. CATALOG ITEMS ACTIONS
+        window.loadYapiCatalogs = async () => {
+            const tbody = document.getElementById('yapi-catalogs-list');
+            const q = query(collection(db, "yapi_katalog_items"), orderBy("orderIndex"));
+            const qs = await getDocs(q);
+            yapiCatalogsData = [];
+            tbody.innerHTML = "";
+            qs.forEach(docSnap => yapiCatalogsData.push({ id: docSnap.id, ...docSnap.data() }));
+
+            // Prefetch categories lookup map
+            const catMap = {};
+            yapiCategoriesData.forEach(c => catMap[c.id] = c.name);
+
+            yapiCatalogsData.forEach((item, index) => {
+                const tr = document.createElement('tr');
+                const catName = catMap[item.categoryId] || 'Bilinmeyen Kategori';
+                tr.innerHTML = `
+                    <td class="px-6 py-4">${index + 1}</td>
+                    <td class="px-6 py-4 font-bold text-slate-800">${item.title}</td>
+                    <td class="px-6 py-4"><span class="px-2.5 py-1 rounded bg-orange-50 text-orange-600 text-xs font-bold">${catName}</span></td>
+                    <td class="px-6 py-4 text-xs text-slate-500"><a href="${item.pdfUrl}" target="_blank" class="text-blue-600 hover:underline">PDF Dosyasını Gör</a></td>
+                    <td class="px-6 py-4 text-center">
+                        <button onclick="editYapiCatalog('${item.id}')" class="mx-1"><i class="fas fa-edit"></i></button>
+                        <button onclick="moveYapiCatalog(${index}, 'up')" class="mx-1"><i class="fas fa-chevron-up"></i></button>
+                        <button onclick="moveYapiCatalog(${index}, 'down')" class="mx-1"><i class="fas fa-chevron-down"></i></button>
+                        <button onclick="deleteYapiCatalog('${item.id}')" class="text-red-500 mx-1"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            if (yapiCatalogsData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="p-10 text-center text-slate-400 italic">Henüz katalog eklenmemiş.</td></tr>';
+            }
+        };
+
+        window.editYapiCatalog = (id) => {
+            const item = yapiCatalogsData.find(w => w.id === id);
+            
+            // Populate category select list
+            const select = document.getElementById('yit-category');
+            select.innerHTML = '<option value="">Kategori Seçin</option>';
+            yapiCategoriesData.forEach(cat => {
+                const opt = document.createElement('option');
+                opt.value = cat.id;
+                opt.textContent = cat.name;
+                select.appendChild(opt);
+            });
+
+            document.getElementById('yit-id').value = item.id;
+            document.getElementById('yit-old-pdf').value = item.pdfUrl;
+            document.getElementById('yit-title').value = item.title;
+            document.getElementById('yit-category').value = item.categoryId || "";
+            document.getElementById('yit-file').value = "";
+            document.getElementById('yitmodal-title').textContent = "Katalog Düzenle";
+            document.getElementById('yit-btn-text').textContent = "Değişiklikleri Kaydet";
+            document.getElementById('yapi-catalog-modal').classList.remove('hidden');
+        };
+
+        window.saveYapiCatalog = async () => {
+            const id = document.getElementById('yit-id').value;
+            const title = document.getElementById('yit-title').value.trim();
+            const categoryId = document.getElementById('yit-category').value;
+            const file = document.getElementById('yit-file').files[0];
+            let pdfUrl = document.getElementById('yit-old-pdf').value;
+
+            if (!title) {
+                alert("Lütfen katalog başlığı girin!");
+                return;
+            }
+            if (!categoryId) {
+                alert("Lütfen bir kategori seçin!");
+                return;
+            }
+
+            await window.runWithLoader(async () => {
+                if (file) {
+                    const sRef = ref(storage, `yapi_katalog_pdfs/${Date.now()}_${file.name}`);
+                    await uploadBytes(sRef, file);
+                    pdfUrl = await getDownloadURL(sRef);
+                }
+                if (!pdfUrl) {
+                    alert("Lütfen bir PDF dosyası seçin!");
+                    return;
+                }
+                
+                const itemData = { title, categoryId, pdfUrl };
+                if (id) {
+                    await updateDoc(doc(db, "yapi_katalog_items", id), itemData);
+                } else {
+                    itemData.orderIndex = yapiCatalogsData.length;
+                    await addDoc(collection(db, "yapi_katalog_items"), itemData);
+                }
+                closeYapiCatalogModal();
+                await loadYapiCatalogs();
+            });
+        };
+
+        window.deleteYapiCatalog = async (id) => {
+            if (confirm("Bu kataloğu silmek istediğinize emin misiniz?")) {
+                await window.runWithLoader(async () => {
+                    await deleteDoc(doc(db, "yapi_katalog_items", id));
+                    await loadYapiCatalogs();
+                });
+            }
+        };
+
+        window.moveYapiCatalog = async (idx, dir) => {
+            if ((dir === 'up' && idx === 0) || (dir === 'down' && idx === yapiCatalogsData.length - 1)) return;
+            await window.runWithLoader(async () => {
+                const targetIdx = dir === 'up' ? idx - 1 : idx + 1;
+                const batch = writeBatch(db);
+                batch.update(doc(db, "yapi_katalog_items", yapiCatalogsData[idx].id), { orderIndex: targetIdx });
+                batch.update(doc(db, "yapi_katalog_items", yapiCatalogsData[targetIdx].id), { orderIndex: idx });
+                await batch.commit();
+                await loadYapiCatalogs();
             });
         };
     </script>

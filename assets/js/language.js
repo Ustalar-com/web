@@ -5,7 +5,7 @@
 window.googleTranslateElementInit = function() {
     new google.translate.TranslateElement({
         pageLanguage: 'tr',
-        includedLanguages: 'en,tr',
+        includedLanguages: 'tr,en,ru,fr,de',
         autoDisplay: false
     }, 'google_translate_element');
 };
@@ -47,40 +47,80 @@ window.googleTranslateElementInit = function() {
     }
 })();
 
-let isEnglish = false;
-window.toggleLang = function() {
+const langMap = {
+    tr: { name: 'TR', flag: 'tr' },
+    en: { name: 'EN', flag: 'gb' },
+    ru: { name: 'RU', flag: 'ru' },
+    de: { name: 'DE', flag: 'de' },
+    fr: { name: 'FR', flag: 'fr' }
+};
+
+function updateLanguageUI(langCode) {
+    const lang = langMap[langCode] || langMap['tr'];
+    
+    // Update active dropdown buttons
+    document.querySelectorAll('.active-lang-flag').forEach(el => {
+        el.className = `active-lang-flag fi fi-${lang.flag} mr-2 rounded-sm text-lg`;
+    });
+    document.querySelectorAll('.active-lang-name').forEach(el => {
+        el.textContent = lang.name;
+    });
+
+    // Sync select input if it exists
+    const mobileSelect = document.getElementById('mobile-lang-select');
+    if (mobileSelect) {
+        mobileSelect.value = langCode;
+    }
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+window.changeLang = function(langCode) {
     const attemptToggle = (retryCount) => {
         const selectEl = document.querySelector('.goog-te-combo');
         
         if (!selectEl) {
-            // Google Translate'in yerel dosyalarda bazen geç tepki vermesine karşı deneme süresini artırıyoruz
-            if (retryCount < 25) { // 5 saniye boyunca dene
+            if (retryCount < 25) {
                 setTimeout(() => attemptToggle(retryCount + 1), 200);
             } else {
-                alert("Çeviri sistemi yerel dosya sisteminde engellenmiş olabilir. Lütfen bir web sunucusu (Live Server vb.) üzerinden deneyin veya internet bağlantınızı kontrol edin.");
+                console.warn("Çeviri sistemi yerel dosya sisteminde engellenmiş olabilir veya henüz yüklenmedi.");
             }
             return;
         }
 
-        isEnglish = !isEnglish;
-        
-        if (isEnglish) {
-            selectEl.value = 'en';
-        } else {
-            selectEl.value = 'tr';
-            if (selectEl.options && selectEl.options.length > 0) {
-                selectEl.selectedIndex = 0;
-            }
-        }
-
+        selectEl.value = langCode;
         selectEl.dispatchEvent(new Event('change'));
-
-        document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
-            btn.innerHTML = isEnglish
-                ? '<span class="fi fi-tr mr-2 rounded-sm text-lg"></span> TR'
-                : '<span class="fi fi-gb mr-2 rounded-sm text-lg"></span> EN';
-        });
+        updateLanguageUI(langCode);
     };
 
     attemptToggle(0);
 };
+
+// Fallback for older toggle usage
+window.toggleLang = function() {
+    const selectEl = document.querySelector('.goog-te-combo');
+    if (!selectEl) return;
+    const currentLang = selectEl.value || 'tr';
+    const nextLang = (currentLang === 'tr') ? 'en' : 'tr';
+    window.changeLang(nextLang);
+};
+
+// Initial run
+document.addEventListener('DOMContentLoaded', () => {
+    const googTransValue = getCookie('googtrans');
+    let activeLang = 'tr';
+    if (googTransValue) {
+        const split = googTransValue.split('/');
+        if (split.length >= 3) {
+            activeLang = split[2];
+        }
+    }
+    setTimeout(() => {
+        updateLanguageUI(activeLang);
+    }, 500);
+});

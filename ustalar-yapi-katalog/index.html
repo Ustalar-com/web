@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ustalar Yapı Katalog - Yapı Ürün & Hizmet Kataloğu</title>
+  <meta name="description" content="Ustalar Yapı ve Tasarım kataloğu ile en son çatı, banyo, dış cephe, mobilya ve mekanik ürünleri interaktif dergi görünümünde inceleyin.">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader" class="preloader-overlay">
+    <div class="preloader-content">
+      <!-- Pulsing Ambient Glow -->
+      <div class="preloader-glow"></div>
+      
+      <!-- Catalog Icon (Inline SVG representing a premium book/catalog) -->
+      <div class="preloader-icon-wrapper">
+        <svg class="preloader-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Open book path -->
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+          <!-- Flipping page line effect -->
+          <path class="flipping-page-line" d="M12 7v14" stroke-width="2" />
+        </svg>
+      </div>
+
+      <!-- Brand/Title -->
+      <h2 class="preloader-title">USTALAR YAPI <span class="preloader-accent">KATALOG</span></h2>
+      <p class="preloader-subtitle">Katalog & Ürün Rehberi Yükleniyor</p>
+      
+      <!-- Circular Progress Ring / Spinner -->
+      <div class="preloader-spinner-container">
+        <div class="preloader-spinner"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="app-header" id="app-header">
+    <div class="container header-container">
+      <!-- Logo -->
+      <a href="#" class="logo-container" id="header-logo-container">
+        <div class="logo-icon">
+          <i data-lucide="book-open"></i>
+        </div>
+        <div class="logo-text">
+          USTALAR YAPI <span class="logo-accent">KATALOG</span>
+        </div>
+      </a>
+
+      <!-- Action -->
+      <div class="header-actions">
+        <button class="btn-primary" id="talep-formu-header-btn">
+          <i data-lucide="file-text"></i>
+          <span>Talep Formu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SLIDER -->
+    <section class="hero-slider-wrapper" id="hero-slider-wrapper">
+      <!-- Slides Container -->
+      <div id="slides-container">
+        <!-- Slide 1: Çatı -->
+        <div class="slide-item active" data-slide-index="0" data-category-id="Cati" data-catalog-id="Cati-Katalog-1">
+          <div class="slide-image-mask"></div>
+          <img src="https://images.unsplash.com/photo-1632759162444-12968303ebd2?auto=format&fit=crop&w=1600&q=80" alt="Çatı" class="slide-image">
+          <div class="slide-content-overlay">
+            <div class="container">
+              <div class="slide-content-box">
+                <div class="slide-badge">
+                  <i data-lucide="sparkles"></i>
+                  <span>ÇATI</span>
+                </div>
+                <h1 class="slide-title">Estetik ve Koruyucu Çatı Çözümleri</h1>
+                <p class="slide-desc">Ustalar Yapı güvencesiyle, her türlü iklim koşuluna dayanıklı, yüksek ısı yalıtımlı modern çatı malzemeleri ve aksesuarları.</p>
+                <div class="slide-actions">
+                  <button class="btn-primary btn-slider-open">
+                    <i data-lucide="book-open"></i>
+                    <span>Kataloğu İncele</span>
+                  </button>
+                  <button class="btn-secondary btn-slider-offer">
+                    <span>Hızlı Teklif Al</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Banyo -->
+        <div class="slide-item" data-slide-index="1" data-category-id="Banyo" data-catalog-id="Banyo-Katalog-1">
+          <div class="slide-image-mask"></div>
+          <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1600&q=80" alt="Banyo" class="slide-image">
+          <div class="slide-content-overlay">
+            <div class="container">
+              <div class="slide-content-box">
+                <div class="slide-badge">
+                  <i data-lucide="sparkles"></i>
+                  <span>BANYO</span>
+                </div>
+                <h1 class="slide-title">Banyonuzda Lüks ve Konfor Tasarımı</h1>
+                <p class="slide-desc">Seçkin bataryalar, mermer lavabolar ve minimalist duş üniteleri ile banyonuzu modern bir yaşam alanına dönüştürün.</p>
+                <div class="slide-actions">
+                  <button class="btn-primary btn-slider-open">
+                    <i data-lucide="book-open"></i>
+                    <span>Kataloğu İncele</span>
+                  </button>
+                  <button class="btn-secondary btn-slider-offer">
+                    <span>Hızlı Teklif Al</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Mobilya -->
+        <div class="slide-item" data-slide-index="2" data-category-id="Mobilya" data-catalog-id="Mobilya-Katalog-1">
+          <div class="slide-image-mask"></div>
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1600&q=80" alt="Mobilya" class="slide-image">
+          <div class="slide-content-overlay">
+            <div class="container">
+              <div class="slide-content-box">
+                <div class="slide-badge">
+                  <i data-lucide="sparkles"></i>
+                  <span>MOBİLYA</span>
+                </div>
+                <h1 class="slide-title">Yaşam Alanlarına Şık ve Fonksiyonel Dokunuş</h1>
+                <p class="slide-desc">Özel tasarım ahşap masalar, lüks modüler oturma grupları ve estetik iç mekan ahşap bileşenleri.</p>
+                <div class="slide-actions">
+                  <button class="btn-primary btn-slider-open">
+                    <i data-lucide="book-open"></i>
+                    <span>Kataloğu İncele</span>
+                  </button>
+                  <button class="btn-secondary btn-slider-offer">
+                    <span>Hızlı Teklif Al</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Tasarım -->
+        <div class="slide-item" data-slide-index="3" data-category-id="Tasarim" data-catalog-id="Tasarim-Katalog-1">
+          <div class="slide-image-mask"></div>
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80" alt="Tasarım" class="slide-image">
+          <div class="slide-content-overlay">
+            <div class="container">
+              <div class="slide-content-box">
+                <div class="slide-badge">
+                  <i data-lucide="sparkles"></i>
+                  <span>TASARIM</span>
+                </div>
+                <h1 class="slide-title">Geleceğin Yapı Projelerini Bugün Çizin</h1>
+                <p class="slide-desc">Üstün görselleştirme kapasitesine sahip 3B proje konseptleri ve hayallerinizi gerçeğe dönüştüren mimari çizimler.</p>
+                <div class="slide-actions">
+                  <button class="btn-primary btn-slider-open">
+                    <i data-lucide="book-open"></i>
+                    <span>Kataloğu İncele</span>
+                  </button>
+                  <button class="btn-secondary btn-slider-offer">
+                    <span>Hızlı Teklif Al</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="slider-control prev" id="slider-prev" aria-label="Önceki Slayt">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <button class="slider-control next" id="slider-next" aria-label="Sonraki Slayt">
+        <i data-lucide="chevron-right"></i>
+      </button>
+
+      <!-- Dots -->
+      <div class="slider-dots" id="slider-dots">
+        <button class="dot active" data-slide-dot="0" aria-label="Slayt 1"></button>
+        <button class="dot" data-slide-dot="1" aria-label="Slayt 2"></button>
+        <button class="dot" data-slide-dot="2" aria-label="Slayt 3"></button>
+        <button class="dot" data-slide-dot="3" aria-label="Slayt 4"></button>
+      </div>
+    </section>
+
+    <!-- CATEGORIES & CATALOGS LIST -->
+    <section class="section-wrapper" id="kataloglar-section">
+      <div class="container">
+        <!-- Title & Description -->
+        <div class="section-header">
+          <h2 class="section-title">
+            YAPI ÜRÜN & HİZMET <span class="section-title-accent">KATALOĞU</span>
+          </h2>
+          <p class="section-desc">
+            Projeleriniz için ihtiyacınız olan tüm ürün gruplarını kategorilere göre keşfedin, interaktif kataloglarımızı inceleyin ve anında talep oluşturun.
+          </p>
+
+          <!-- Search Bar -->
+          <div class="search-container" id="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Kategori veya Katalog ara...">
+            <i data-lucide="search" class="search-icon"></i>
+            <button class="search-clear" id="search-clear" style="display: none;">
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Accordion Grid (Populated by app.js) -->
+        <div class="categories-grid" id="categories-grid">
+          <!-- Dynamically populated categories list will be appended here -->
+        </div>
+
+        <!-- No Results -->
+        <div class="no-results" id="search-no-results" style="display: none;">
+          <i data-lucide="inbox"></i>
+          <p class="no-results-text">Aradığınız kriterlere uygun kategori bulunamadı.</p>
+          <button class="no-results-btn" id="search-clear-btn">Aramayı Temizle</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORPORATE VALUES -->
+    <section class="values-section" id="corporate-values">
+      <div class="container">
+        <div class="values-title-pre">KURUMSAL AVANTAJLAR</div>
+        <h3 class="values-title">Tüm Ürün ve Hizmetlere Tek Platformdan Ulaşın</h3>
+
+        <div class="values-grid">
+          <!-- Card 1 -->
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h4 class="value-name">Yüksek Standartlı Kalite</h4>
+            <p class="value-desc">Sertifikalı ve uluslararası standartlara uygun yapı malzemelerimizle projelerinizin ömrünü uzatıyoruz.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="award"></i>
+            </div>
+            <h4 class="value-name">Mimari Tasarım & Danışmanlık</h4>
+            <p class="value-desc">Uzman kadromuzla, projeniz için en doğru ve ekonomik malzeme seçimini birlikte planlıyoruz.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="clock"></i>
+            </div>
+            <h4 class="value-name">Zamanında & Güvenli Teslimat</h4>
+            <p class="value-desc">Gelişmiş lojistik ağımız ve tedarik güvencemiz ile inşaat takviminizi aksatmadan teslimat sağlıyoruz.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="app-footer" id="app-footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Col 1 -->
+        <div class="footer-col">
+          <div class="logo-container" style="margin-bottom: 0.5rem;">
+            <div class="logo-icon">
+              <i data-lucide="book-open"></i>
+            </div>
+            <div class="logo-text">
+              USTALAR YAPI <span class="logo-accent">KATALOG</span>
+            </div>
+          </div>
+          <a href="https://ustalar.com" target="_blank" rel="noopener noreferrer" class="footer-logo-link">
+            ustalar.com altyapısıdır.
+          </a>
+          <p class="footer-desc">
+            Ustalar Yapı Katalog ile sektörün en prestijli yapı malzemelerini, detaylı katalogları ve ürün alternatiflerini inceleyin.
+          </p>
+          <div class="footer-stars">
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <i data-lucide="star"></i>
+            <span class="footer-star-text">(4.9/5 Memnuniyet)</span>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="footer-col">
+          <h4 class="footer-title">İletişim Bilgileri</h4>
+          <ul class="footer-contacts">
+            <li>
+              <i data-lucide="phone"></i>
+              <span>+90 532 466 60 68</span>
+            </li>
+            <li>
+              <i data-lucide="mail"></i>
+              <span>ustalarfair@gmail.com</span>
+            </li>
+            <li>
+              <i data-lucide="map-pin"></i>
+              <span>Yakuplu Mahallesi İnönü Caddesi 124.Sk No:21/B Yakuplu / İstanbul</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="footer-col">
+          <h4 class="footer-title">Hızlı Talep Formu</h4>
+          <p class="footer-form-text">
+            Projeleriniz için özel malzeme tedariki, fiyat teklifleri ve teknik danışmanlık taleplerinizi hızlıca bize iletin.
+          </p>
+          <button class="btn-footer-submit" id="talep-formu-footer-btn">
+            <i data-lucide="file-text"></i>
+            <span>Talep Formunu Doldur</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="current-year">2026</span> Ustalar.com | Tüm Hakları Saklıdır.</span>
+        <div class="footer-links">
+          <a href="https://ustalar.com/privacy_policy.html" target="_blank" rel="noopener noreferrer">Gizlilik Politikası</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 3D BOOK READER OVERLAY MODAL -->
+  <div class="reader-overlay" id="book-reader-overlay">
+    <!-- Header -->
+    <div class="reader-header">
+      <div class="reader-meta-left">
+        <div class="reader-meta-icon">
+          <i data-lucide="book-open"></i>
+        </div>
+        <div>
+          <h2 class="reader-meta-title" id="reader-title">KATALOG BAŞLIĞI</h2>
+          <div class="reader-meta-pages" id="reader-page-indicator">SAYFA 1 / 6</div>
+        </div>
+      </div>
+
+      <div class="reader-controls-right">
+        <button class="btn-reader-action-offer" id="reader-offer-btn">
+          <i data-lucide="send"></i>
+          <span>TEKLİF AL</span>
+        </button>
+        <button class="btn-reader-close" id="reader-close-btn" aria-label="Kapat">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 3D Book Stage -->
+    <div class="flipbook-stage">
+      <div class="book-shadow-board"></div>
+
+      <!-- The 3D Book Container -->
+      <div class="book-3d-container" id="book-3d-container">
+        <!-- Inner spine detail -->
+        <div class="book-spine-line"></div>
+
+        <!-- LEFT PAGE SPREAD -->
+        <div class="book-side-left" id="book-left-page">
+          <!-- Populated by app.js -->
+        </div>
+
+        <!-- RIGHT PAGE SPREAD -->
+        <div class="book-side-right" id="book-right-page">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- Navigation Hotspots -->
+      <button class="reader-nav-arrow prev" id="reader-prev-btn" title="Önceki Sayfa">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <button class="reader-nav-arrow next" id="reader-next-btn" title="Sonraki Sayfa">
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Progress Indicator Footer -->
+    <div class="reader-footer">
+      <div class="reader-progress-track">
+        <div class="reader-progress-bar" id="reader-progress-bar"></div>
+      </div>
+      <div class="reader-footer-hint">KLAVYEDEN SOL / SAĞ OK TUŞLARINI DA KULLANABİLİRSİNİZ</div>
+    </div>
+  </div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Data and Application Script files -->
+  <script src="./data.js"></script>
+
+  <!-- Firebase Integration -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBAmoQg6AaXFqbLO7dQajuYXtZ-1NnXQmo",
+        authDomain: "ustalar-com.firebaseapp.com",
+        projectId: "ustalar-com",
+        storageBucket: "ustalar-com.firebasestorage.app",
+        messagingSenderId: "958611497982",
+        appId: "1:958611497982:web:74f2c99382be74863d56af"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Make Firestore available globally for app.js
+    window.db = db;
+    window.firestoreHelpers = { collection, getDocs, query, orderBy };
+  </script>
+
+  <script src="./app.js"></script>
+
+  <!-- Preloader Hiding Script -->
+  <script>
+    (function() {
+      function hidePreloader() {
+        const preloader = document.getElementById('preloader');
+        if (preloader && !preloader.classList.contains('fade-out')) {
+          preloader.classList.add('fade-out');
+          setTimeout(() => {
+            preloader.remove();
+          }, 600);
+        }
+      }
+      // Hide on window load
+      window.addEventListener('load', () => {
+        setTimeout(hidePreloader, 1000); // 1 second display duration
+      });
+      // Safety timeout after 3 seconds in case of slow resources
+      setTimeout(hidePreloader, 3000);
+    })();
+  </script>
+</body>
+</html>
