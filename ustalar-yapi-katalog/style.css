@@ -101,13 +101,15 @@ button {
 
 /* ---------------- HEADER ---------------- */
 .app-header {
-  position: sticky;
+  position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 40;
-  background-color: rgba(17, 17, 17, 0.55);
-  border-bottom: 1px solid var(--border-color);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-color: transparent;
+  border-bottom: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .header-container {
@@ -917,20 +919,33 @@ button {
 }
 
 .footer-logo-link {
-  display: block;
-  font-size: 0.625rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.675rem;
   font-family: var(--font-sans);
   color: var(--text-muted);
   text-decoration: none;
-  padding-left: 2.75rem;
-  margin-top: -0.25rem;
+  padding-left: 3rem;
+  margin-top: 0.25rem;
   font-weight: 500;
-  letter-spacing: 0.05em;
   transition: color var(--transition-fast);
 }
 
 .footer-logo-link:hover {
   color: var(--primary);
+}
+
+.footer-partner-logo {
+  height: 0.875rem;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.75;
+  transition: opacity var(--transition-fast);
+}
+
+.footer-logo-link:hover .footer-partner-logo {
+  opacity: 1;
 }
 
 .footer-desc {

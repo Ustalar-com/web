@@ -667,7 +667,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function loadFirestoreData() {
-    if (!window.db) return;
+    if (!window.db) {
+      if (typeof window.hidePreloader === 'function') window.hidePreloader();
+      return;
+    }
     const { collection, getDocs, query, orderBy } = window.firestoreHelpers;
 
     try {
@@ -720,6 +723,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (e) {
       console.error("Firestore loading error in Yapı Katalog: ", e);
+    } finally {
+      if (typeof window.hidePreloader === 'function') {
+        window.hidePreloader();
+      }
     }
   }
 

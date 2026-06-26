@@ -264,7 +264,8 @@
             </div>
           </div>
           <a href="https://ustalar.com" target="_blank" rel="noopener noreferrer" class="footer-logo-link">
-            ustalar.com altyapısıdır.
+            <img src="../assets/images/about_logos.png" alt="Ustalar.com" class="footer-partner-logo">
+            <span>altyapısıdır.</span>
           </a>
           <p class="footer-desc">
             Ustalar Yapı Katalog ile sektörün en prestijli yapı malzemelerini, detaylı katalogları ve ürün alternatiflerini inceleyin.
@@ -416,7 +417,7 @@
   <!-- Preloader Hiding Script -->
   <script>
     (function() {
-      function hidePreloader() {
+      window.hidePreloader = function() {
         const preloader = document.getElementById('preloader');
         if (preloader && !preloader.classList.contains('fade-out')) {
           preloader.classList.add('fade-out');
@@ -424,13 +425,9 @@
             preloader.remove();
           }, 600);
         }
-      }
-      // Hide on window load
-      window.addEventListener('load', () => {
-        setTimeout(hidePreloader, 1000); // 1 second display duration
-      });
-      // Safety timeout after 3 seconds in case of slow resources
-      setTimeout(hidePreloader, 3000);
+      };
+      // Safety timeout after 8 seconds in case of slow resources
+      setTimeout(window.hidePreloader, 8000);
     })();
   </script>
 </body>
