@@ -145,12 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Find catalogs for this category
       const categoryCatalogs = activeCatalogs.filter(c => c.categoryId === cat.id);
       
-      // Filter condition: query matches category name, description, or any catalog title
+      // Filter condition: query matches category name or any catalog title
       const matchesCategoryName = cat.name.toLowerCase().includes(query);
-      const matchesCategoryDesc = cat.description.toLowerCase().includes(query);
       const matchesCatalogTitle = categoryCatalogs.some(c => c.title.toLowerCase().includes(query));
 
-      if (query !== '' && !matchesCategoryName && !matchesCategoryDesc && !matchesCatalogTitle) {
+      if (query !== '' && !matchesCategoryName && !matchesCatalogTitle) {
         return; // hide card
       }
 
@@ -179,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div class="cat-info-wrapper">
             <h3 class="cat-title">${cat.name}</h3>
-            <p class="cat-desc">${cat.description}</p>
           </div>
         </div>
         <div class="cat-chevron">
