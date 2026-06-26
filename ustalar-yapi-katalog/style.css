@@ -104,9 +104,10 @@ button {
   position: sticky;
   top: 0;
   z-index: 40;
-  background-color: var(--bg-card);
+  background-color: rgba(17, 17, 17, 0.55);
   border-bottom: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .header-container {
