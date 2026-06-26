@@ -167,10 +167,15 @@ document.addEventListener('DOMContentLoaded', () => {
       headerBtn.setAttribute('aria-expanded', 'false');
 
       // Populate header content
+      let iconHTML = `<i data-lucide="${cat.icon || 'book-open'}"></i>`;
+      if (cat.icon && (cat.icon.startsWith('http://') || cat.icon.startsWith('https://'))) {
+        iconHTML = `<img src="${cat.icon}" class="cat-icon-img" alt="">`;
+      }
+
       headerBtn.innerHTML = `
         <div class="cat-header-left">
           <div class="cat-icon-wrapper">
-            <i data-lucide="${cat.icon || 'book-open'}"></i>
+            ${iconHTML}
           </div>
           <div class="cat-info-wrapper">
             <h3 class="cat-title">${cat.name}</h3>

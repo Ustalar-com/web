@@ -1703,3 +1703,9 @@ button {
     transform: rotate(360deg);
   }
 }
+
+.cat-icon-img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
