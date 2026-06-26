@@ -565,10 +565,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="slide-content-overlay">
           <div class="container">
             <div class="slide-content-box">
-              <div class="slide-badge">
-                <i data-lucide="sparkles"></i>
-                <span>SLAYT</span>
-              </div>
               <h1 class="slide-title">${slide.title}</h1>
               <p class="slide-desc">${slide.description || ''}</p>
               <div class="slide-actions">
