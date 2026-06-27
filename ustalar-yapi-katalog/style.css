@@ -1725,3 +1725,54 @@ button {
   height: 1.5rem;
   object-fit: contain;
 }
+
+/* Google Play Download Button */
+.footer-app-badges {
+  margin-top: 1.5rem;
+}
+
+.btn-google-play {
+  display: inline-flex;
+  align-items: center;
+  background-color: #0c0c0e;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  color: #fff;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-google-play:hover {
+  background-color: #17171c;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.google-play-icon {
+  height: 1.25rem;
+  width: auto;
+  margin-right: 0.5rem;
+  object-fit: contain;
+}
+
+.btn-google-play .play-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.btn-google-play .play-subtitle {
+  font-size: 0.55rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  letter-spacing: 0.05em;
+}
+
+.btn-google-play .play-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
