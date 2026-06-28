@@ -424,9 +424,10 @@
                     "<a href='https://wa.me/905324666068?text=Merhaba, Ustalar Barter sistemi hakkında bilgi almak istiyorum.' target='_blank' class='btn-assistant-action green'><i class='fab fa-whatsapp mr-1.5'></i> WhatsApp İletişim</a>" +
                     "</div>";
             } else if (lowerText.includes("brand")) {
-                aiResponse = "**Ustalar Brand:** Markanızın, ürünlerinizin veya kurumsal kimliğinizin sektörde daha görünür olması için sunduğumuz özel reklam, marka iş birliği ve pazarlama çözümlerimizdir.\n\n" +
+                aiResponse = "**Ustalar Brand:** Ustalar.com güvencesiyle üretilen yüksek kaliteli Ustalar markalı yapı malzemeleri, el aletleri, boya ve usta ekipmanlarının yer aldığı tescilli ürün grubumuzdur.\n\n" +
                     "<div class='flex flex-col sm:flex-row gap-2 mt-3' style='display: flex; flex-direction: column; gap: 8px; margin-top: 12px;'>" +
-                    "<a href='https://wa.me/905324666068?text=Merhaba, Ustalar Brand hizmetleriniz hakkında bilgi almak istiyorum.' target='_blank' class='btn-assistant-action green'><i class='fab fa-whatsapp mr-1.5'></i> WhatsApp İletişim</a>" +
+                    "<a href='ustalar-brand/index.html' class='btn-assistant-action orange'><i class='fas fa-info-circle mr-1.5'></i> Ürünleri İncele</a>" +
+                    "<a href='https://wa.me/905324666068?text=Merhaba, Ustalar Brand markalı ürünleriniz hakkında bilgi almak istiyorum.' target='_blank' class='btn-assistant-action green'><i class='fab fa-whatsapp mr-1.5'></i> WhatsApp İletişim</a>" +
                     "</div>";
             } else if (lowerText.includes("değerleme") || lowerText.includes("emlak")) {
                 aiResponse = "**Emlak Değerleme:** Gayrimenkullerinizin güncel piyasa değerini, yapay zeka destekli algoritmalarımız ve alanında uzman analiz ekiplerimizin verileriyle hızlı ve doğru şekilde hesaplıyoruz.\n\n" +

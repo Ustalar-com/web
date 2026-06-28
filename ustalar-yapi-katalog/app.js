@@ -6,6 +6,50 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Lucide Icons
   lucide.createIcons();
 
+  // Parse Youtube Video URL to Embed Link
+  function getYoutubeEmbedUrl(url) {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    if (match && match[2].length === 11) {
+      return `https://www.youtube.com/embed/${match[2]}?autoplay=1`;
+    }
+    return null;
+  }
+
+  // Setup Video Player Modals
+  const videoModal = document.getElementById('video-player-modal');
+  const videoIframe = document.getElementById('video-player-iframe');
+  const videoCloseBtn = document.getElementById('video-close-btn');
+
+  function openVideoPlayer(videoUrl) {
+    const embedUrl = getYoutubeEmbedUrl(videoUrl);
+    if (embedUrl && videoModal && videoIframe) {
+      videoIframe.src = embedUrl;
+      videoModal.style.display = 'flex';
+    } else if (videoUrl) {
+      window.open(videoUrl, '_blank');
+    }
+  }
+
+  window.openVideoPlayer = openVideoPlayer; // expose globally if needed
+
+  function closeVideoPlayer() {
+    if (videoModal && videoIframe) {
+      videoIframe.src = '';
+      videoModal.style.display = 'none';
+    }
+  }
+
+  if (videoCloseBtn) {
+    videoCloseBtn.addEventListener('click', closeVideoPlayer);
+  }
+  if (videoModal) {
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) closeVideoPlayer();
+    });
+  }
+
   // Set Current Year in Footer
   const yearEl = document.getElementById('current-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -200,6 +244,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = document.createElement('div');
         item.className = 'catalog-item';
         
+        let playBtnHTML = '';
+        if (catalog.mediaUrl) {
+          playBtnHTML = `
+            <button class="btn-action-play" title="Tanıtım Videosunu İzle">
+              <i data-lucide="play"></i>
+              <span>VİDEO</span>
+            </button>
+          `;
+        }
+
         item.innerHTML = `
           <h4 class="catalog-name">${catalog.title}</h4>
           <div class="catalog-actions">
@@ -211,12 +265,14 @@ document.addEventListener('DOMContentLoaded', () => {
               <i data-lucide="send"></i>
               <span>TEKLİF</span>
             </button>
+            ${playBtnHTML}
           </div>
         `;
 
         // Bind action buttons
         const actionOpen = item.querySelector('.btn-action-open');
         const actionOffer = item.querySelector('.btn-action-offer');
+        const actionPlay = item.querySelector('.btn-action-play');
 
         if (actionOpen) {
           actionOpen.addEventListener('click', (e) => {
@@ -233,6 +289,13 @@ document.addEventListener('DOMContentLoaded', () => {
           actionOffer.addEventListener('click', (e) => {
             e.stopPropagation();
             handleRedirectToCatalogForm(cat.name, catalog.title);
+          });
+        }
+
+        if (actionPlay) {
+          actionPlay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openVideoPlayer(catalog.mediaUrl);
           });
         }
 
@@ -710,7 +773,8 @@ document.addEventListener('DOMContentLoaded', () => {
           categoryId: item.categoryId,
           categoryName: catMap[item.categoryId] || '',
           title: item.title,
-          pdfUrl: item.pdfUrl
+          pdfUrl: item.pdfUrl,
+          mediaUrl: item.mediaUrl
         }));
 
         // Re-render categories accordion grid with dynamic data

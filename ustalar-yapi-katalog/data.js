@@ -321,6 +321,7 @@ function generateInitialCatalogs() {
         title: `Katalog ${i}`,
         description: `Ustalar Yapı ${cat.name} ${i}. Özel Seri kataloğudur. Modern detaylar içerir.`,
         coverImage: urls[0],
+        mediaUrl: i === 1 ? "https://www.youtube.com/watch?v=y881t8ilMyc" : null,
         pages: pages
       });
     }

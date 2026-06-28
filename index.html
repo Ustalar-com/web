@@ -263,8 +263,14 @@
                         <button onclick="changeLang('de')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left border-b border-slate-50 font-semibold text-slate-700 w-full">
                             <span class="fi fi-de mr-2 rounded-sm"></span> Deutsch
                         </button>
-                        <button onclick="changeLang('fr')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left font-semibold text-slate-700 w-full">
+                        <button onclick="changeLang('fr')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left border-b border-slate-50 font-semibold text-slate-700 w-full">
                             <span class="fi fi-fr mr-2 rounded-sm"></span> Français
+                        </button>
+                        <button onclick="changeLang('ar')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left border-b border-slate-50 font-semibold text-slate-700 w-full">
+                            <span class="fi fi-sa mr-2 rounded-sm"></span> العربية
+                        </button>
+                        <button onclick="changeLang('am')" class="flex items-center px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand-orange transition-colors text-left font-semibold text-slate-700 w-full">
+                            <span class="fi fi-et mr-2 rounded-sm"></span> አማርኛ
                         </button>
                     </div>
                 </div>
@@ -298,6 +304,8 @@
                         <option value="ru">RU</option>
                         <option value="de">DE</option>
                         <option value="fr">FR</option>
+                        <option value="ar">AR</option>
+                        <option value="am">AM</option>
                     </select>
                     <!-- Custom Arrow Icon -->
                     <div class="absolute right-2.5 pointer-events-none opacity-60">
@@ -415,32 +423,43 @@
                 </a>
                 
                 <!-- Yapı Katalog Butonu -->
-                <a href="yapi_katalog.html" 
+                <a href="ustalar-yapi-katalog/index.html" 
                     class="flex-1 flex items-center justify-center space-x-2 bg-gradient-to-r from-brand-orange to-orange-500 text-white font-bold py-3.5 px-3 rounded-xl shadow-sm hover:shadow-md transition-all active:scale-95 duration-200 text-sm">
                     <i class="fas fa-book-open text-base"></i>
                     <span>Yapı Katalog</span>
                 </a>
             </div>
+        </section>
 
-            <!-- Yapı Haberleri Kutusu -->
-            <div id="news-box-wrapper" class="hidden max-w-3xl mx-auto bg-white rounded-2xl border border-slate-200/80 shadow-xl p-5 mt-10 text-left relative z-20">
-                <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
-                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fas fa-newspaper text-brand-orange animate-pulse"></i> Yapı Bülten
-                    </h3>
-                </div>
+    <!-- HAKKIMIZDA (BİZ KİMİZ?) -->
+    <section id="hakkimizda" class="py-24 bg-white border-t border-slate-100 relative overflow-hidden">
+        <!-- Dekoratif Arka Plan Unsurları -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-orange-50 rounded-full blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-slate-50 rounded-full blur-3xl opacity-70 translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Biz Kimiz?</h2>
+                <div class="w-24 h-1.5 bg-brand-orange mx-auto rounded-full mb-10 shadow-[0_0_15px_rgba(249,115,22,0.4)]"></div>
                 
-                <!-- Haber Listesi -->
-                <div id="news-list-container" class="space-y-4">
-                    <!-- Dinamik olarak doldurulacak -->
-                </div>
-
-                <!-- Sayfalama (Pagination) -->
-                <div id="news-pagination-container" class="flex justify-center items-center space-x-2 mt-5">
-                    <!-- Dinamik olarak doldurulacak -->
+                <p class="text-xl md:text-2xl text-slate-800 font-bold leading-relaxed mb-10 px-4">
+                    Sektördeki tecrübemizi, yenilikçi teknoloji ve yapay zeka ile birleştirerek Türkiye'nin en kapsamlı kurumsal yapı ekosistemini oluşturuyoruz.
+                </p>
+                
+                <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 shadow-sm text-slate-600 text-lg leading-loose space-y-6 text-left">
+                    <p class="flex items-start">
+                        <i class="fas fa-check-circle text-brand-orange mt-1.5 mr-4 text-xl"></i>
+                        <span>Yılların verdiği inşaat ve teknoloji tecrübesiyle kurulan <strong>Ustalar.com</strong>, sadece bir firma bulma platformu olmaktan çıkarak, yapay zeka ve dijital çözümleri merkeze alan devasa bir ekosisteme dönüştü.</span>
+                    </p>
+                    <p class="flex items-start">
+                        <i class="fas fa-check-circle text-brand-orange mt-1.5 mr-4 text-xl"></i>
+                        <span>Amacımız; kentsel dönüşüm süreçlerinden malzeme tedariğine, proje yönetiminden ustaların eğitilmesine kadar tüm yapı ihtiyaçlarını tek bir merkezden, güvenilir bir şekilde çözmektir.</span>
+                    </p>
                 </div>
             </div>
-        </section>
+
+        </div>
+    </section>
 
     <!-- REKLAM ALANI (720x90) -->
     <section class="py-12 bg-white flex justify-center items-center px-4 relative z-20 hidden">
@@ -564,7 +583,7 @@
                 </a>
 
                 <!-- 7. USTALAR BRAND -->
-                <a target="_blank" href="https://wa.me/905324666068?text=Merhaba,%20Ustalar%20Brand%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                <a href="ustalar-brand/index.html"
                     class="block bg-slate-50 p-5 md:p-8 rounded-2xl md:rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-all hover-lift group relative overflow-hidden">
                     <div
                         class="absolute -right-4 -top-4 w-16 h-16 md:w-24 md:h-24 bg-rose-100 rounded-full blur-2xl group-hover:bg-rose-500 transition-colors opacity-50">
@@ -834,33 +853,31 @@
         </div>
     </section>
 
-    <!-- HAKKIMIZDA (BİZ KİMİZ?) -->
-    <section id="hakkimizda" class="py-24 bg-white border-t border-slate-100 relative overflow-hidden">
-        <!-- Dekoratif Arka Plan Unsurları -->
-        <div class="absolute top-0 left-0 w-64 h-64 bg-orange-50 rounded-full blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-64 h-64 bg-slate-50 rounded-full blur-3xl opacity-70 translate-x-1/3 translate-y-1/3"></div>
+    <!-- YAPI BÜLTEN (HABERLER) -->
+    <section id="yapi-bulten-section" class="py-16 bg-white border-t border-slate-100 hidden">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <!-- Yapı Haberleri Kutusu -->
+            <div id="news-box-wrapper" class="hidden bg-white rounded-2xl border border-slate-200/80 shadow-xl p-5 text-left relative z-20">
+                <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-newspaper text-brand-orange animate-pulse"></i> Yapı Bülten
+                    </h3>
+                    <a href="https://sektorturk.com/" target="_blank" 
+                        class="text-xs font-bold text-brand-orange hover:text-white border border-brand-orange hover:bg-brand-orange px-3 py-1.5 rounded-lg transition-all duration-200">
+                        Daha Fazlası...
+                    </a>
+                </div>
+                
+                <!-- Haber Listesi -->
+                <div id="news-list-container" class="space-y-4 h-[240px] md:h-[260px] overflow-hidden">
+                    <!-- Dinamik olarak doldurulacak -->
+                </div>
 
-        <div class="container mx-auto px-6 max-w-5xl relative z-10">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Biz Kimiz?</h2>
-                <div class="w-24 h-1.5 bg-brand-orange mx-auto rounded-full mb-10 shadow-[0_0_15px_rgba(249,115,22,0.4)]"></div>
-                
-                <p class="text-xl md:text-2xl text-slate-800 font-bold leading-relaxed mb-10 px-4">
-                    Sektördeki tecrübemizi, yenilikçi teknoloji ve yapay zeka ile birleştirerek Türkiye'nin en kapsamlı kurumsal yapı ekosistemini oluşturuyoruz.
-                </p>
-                
-                <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 shadow-sm text-slate-600 text-lg leading-loose space-y-6 text-left">
-                    <p class="flex items-start">
-                        <i class="fas fa-check-circle text-brand-orange mt-1.5 mr-4 text-xl"></i>
-                        <span>Yılların verdiği inşaat ve teknoloji tecrübesiyle kurulan <strong>Ustalar.com</strong>, sadece bir firma bulma platformu olmaktan çıkarak, yapay zeka ve dijital çözümleri merkeze alan devasa bir ekosisteme dönüştü.</span>
-                    </p>
-                    <p class="flex items-start">
-                        <i class="fas fa-check-circle text-brand-orange mt-1.5 mr-4 text-xl"></i>
-                        <span>Amacımız; kentsel dönüşüm süreçlerinden malzeme tedariğine, proje yönetiminden ustaların eğitilmesine kadar tüm yapı ihtiyaçlarını tek bir merkezden, güvenilir bir şekilde çözmektir.</span>
-                    </p>
+                <!-- Sayfalama (Pagination) -->
+                <div id="news-pagination-container" class="flex justify-center items-center space-x-2 mt-5">
+                    <!-- Dinamik olarak doldurulacak -->
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -933,10 +950,10 @@
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center text-sm text-slate-500 gap-y-4">
+            <div class="pt-8 border-t border-slate-100 flex flex-col items-center justify-center text-center text-sm text-slate-500 gap-y-3">
                 <div>
                     <p>&copy; 2026 Ustalar.com | Tüm Hakları Saklıdır.</p>
-                    <div class="mt-2 flex space-x-4 flex-wrap gap-y-2">
+                    <div class="mt-2 flex justify-center space-x-4 flex-wrap gap-y-2">
                         <a href="privacy_policy.html"
                             class="inline-flex items-center text-slate-400 hover:text-brand-orange transition font-semibold">
                             <i class="fas fa-user-shield mr-2 text-xs"></i> Gizlilik Politikası
@@ -1101,6 +1118,7 @@
 
                 if (newsData.length > 0) {
                     wrapper.classList.remove('hidden');
+                    document.getElementById('yapi-bulten-section')?.classList.remove('hidden');
                     renderNewsPage(1);
                 }
             } catch (e) {

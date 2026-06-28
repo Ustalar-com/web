@@ -5,7 +5,7 @@
 window.googleTranslateElementInit = function() {
     new google.translate.TranslateElement({
         pageLanguage: 'tr',
-        includedLanguages: 'tr,en,ru,fr,de',
+        includedLanguages: 'tr,en,ru,fr,de,ar,am',
         autoDisplay: false
     }, 'google_translate_element');
 };
@@ -52,7 +52,9 @@ const langMap = {
     en: { name: 'EN', flag: 'gb' },
     ru: { name: 'RU', flag: 'ru' },
     de: { name: 'DE', flag: 'de' },
-    fr: { name: 'FR', flag: 'fr' }
+    fr: { name: 'FR', flag: 'fr' },
+    ar: { name: 'AR', flag: 'sa' },
+    am: { name: 'AM', flag: 'et' }
 };
 
 function updateLanguageUI(langCode) {
